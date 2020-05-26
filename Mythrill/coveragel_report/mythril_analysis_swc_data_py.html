@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=emulateIE7" />
+    <title>Coverage for mythril/analysis/swc_data.py: 100%</title>
+    <link rel="stylesheet" href="style.css" type="text/css">
+    <script type="text/javascript" src="jquery.min.js"></script>
+    <script type="text/javascript" src="jquery.hotkeys.js"></script>
+    <script type="text/javascript" src="jquery.isonscreen.js"></script>
+    <script type="text/javascript" src="coverage_html.js"></script>
+    <script type="text/javascript">
+        jQuery(document).ready(coverage.pyfile_ready);
+    </script>
+</head>
+<body class="pyfile">
+<div id="header">
+    <div class="content">
+        <h1>Coverage for <b>mythril/analysis/swc_data.py</b> :
+            <span class="pc_cov">100%</span>
+        </h1>
+        <img id="keyboard_icon" src="keybd_closed.png" alt="Show keyboard shortcuts" />
+        <h2 class="stats">
+            29 statements &nbsp;
+            <span class="run shortkey_r button_toggle_run">29 run</span>
+            <span class="mis show_mis shortkey_m button_toggle_mis">0 missing</span>
+            <span class="exc show_exc shortkey_x button_toggle_exc">0 excluded</span>
+                <span class="par run show_par shortkey_p button_toggle_par">0 partial</span>
+        </h2>
+    </div>
+</div>
+<div class="help_panel">
+    <img id="panel_icon" src="keybd_open.png" alt="Hide keyboard shortcuts" />
+    <p class="legend">Hot-keys on this page</p>
+    <div>
+    <p class="keyhelp">
+        <span class="key">r</span>
+        <span class="key">m</span>
+        <span class="key">x</span>
+        <span class="key">p</span> &nbsp; toggle line displays
+    </p>
+    <p class="keyhelp">
+        <span class="key">j</span>
+        <span class="key">k</span> &nbsp; next/prev highlighted chunk
+    </p>
+    <p class="keyhelp">
+        <span class="key">0</span> &nbsp; (zero) top of page
+    </p>
+    <p class="keyhelp">
+        <span class="key">1</span> &nbsp; (one) first highlighted chunk
+    </p>
+    </div>
+</div>
+<div id="source">
+    <p id="t1" class="pln"><span class="n"><a href="#t1">1</a></span><span class="t"><span class="str">"""This module maps SWC IDs to their registry equivalents."""</span>&nbsp;</span><span class="r"></span></p>
+    <p id="t2" class="pln"><span class="n"><a href="#t2">2</a></span><span class="t">&nbsp;</span><span class="r"></span></p>
+    <p id="t3" class="run"><span class="n"><a href="#t3">3</a></span><span class="t"><span class="nam">DEFAULT_FUNCTION_VISIBILITY</span> <span class="op">=</span> <span class="str">"100"</span>&nbsp;</span><span class="r"></span></p>
+    <p id="t4" class="run"><span class="n"><a href="#t4">4</a></span><span class="t"><span class="nam">INTEGER_OVERFLOW_AND_UNDERFLOW</span> <span class="op">=</span> <span class="str">"101"</span>&nbsp;</span><span class="r"></span></p>
+    <p id="t5" class="run"><span class="n"><a href="#t5">5</a></span><span class="t"><span class="nam">OUTDATED_COMPILER_VERSION</span> <span class="op">=</span> <span class="str">"102"</span>&nbsp;</span><span class="r"></span></p>
+    <p id="t6" class="run"><span class="n"><a href="#t6">6</a></span><span class="t"><span class="nam">FLOATING_PRAGMA</span> <span class="op">=</span> <span class="str">"103"</span>&nbsp;</span><span class="r"></span></p>
+    <p id="t7" class="run"><span class="n"><a href="#t7">7</a></span><span class="t"><span class="nam">UNCHECKED_RET_VAL</span> <span class="op">=</span> <span class="str">"104"</span>&nbsp;</span><span class="r"></span></p>
+    <p id="t8" class="run"><span class="n"><a href="#t8">8</a></span><span class="t"><span class="nam">UNPROTECTED_ETHER_WITHDRAWAL</span> <span class="op">=</span> <span class="str">"105"</span>&nbsp;</span><span class="r"></span></p>
+    <p id="t9" class="run"><span class="n"><a href="#t9">9</a></span><span class="t"><span class="nam">UNPROTECTED_SELFDESTRUCT</span> <span class="op">=</span> <span class="str">"106"</span>&nbsp;</span><span class="r"></span></p>
+    <p id="t10" class="run"><span class="n"><a href="#t10">10</a></span><span class="t"><span class="nam">REENTRANCY</span> <span class="op">=</span> <span class="str">"107"</span>&nbsp;</span><span class="r"></span></p>
+    <p id="t11" class="run"><span class="n"><a href="#t11">11</a></span><span class="t"><span class="nam">DEFAULT_STATE_VARIABLE_VISIBILITY</span> <span class="op">=</span> <span class="str">"108"</span>&nbsp;</span><span class="r"></span></p>
+    <p id="t12" class="run"><span class="n"><a href="#t12">12</a></span><span class="t"><span class="nam">UNINITIALIZED_STORAGE_POINTER</span> <span class="op">=</span> <span class="str">"109"</span>&nbsp;</span><span class="r"></span></p>
+    <p id="t13" class="run"><span class="n"><a href="#t13">13</a></span><span class="t"><span class="nam">ASSERT_VIOLATION</span> <span class="op">=</span> <span class="str">"110"</span>&nbsp;</span><span class="r"></span></p>
+    <p id="t14" class="run"><span class="n"><a href="#t14">14</a></span><span class="t"><span class="nam">DEPRECATED_FUNCTIONS_USAGE</span> <span class="op">=</span> <span class="str">"111"</span>&nbsp;</span><span class="r"></span></p>
+    <p id="t15" class="run"><span class="n"><a href="#t15">15</a></span><span class="t"><span class="nam">DELEGATECALL_TO_UNTRUSTED_CONTRACT</span> <span class="op">=</span> <span class="str">"112"</span>&nbsp;</span><span class="r"></span></p>
+    <p id="t16" class="run"><span class="n"><a href="#t16">16</a></span><span class="t"><span class="nam">MULTIPLE_SENDS</span> <span class="op">=</span> <span class="str">"113"</span>&nbsp;</span><span class="r"></span></p>
+    <p id="t17" class="run"><span class="n"><a href="#t17">17</a></span><span class="t"><span class="nam">TX_ORDER_DEPENDENCE</span> <span class="op">=</span> <span class="str">"114"</span>&nbsp;</span><span class="r"></span></p>
+    <p id="t18" class="run"><span class="n"><a href="#t18">18</a></span><span class="t"><span class="nam">TX_ORIGIN_USAGE</span> <span class="op">=</span> <span class="str">"115"</span>&nbsp;</span><span class="r"></span></p>
+    <p id="t19" class="run"><span class="n"><a href="#t19">19</a></span><span class="t"><span class="nam">TIMESTAMP_DEPENDENCE</span> <span class="op">=</span> <span class="str">"116"</span>&nbsp;</span><span class="r"></span></p>
+    <p id="t20" class="run"><span class="n"><a href="#t20">20</a></span><span class="t"><span class="nam">INCORRECT_CONSTRUCTOR_NAME</span> <span class="op">=</span> <span class="str">"118"</span>&nbsp;</span><span class="r"></span></p>
+    <p id="t21" class="run"><span class="n"><a href="#t21">21</a></span><span class="t"><span class="nam">SHADOWING_STATE_VARIABLES</span> <span class="op">=</span> <span class="str">"119"</span>&nbsp;</span><span class="r"></span></p>
+    <p id="t22" class="run"><span class="n"><a href="#t22">22</a></span><span class="t"><span class="nam">WEAK_RANDOMNESS</span> <span class="op">=</span> <span class="str">"120"</span>&nbsp;</span><span class="r"></span></p>
+    <p id="t23" class="run"><span class="n"><a href="#t23">23</a></span><span class="t"><span class="nam">SIGNATURE_REPLAY</span> <span class="op">=</span> <span class="str">"121"</span>&nbsp;</span><span class="r"></span></p>
+    <p id="t24" class="run"><span class="n"><a href="#t24">24</a></span><span class="t"><span class="nam">IMPROPER_VERIFICATION_BASED_ON_MSG_SENDER</span> <span class="op">=</span> <span class="str">"122"</span>&nbsp;</span><span class="r"></span></p>
+    <p id="t25" class="run"><span class="n"><a href="#t25">25</a></span><span class="t"><span class="nam">REQUIREMENT_VIOLATION</span> <span class="op">=</span> <span class="str">"123"</span>&nbsp;</span><span class="r"></span></p>
+    <p id="t26" class="run"><span class="n"><a href="#t26">26</a></span><span class="t"><span class="nam">WRITE_TO_ARBITRARY_STORAGE</span> <span class="op">=</span> <span class="str">"124"</span>&nbsp;</span><span class="r"></span></p>
+    <p id="t27" class="run"><span class="n"><a href="#t27">27</a></span><span class="t"><span class="nam">INCORRECT_INHERITANCE_ORDER</span> <span class="op">=</span> <span class="str">"125"</span>&nbsp;</span><span class="r"></span></p>
+    <p id="t28" class="run"><span class="n"><a href="#t28">28</a></span><span class="t"><span class="nam">ARBITRARY_JUMP</span> <span class="op">=</span> <span class="str">"127"</span>&nbsp;</span><span class="r"></span></p>
+    <p id="t29" class="run"><span class="n"><a href="#t29">29</a></span><span class="t"><span class="nam">DOS_WITH_BLOCK_GAS_LIMIT</span> <span class="op">=</span> <span class="str">"128"</span>&nbsp;</span><span class="r"></span></p>
+    <p id="t30" class="run"><span class="n"><a href="#t30">30</a></span><span class="t"><span class="nam">TYPOGRAPHICAL_ERROR</span> <span class="op">=</span> <span class="str">"129"</span>&nbsp;</span><span class="r"></span></p>
+    <p id="t31" class="pln"><span class="n"><a href="#t31">31</a></span><span class="t">&nbsp;</span><span class="r"></span></p>
+    <p id="t32" class="pln"><span class="n"><a href="#t32">32</a></span><span class="t">&nbsp;</span><span class="r"></span></p>
+    <p id="t33" class="run"><span class="n"><a href="#t33">33</a></span><span class="t"><span class="nam">SWC_TO_TITLE</span> <span class="op">=</span> <span class="op">{</span>&nbsp;</span><span class="r"></span></p>
+    <p id="t34" class="pln"><span class="n"><a href="#t34">34</a></span><span class="t">    <span class="str">"100"</span><span class="op">:</span> <span class="str">"Function Default Visibility"</span><span class="op">,</span>&nbsp;</span><span class="r"></span></p>
+    <p id="t35" class="pln"><span class="n"><a href="#t35">35</a></span><span class="t">    <span class="str">"101"</span><span class="op">:</span> <span class="str">"Integer Overflow and Underflow"</span><span class="op">,</span>&nbsp;</span><span class="r"></span></p>
+    <p id="t36" class="pln"><span class="n"><a href="#t36">36</a></span><span class="t">    <span class="str">"102"</span><span class="op">:</span> <span class="str">"Outdated Compiler Version"</span><span class="op">,</span>&nbsp;</span><span class="r"></span></p>
+    <p id="t37" class="pln"><span class="n"><a href="#t37">37</a></span><span class="t">    <span class="str">"103"</span><span class="op">:</span> <span class="str">"Floating Pragma"</span><span class="op">,</span>&nbsp;</span><span class="r"></span></p>
+    <p id="t38" class="pln"><span class="n"><a href="#t38">38</a></span><span class="t">    <span class="str">"104"</span><span class="op">:</span> <span class="str">"Unchecked Call Return Value"</span><span class="op">,</span>&nbsp;</span><span class="r"></span></p>
+    <p id="t39" class="pln"><span class="n"><a href="#t39">39</a></span><span class="t">    <span class="str">"105"</span><span class="op">:</span> <span class="str">"Unprotected Ether Withdrawal"</span><span class="op">,</span>&nbsp;</span><span class="r"></span></p>
+    <p id="t40" class="pln"><span class="n"><a href="#t40">40</a></span><span class="t">    <span class="str">"106"</span><span class="op">:</span> <span class="str">"Unprotected SELFDESTRUCT Instruction"</span><span class="op">,</span>&nbsp;</span><span class="r"></span></p>
+    <p id="t41" class="pln"><span class="n"><a href="#t41">41</a></span><span class="t">    <span class="str">"107"</span><span class="op">:</span> <span class="str">"Reentrancy"</span><span class="op">,</span>&nbsp;</span><span class="r"></span></p>
+    <p id="t42" class="pln"><span class="n"><a href="#t42">42</a></span><span class="t">    <span class="str">"108"</span><span class="op">:</span> <span class="str">"State Variable Default Visibility"</span><span class="op">,</span>&nbsp;</span><span class="r"></span></p>
+    <p id="t43" class="pln"><span class="n"><a href="#t43">43</a></span><span class="t">    <span class="str">"109"</span><span class="op">:</span> <span class="str">"Uninitialized Storage Pointer"</span><span class="op">,</span>&nbsp;</span><span class="r"></span></p>
+    <p id="t44" class="pln"><span class="n"><a href="#t44">44</a></span><span class="t">    <span class="str">"110"</span><span class="op">:</span> <span class="str">"Assert Violation"</span><span class="op">,</span>&nbsp;</span><span class="r"></span></p>
+    <p id="t45" class="pln"><span class="n"><a href="#t45">45</a></span><span class="t">    <span class="str">"111"</span><span class="op">:</span> <span class="str">"Use of Deprecated Solidity Functions"</span><span class="op">,</span>&nbsp;</span><span class="r"></span></p>
+    <p id="t46" class="pln"><span class="n"><a href="#t46">46</a></span><span class="t">    <span class="str">"112"</span><span class="op">:</span> <span class="str">"Delegatecall to Untrusted Callee"</span><span class="op">,</span>&nbsp;</span><span class="r"></span></p>
+    <p id="t47" class="pln"><span class="n"><a href="#t47">47</a></span><span class="t">    <span class="str">"113"</span><span class="op">:</span> <span class="str">"DoS with Failed Call"</span><span class="op">,</span>&nbsp;</span><span class="r"></span></p>
+    <p id="t48" class="pln"><span class="n"><a href="#t48">48</a></span><span class="t">    <span class="str">"114"</span><span class="op">:</span> <span class="str">"Transaction Order Dependence"</span><span class="op">,</span>&nbsp;</span><span class="r"></span></p>
+    <p id="t49" class="pln"><span class="n"><a href="#t49">49</a></span><span class="t">    <span class="str">"115"</span><span class="op">:</span> <span class="str">"Authorization through tx.origin"</span><span class="op">,</span>&nbsp;</span><span class="r"></span></p>
+    <p id="t50" class="pln"><span class="n"><a href="#t50">50</a></span><span class="t">    <span class="str">"116"</span><span class="op">:</span> <span class="str">"Timestamp Dependence"</span><span class="op">,</span>&nbsp;</span><span class="r"></span></p>
+    <p id="t51" class="pln"><span class="n"><a href="#t51">51</a></span><span class="t">    <span class="str">"117"</span><span class="op">:</span> <span class="str">"Signature Malleability"</span><span class="op">,</span>&nbsp;</span><span class="r"></span></p>
+    <p id="t52" class="pln"><span class="n"><a href="#t52">52</a></span><span class="t">    <span class="str">"118"</span><span class="op">:</span> <span class="str">"Incorrect Constructor Name"</span><span class="op">,</span>&nbsp;</span><span class="r"></span></p>
+    <p id="t53" class="pln"><span class="n"><a href="#t53">53</a></span><span class="t">    <span class="str">"119"</span><span class="op">:</span> <span class="str">"Shadowing State Variables"</span><span class="op">,</span>&nbsp;</span><span class="r"></span></p>
+    <p id="t54" class="pln"><span class="n"><a href="#t54">54</a></span><span class="t">    <span class="str">"120"</span><span class="op">:</span> <span class="str">"Weak Sources of Randomness from Chain Attributes"</span><span class="op">,</span>&nbsp;</span><span class="r"></span></p>
+    <p id="t55" class="pln"><span class="n"><a href="#t55">55</a></span><span class="t">    <span class="str">"121"</span><span class="op">:</span> <span class="str">"Missing Protection against Signature Replay Attacks"</span><span class="op">,</span>&nbsp;</span><span class="r"></span></p>
+    <p id="t56" class="pln"><span class="n"><a href="#t56">56</a></span><span class="t">    <span class="str">"122"</span><span class="op">:</span> <span class="str">"Lack of Proper Signature Verification"</span><span class="op">,</span>&nbsp;</span><span class="r"></span></p>
+    <p id="t57" class="pln"><span class="n"><a href="#t57">57</a></span><span class="t">    <span class="str">"123"</span><span class="op">:</span> <span class="str">"Requirement Violation"</span><span class="op">,</span>&nbsp;</span><span class="r"></span></p>
+    <p id="t58" class="pln"><span class="n"><a href="#t58">58</a></span><span class="t">    <span class="str">"124"</span><span class="op">:</span> <span class="str">"Write to Arbitrary Storage Location"</span><span class="op">,</span>&nbsp;</span><span class="r"></span></p>
+    <p id="t59" class="pln"><span class="n"><a href="#t59">59</a></span><span class="t">    <span class="str">"125"</span><span class="op">:</span> <span class="str">"Incorrect Inheritance Order"</span><span class="op">,</span>&nbsp;</span><span class="r"></span></p>
+    <p id="t60" class="pln"><span class="n"><a href="#t60">60</a></span><span class="t">    <span class="str">"127"</span><span class="op">:</span> <span class="str">"Arbitrary Jump with Function Type Variable"</span><span class="op">,</span>&nbsp;</span><span class="r"></span></p>
+    <p id="t61" class="pln"><span class="n"><a href="#t61">61</a></span><span class="t">    <span class="str">"128"</span><span class="op">:</span> <span class="str">"DoS With Block Gas Limit"</span><span class="op">,</span>&nbsp;</span><span class="r"></span></p>
+    <p id="t62" class="pln"><span class="n"><a href="#t62">62</a></span><span class="t">    <span class="str">"129"</span><span class="op">:</span> <span class="str">"Typographical Error"</span><span class="op">,</span>&nbsp;</span><span class="r"></span></p>
+    <p id="t63" class="pln"><span class="n"><a href="#t63">63</a></span><span class="t"><span class="op">}</span>&nbsp;</span><span class="r"></span></p>
+</div>
+<div id="footer">
+    <div class="content">
+        <p>
+            <a class="nav" href="index.html">&#xab; index</a> &nbsp; &nbsp; <a class="nav" href="https://coverage.readthedocs.io">coverage.py v5.1</a>,
+            created at 2020-05-22 00:24
+        </p>
+    </div>
+</div>
+</body>
+</html>

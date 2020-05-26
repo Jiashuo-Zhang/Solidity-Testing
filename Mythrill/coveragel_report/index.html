@@ -1,0 +1,1055 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <title>Coverage report</title>
+    <link rel="stylesheet" href="style.css" type="text/css">
+    <script type="text/javascript" src="jquery.min.js"></script>
+    <script type="text/javascript" src="jquery.ba-throttle-debounce.min.js"></script>
+    <script type="text/javascript" src="jquery.tablesorter.min.js"></script>
+    <script type="text/javascript" src="jquery.hotkeys.js"></script>
+    <script type="text/javascript" src="coverage_html.js"></script>
+    <script type="text/javascript">
+        jQuery(document).ready(coverage.index_ready);
+    </script>
+</head>
+<body class="indexfile">
+<div id="header">
+    <div class="content">
+        <h1>Coverage report:
+            <span class="pc_cov">65%</span>
+        </h1>
+        <img id="keyboard_icon" src="keybd_closed.png" alt="Show keyboard shortcuts" />
+        <form id="filter_container">
+            <input id="filter" type="text" value="" placeholder="filter..." />
+        </form>
+    </div>
+</div>
+<div class="help_panel">
+    <img id="panel_icon" src="keybd_open.png" alt="Hide keyboard shortcuts" />
+    <p class="legend">Hot-keys on this page</p>
+    <div>
+    <p class="keyhelp">
+        <span class="key">n</span>
+        <span class="key">s</span>
+        <span class="key">m</span>
+        <span class="key">x</span>
+        <span class="key">b</span>
+        <span class="key">p</span>
+        <span class="key">c</span> &nbsp; change column sorting
+    </p>
+    </div>
+</div>
+<div id="index">
+    <table class="index">
+        <thead>
+            <tr class="tablehead" title="Click to sort">
+                <th class="name left headerSortDown shortkey_n">Module</th>
+                <th class="shortkey_s">statements</th>
+                <th class="shortkey_m">missing</th>
+                <th class="shortkey_x">excluded</th>
+                <th class="shortkey_b">branches</th>
+                <th class="shortkey_p">partial</th>
+                <th class="right shortkey_c">coverage</th>
+            </tr>
+        </thead>
+        <tfoot>
+            <tr class="total">
+                <td class="name left">Total</td>
+                <td>7018</td>
+                <td>2181</td>
+                <td>0</td>
+                <td>1767</td>
+                <td>262</td>
+                <td class="right" data-ratio="5702 8785">65%</td>
+            </tr>
+        </tfoot>
+        <tbody>
+            <tr class="file">
+                <td class="name left"><a href="mythril___main___py.html">mythril/__main__.py</a></td>
+                <td>3</td>
+                <td>3</td>
+                <td>0</td>
+                <td>2</td>
+                <td>0</td>
+                <td class="right" data-ratio="0 5">0%</td>
+            </tr>
+            <tr class="file">
+                <td class="name left"><a href="mythril___version___py.html">mythril/__version__.py</a></td>
+                <td>1</td>
+                <td>0</td>
+                <td>0</td>
+                <td>0</td>
+                <td>0</td>
+                <td class="right" data-ratio="1 1">100%</td>
+            </tr>
+            <tr class="file">
+                <td class="name left"><a href="mythril_analysis_analysis_args_py.html">mythril/analysis/analysis_args.py</a></td>
+                <td>0</td>
+                <td>0</td>
+                <td>0</td>
+                <td>0</td>
+                <td>0</td>
+                <td class="right" data-ratio="0 0">100%</td>
+            </tr>
+            <tr class="file">
+                <td class="name left"><a href="mythril_analysis_call_helpers_py.html">mythril/analysis/call_helpers.py</a></td>
+                <td>17</td>
+                <td>17</td>
+                <td>0</td>
+                <td>6</td>
+                <td>0</td>
+                <td class="right" data-ratio="0 23">0%</td>
+            </tr>
+            <tr class="file">
+                <td class="name left"><a href="mythril_analysis_callgraph_py.html">mythril/analysis/callgraph.py</a></td>
+                <td>48</td>
+                <td>3</td>
+                <td>0</td>
+                <td>20</td>
+                <td>1</td>
+                <td class="right" data-ratio="64 68">94%</td>
+            </tr>
+            <tr class="file">
+                <td class="name left"><a href="mythril_analysis_module_base_py.html">mythril/analysis/module/base.py</a></td>
+                <td>32</td>
+                <td>2</td>
+                <td>0</td>
+                <td>0</td>
+                <td>0</td>
+                <td class="right" data-ratio="30 32">94%</td>
+            </tr>
+            <tr class="file">
+                <td class="name left"><a href="mythril_analysis_module_loader_py.html">mythril/analysis/module/loader.py</a></td>
+                <td>40</td>
+                <td>8</td>
+                <td>0</td>
+                <td>16</td>
+                <td>2</td>
+                <td class="right" data-ratio="36 56">64%</td>
+            </tr>
+            <tr class="file">
+                <td class="name left"><a href="mythril_analysis_module_module_helpers_py.html">mythril/analysis/module/module_helpers.py</a></td>
+                <td>3</td>
+                <td>0</td>
+                <td>0</td>
+                <td>0</td>
+                <td>0</td>
+                <td class="right" data-ratio="3 3">100%</td>
+            </tr>
+            <tr class="file">
+                <td class="name left"><a href="mythril_analysis_module_modules_arbitrary_jump_py.html">mythril/analysis/module/modules/arbitrary_jump.py</a></td>
+                <td>30</td>
+                <td>7</td>
+                <td>0</td>
+                <td>4</td>
+                <td>2</td>
+                <td class="right" data-ratio="25 34">74%</td>
+            </tr>
+            <tr class="file">
+                <td class="name left"><a href="mythril_analysis_module_modules_arbitrary_write_py.html">mythril/analysis/module/modules/arbitrary_write.py</a></td>
+                <td>28</td>
+                <td>9</td>
+                <td>0</td>
+                <td>2</td>
+                <td>0</td>
+                <td class="right" data-ratio="19 30">63%</td>
+            </tr>
+            <tr class="file">
+                <td class="name left"><a href="mythril_analysis_module_modules_delegatecall_py.html">mythril/analysis/module/modules/delegatecall.py</a></td>
+                <td>39</td>
+                <td>19</td>
+                <td>0</td>
+                <td>6</td>
+                <td>0</td>
+                <td class="right" data-ratio="20 45">44%</td>
+            </tr>
+            <tr class="file">
+                <td class="name left"><a href="mythril_analysis_module_modules_dependence_on_origin_py.html">mythril/analysis/module/modules/dependence_on_origin.py</a></td>
+                <td>45</td>
+                <td>2</td>
+                <td>0</td>
+                <td>10</td>
+                <td>0</td>
+                <td class="right" data-ratio="53 55">96%</td>
+            </tr>
+            <tr class="file">
+                <td class="name left"><a href="mythril_analysis_module_modules_dependence_on_predictable_vars_py.html">mythril/analysis/module/modules/dependence_on_predictable_vars.py</a></td>
+                <td>69</td>
+                <td>29</td>
+                <td>0</td>
+                <td>18</td>
+                <td>5</td>
+                <td class="right" data-ratio="47 87">54%</td>
+            </tr>
+            <tr class="file">
+                <td class="name left"><a href="mythril_analysis_module_modules_ether_thief_py.html">mythril/analysis/module/modules/ether_thief.py</a></td>
+                <td>38</td>
+                <td>15</td>
+                <td>0</td>
+                <td>2</td>
+                <td>0</td>
+                <td class="right" data-ratio="23 40">58%</td>
+            </tr>
+            <tr class="file">
+                <td class="name left"><a href="mythril_analysis_module_modules_exceptions_py.html">mythril/analysis/module/modules/exceptions.py</a></td>
+                <td>34</td>
+                <td>16</td>
+                <td>0</td>
+                <td>4</td>
+                <td>0</td>
+                <td class="right" data-ratio="18 38">47%</td>
+            </tr>
+            <tr class="file">
+                <td class="name left"><a href="mythril_analysis_module_modules_external_calls_py.html">mythril/analysis/module/modules/external_calls.py</a></td>
+                <td>48</td>
+                <td>24</td>
+                <td>0</td>
+                <td>0</td>
+                <td>0</td>
+                <td class="right" data-ratio="24 48">50%</td>
+            </tr>
+            <tr class="file">
+                <td class="name left"><a href="mythril_analysis_module_modules_integer_py.html">mythril/analysis/module/modules/integer.py</a></td>
+                <td>165</td>
+                <td>59</td>
+                <td>0</td>
+                <td>48</td>
+                <td>7</td>
+                <td class="right" data-ratio="123 213">58%</td>
+            </tr>
+            <tr class="file">
+                <td class="name left"><a href="mythril_analysis_module_modules_multiple_sends_py.html">mythril/analysis/module/modules/multiple_sends.py</a></td>
+                <td>50</td>
+                <td>10</td>
+                <td>0</td>
+                <td>10</td>
+                <td>5</td>
+                <td class="right" data-ratio="45 60">75%</td>
+            </tr>
+            <tr class="file">
+                <td class="name left"><a href="mythril_analysis_module_modules_state_change_external_calls_py.html">mythril/analysis/module/modules/state_change_external_calls.py</a></td>
+                <td>111</td>
+                <td>69</td>
+                <td>0</td>
+                <td>32</td>
+                <td>3</td>
+                <td class="right" data-ratio="45 143">31%</td>
+            </tr>
+            <tr class="file">
+                <td class="name left"><a href="mythril_analysis_module_modules_suicide_py.html">mythril/analysis/module/modules/suicide.py</a></td>
+                <td>53</td>
+                <td>27</td>
+                <td>0</td>
+                <td>8</td>
+                <td>0</td>
+                <td class="right" data-ratio="26 61">43%</td>
+            </tr>
+            <tr class="file">
+                <td class="name left"><a href="mythril_analysis_module_modules_unchecked_retval_py.html">mythril/analysis/module/modules/unchecked_retval.py</a></td>
+                <td>57</td>
+                <td>14</td>
+                <td>0</td>
+                <td>14</td>
+                <td>5</td>
+                <td class="right" data-ratio="52 71">73%</td>
+            </tr>
+            <tr class="file">
+                <td class="name left"><a href="mythril_analysis_module_modules_user_assertions_py.html">mythril/analysis/module/modules/user_assertions.py</a></td>
+                <td>34</td>
+                <td>16</td>
+                <td>0</td>
+                <td>6</td>
+                <td>0</td>
+                <td class="right" data-ratio="18 40">45%</td>
+            </tr>
+            <tr class="file">
+                <td class="name left"><a href="mythril_analysis_module_util_py.html">mythril/analysis/module/util.py</a></td>
+                <td>25</td>
+                <td>5</td>
+                <td>0</td>
+                <td>17</td>
+                <td>1</td>
+                <td class="right" data-ratio="30 42">71%</td>
+            </tr>
+            <tr class="file">
+                <td class="name left"><a href="mythril_analysis_ops_py.html">mythril/analysis/ops.py</a></td>
+                <td>30</td>
+                <td>14</td>
+                <td>0</td>
+                <td>0</td>
+                <td>0</td>
+                <td class="right" data-ratio="16 30">53%</td>
+            </tr>
+            <tr class="file">
+                <td class="name left"><a href="mythril_analysis_potential_issues_py.html">mythril/analysis/potential_issues.py</a></td>
+                <td>38</td>
+                <td>18</td>
+                <td>0</td>
+                <td>6</td>
+                <td>1</td>
+                <td class="right" data-ratio="25 44">57%</td>
+            </tr>
+            <tr class="file">
+                <td class="name left"><a href="mythril_analysis_report_py.html">mythril/analysis/report.py</a></td>
+                <td>137</td>
+                <td>25</td>
+                <td>0</td>
+                <td>28</td>
+                <td>8</td>
+                <td class="right" data-ratio="128 165">78%</td>
+            </tr>
+            <tr class="file">
+                <td class="name left"><a href="mythril_analysis_security_py.html">mythril/analysis/security.py</a></td>
+                <td>22</td>
+                <td>2</td>
+                <td>0</td>
+                <td>4</td>
+                <td>1</td>
+                <td class="right" data-ratio="23 26">88%</td>
+            </tr>
+            <tr class="file">
+                <td class="name left"><a href="mythril_analysis_solver_py.html">mythril/analysis/solver.py</a></td>
+                <td>118</td>
+                <td>41</td>
+                <td>0</td>
+                <td>42</td>
+                <td>4</td>
+                <td class="right" data-ratio="97 160">61%</td>
+            </tr>
+            <tr class="file">
+                <td class="name left"><a href="mythril_analysis_swc_data_py.html">mythril/analysis/swc_data.py</a></td>
+                <td>29</td>
+                <td>0</td>
+                <td>0</td>
+                <td>0</td>
+                <td>0</td>
+                <td class="right" data-ratio="29 29">100%</td>
+            </tr>
+            <tr class="file">
+                <td class="name left"><a href="mythril_analysis_symbolic_py.html">mythril/analysis/symbolic.py</a></td>
+                <td>99</td>
+                <td>30</td>
+                <td>0</td>
+                <td>48</td>
+                <td>13</td>
+                <td class="right" data-ratio="94 147">64%</td>
+            </tr>
+            <tr class="file">
+                <td class="name left"><a href="mythril_analysis_traceexplore_py.html">mythril/analysis/traceexplore.py</a></td>
+                <td>58</td>
+                <td>3</td>
+                <td>0</td>
+                <td>28</td>
+                <td>2</td>
+                <td class="right" data-ratio="81 86">94%</td>
+            </tr>
+            <tr class="file">
+                <td class="name left"><a href="mythril_disassembler_asm_py.html">mythril/disassembler/asm.py</a></td>
+                <td>63</td>
+                <td>10</td>
+                <td>0</td>
+                <td>26</td>
+                <td>0</td>
+                <td class="right" data-ratio="75 89">84%</td>
+            </tr>
+            <tr class="file">
+                <td class="name left"><a href="mythril_disassembler_disassembly_py.html">mythril/disassembler/disassembly.py</a></td>
+                <td>38</td>
+                <td>0</td>
+                <td>0</td>
+                <td>6</td>
+                <td>0</td>
+                <td class="right" data-ratio="44 44">100%</td>
+            </tr>
+            <tr class="file">
+                <td class="name left"><a href="mythril_ethereum_evmcontract_py.html">mythril/ethereum/evmcontract.py</a></td>
+                <td>47</td>
+                <td>3</td>
+                <td>0</td>
+                <td>10</td>
+                <td>1</td>
+                <td class="right" data-ratio="53 57">93%</td>
+            </tr>
+            <tr class="file">
+                <td class="name left"><a href="mythril_ethereum_interface_leveldb_accountindexing_py.html">mythril/ethereum/interface/leveldb/accountindexing.py</a></td>
+                <td>85</td>
+                <td>62</td>
+                <td>0</td>
+                <td>33</td>
+                <td>0</td>
+                <td class="right" data-ratio="23 118">19%</td>
+            </tr>
+            <tr class="file">
+                <td class="name left"><a href="mythril_ethereum_interface_leveldb_client_py.html">mythril/ethereum/interface/leveldb/client.py</a></td>
+                <td>133</td>
+                <td>80</td>
+                <td>0</td>
+                <td>16</td>
+                <td>0</td>
+                <td class="right" data-ratio="53 149">36%</td>
+            </tr>
+            <tr class="file">
+                <td class="name left"><a href="mythril_ethereum_interface_leveldb_eth_db_py.html">mythril/ethereum/interface/leveldb/eth_db.py</a></td>
+                <td>11</td>
+                <td>4</td>
+                <td>0</td>
+                <td>0</td>
+                <td>0</td>
+                <td class="right" data-ratio="7 11">64%</td>
+            </tr>
+            <tr class="file">
+                <td class="name left"><a href="mythril_ethereum_interface_leveldb_state_py.html">mythril/ethereum/interface/leveldb/state.py</a></td>
+                <td>63</td>
+                <td>40</td>
+                <td>0</td>
+                <td>12</td>
+                <td>0</td>
+                <td class="right" data-ratio="23 75">31%</td>
+            </tr>
+            <tr class="file">
+                <td class="name left"><a href="mythril_ethereum_interface_rpc_base_client_py.html">mythril/ethereum/interface/rpc/base_client.py</a></td>
+                <td>34</td>
+                <td>2</td>
+                <td>0</td>
+                <td>4</td>
+                <td>2</td>
+                <td class="right" data-ratio="34 38">89%</td>
+            </tr>
+            <tr class="file">
+                <td class="name left"><a href="mythril_ethereum_interface_rpc_client_py.html">mythril/ethereum/interface/rpc/client.py</a></td>
+                <td>51</td>
+                <td>10</td>
+                <td>0</td>
+                <td>8</td>
+                <td>4</td>
+                <td class="right" data-ratio="45 59">76%</td>
+            </tr>
+            <tr class="file">
+                <td class="name left"><a href="mythril_ethereum_interface_rpc_constants_py.html">mythril/ethereum/interface/rpc/constants.py</a></td>
+                <td>4</td>
+                <td>0</td>
+                <td>0</td>
+                <td>0</td>
+                <td>0</td>
+                <td class="right" data-ratio="4 4">100%</td>
+            </tr>
+            <tr class="file">
+                <td class="name left"><a href="mythril_ethereum_interface_rpc_exceptions_py.html">mythril/ethereum/interface/rpc/exceptions.py</a></td>
+                <td>10</td>
+                <td>0</td>
+                <td>0</td>
+                <td>0</td>
+                <td>0</td>
+                <td class="right" data-ratio="10 10">100%</td>
+            </tr>
+            <tr class="file">
+                <td class="name left"><a href="mythril_ethereum_interface_rpc_utils_py.html">mythril/ethereum/interface/rpc/utils.py</a></td>
+                <td>16</td>
+                <td>4</td>
+                <td>0</td>
+                <td>6</td>
+                <td>1</td>
+                <td class="right" data-ratio="17 22">77%</td>
+            </tr>
+            <tr class="file">
+                <td class="name left"><a href="mythril_ethereum_util_py.html">mythril/ethereum/util.py</a></td>
+                <td>52</td>
+                <td>22</td>
+                <td>0</td>
+                <td>18</td>
+                <td>1</td>
+                <td class="right" data-ratio="33 70">47%</td>
+            </tr>
+            <tr class="file">
+                <td class="name left"><a href="mythril_exceptions_py.html">mythril/exceptions.py</a></td>
+                <td>14</td>
+                <td>0</td>
+                <td>0</td>
+                <td>0</td>
+                <td>0</td>
+                <td class="right" data-ratio="14 14">100%</td>
+            </tr>
+            <tr class="file">
+                <td class="name left"><a href="mythril_interfaces_cli_py.html">mythril/interfaces/cli.py</a></td>
+                <td>286</td>
+                <td>67</td>
+                <td>0</td>
+                <td>96</td>
+                <td>27</td>
+                <td class="right" data-ratio="272 382">71%</td>
+            </tr>
+            <tr class="file">
+                <td class="name left"><a href="mythril_interfaces_epic_py.html">mythril/interfaces/epic.py</a></td>
+                <td>117</td>
+                <td>29</td>
+                <td>0</td>
+                <td>46</td>
+                <td>12</td>
+                <td class="right" data-ratio="112 163">69%</td>
+            </tr>
+            <tr class="file">
+                <td class="name left"><a href="mythril_laser_ethereum_call_py.html">mythril/laser/ethereum/call.py</a></td>
+                <td>98</td>
+                <td>39</td>
+                <td>0</td>
+                <td>18</td>
+                <td>5</td>
+                <td class="right" data-ratio="66 116">57%</td>
+            </tr>
+            <tr class="file">
+                <td class="name left"><a href="mythril_laser_ethereum_cfg_py.html">mythril/laser/ethereum/cfg.py</a></td>
+                <td>49</td>
+                <td>2</td>
+                <td>0</td>
+                <td>6</td>
+                <td>1</td>
+                <td class="right" data-ratio="52 55">95%</td>
+            </tr>
+            <tr class="file">
+                <td class="name left"><a href="mythril_laser_ethereum_evm_exceptions_py.html">mythril/laser/ethereum/evm_exceptions.py</a></td>
+                <td>14</td>
+                <td>0</td>
+                <td>0</td>
+                <td>0</td>
+                <td>0</td>
+                <td class="right" data-ratio="14 14">100%</td>
+            </tr>
+            <tr class="file">
+                <td class="name left"><a href="mythril_laser_ethereum_instruction_data_py.html">mythril/laser/ethereum/instruction_data.py</a></td>
+                <td>29</td>
+                <td>11</td>
+                <td>0</td>
+                <td>8</td>
+                <td>0</td>
+                <td class="right" data-ratio="18 37">49%</td>
+            </tr>
+            <tr class="file">
+                <td class="name left"><a href="mythril_laser_ethereum_instructions_py.html">mythril/laser/ethereum/instructions.py</a></td>
+                <td>1063</td>
+                <td>321</td>
+                <td>0</td>
+                <td>184</td>
+                <td>30</td>
+                <td class="right" data-ratio="840 1247">67%</td>
+            </tr>
+            <tr class="file">
+                <td class="name left"><a href="mythril_laser_ethereum_iprof_py.html">mythril/laser/ethereum/iprof.py</a></td>
+                <td>31</td>
+                <td>19</td>
+                <td>0</td>
+                <td>6</td>
+                <td>0</td>
+                <td class="right" data-ratio="12 37">32%</td>
+            </tr>
+            <tr class="file">
+                <td class="name left"><a href="mythril_laser_ethereum_keccak_function_manager_py.html">mythril/laser/ethereum/keccak_function_manager.py</a></td>
+                <td>73</td>
+                <td>27</td>
+                <td>0</td>
+                <td>8</td>
+                <td>2</td>
+                <td class="right" data-ratio="48 81">59%</td>
+            </tr>
+            <tr class="file">
+                <td class="name left"><a href="mythril_laser_ethereum_natives_py.html">mythril/laser/ethereum/natives.py</a></td>
+                <td>143</td>
+                <td>41</td>
+                <td>0</td>
+                <td>42</td>
+                <td>5</td>
+                <td class="right" data-ratio="131 185">71%</td>
+            </tr>
+            <tr class="file">
+                <td class="name left"><a href="mythril_laser_ethereum_state_account_py.html">mythril/laser/ethereum/state/account.py</a></td>
+                <td>70</td>
+                <td>9</td>
+                <td>0</td>
+                <td>10</td>
+                <td>2</td>
+                <td class="right" data-ratio="69 80">86%</td>
+            </tr>
+            <tr class="file">
+                <td class="name left"><a href="mythril_laser_ethereum_state_annotation_py.html">mythril/laser/ethereum/state/annotation.py</a></td>
+                <td>12</td>
+                <td>3</td>
+                <td>0</td>
+                <td>0</td>
+                <td>0</td>
+                <td class="right" data-ratio="9 12">75%</td>
+            </tr>
+            <tr class="file">
+                <td class="name left"><a href="mythril_laser_ethereum_state_calldata_py.html">mythril/laser/ethereum/state/calldata.py</a></td>
+                <td>125</td>
+                <td>40</td>
+                <td>0</td>
+                <td>24</td>
+                <td>2</td>
+                <td class="right" data-ratio="97 149">65%</td>
+            </tr>
+            <tr class="file">
+                <td class="name left"><a href="mythril_laser_ethereum_state_constraints_py.html">mythril/laser/ethereum/state/constraints.py</a></td>
+                <td>44</td>
+                <td>5</td>
+                <td>0</td>
+                <td>2</td>
+                <td>0</td>
+                <td class="right" data-ratio="41 46">89%</td>
+            </tr>
+            <tr class="file">
+                <td class="name left"><a href="mythril_laser_ethereum_state_environment_py.html">mythril/laser/ethereum/state/environment.py</a></td>
+                <td>24</td>
+                <td>2</td>
+                <td>0</td>
+                <td>0</td>
+                <td>0</td>
+                <td class="right" data-ratio="22 24">92%</td>
+            </tr>
+            <tr class="file">
+                <td class="name left"><a href="mythril_laser_ethereum_state_global_state_py.html">mythril/laser/ethereum/state/global_state.py</a></td>
+                <td>60</td>
+                <td>7</td>
+                <td>0</td>
+                <td>8</td>
+                <td>2</td>
+                <td class="right" data-ratio="59 68">87%</td>
+            </tr>
+            <tr class="file">
+                <td class="name left"><a href="mythril_laser_ethereum_state_machine_state_py.html">mythril/laser/ethereum/state/machine_state.py</a></td>
+                <td>95</td>
+                <td>4</td>
+                <td>0</td>
+                <td>18</td>
+                <td>1</td>
+                <td class="right" data-ratio="108 113">96%</td>
+            </tr>
+            <tr class="file">
+                <td class="name left"><a href="mythril_laser_ethereum_state_memory_py.html">mythril/laser/ethereum/state/memory.py</a></td>
+                <td>99</td>
+                <td>10</td>
+                <td>0</td>
+                <td>42</td>
+                <td>9</td>
+                <td class="right" data-ratio="122 141">87%</td>
+            </tr>
+            <tr class="file">
+                <td class="name left"><a href="mythril_laser_ethereum_state_world_state_py.html">mythril/laser/ethereum/state/world_state.py</a></td>
+                <td>93</td>
+                <td>29</td>
+                <td>0</td>
+                <td>30</td>
+                <td>5</td>
+                <td class="right" data-ratio="75 123">61%</td>
+            </tr>
+            <tr class="file">
+                <td class="name left"><a href="mythril_laser_ethereum_strategy_basic_py.html">mythril/laser/ethereum/strategy/basic.py</a></td>
+                <td>30</td>
+                <td>14</td>
+                <td>0</td>
+                <td>6</td>
+                <td>0</td>
+                <td class="right" data-ratio="16 36">44%</td>
+            </tr>
+            <tr class="file">
+                <td class="name left"><a href="mythril_laser_ethereum_strategy_extensions_bounded_loops_py.html">mythril/laser/ethereum/strategy/extensions/bounded_loops.py</a></td>
+                <td>73</td>
+                <td>3</td>
+                <td>0</td>
+                <td>20</td>
+                <td>2</td>
+                <td class="right" data-ratio="88 93">95%</td>
+            </tr>
+            <tr class="file">
+                <td class="name left"><a href="mythril_laser_ethereum_svm_py.html">mythril/laser/ethereum/svm.py</a></td>
+                <td>294</td>
+                <td>75</td>
+                <td>0</td>
+                <td>132</td>
+                <td>21</td>
+                <td class="right" data-ratio="306 426">72%</td>
+            </tr>
+            <tr class="file">
+                <td class="name left"><a href="mythril_laser_ethereum_time_handler_py.html">mythril/laser/ethereum/time_handler.py</a></td>
+                <td>12</td>
+                <td>0</td>
+                <td>0</td>
+                <td>0</td>
+                <td>0</td>
+                <td class="right" data-ratio="12 12">100%</td>
+            </tr>
+            <tr class="file">
+                <td class="name left"><a href="mythril_laser_ethereum_transaction_concolic_py.html">mythril/laser/ethereum/transaction/concolic.py</a></td>
+                <td>27</td>
+                <td>2</td>
+                <td>0</td>
+                <td>6</td>
+                <td>2</td>
+                <td class="right" data-ratio="29 33">88%</td>
+            </tr>
+            <tr class="file">
+                <td class="name left"><a href="mythril_laser_ethereum_transaction_symbolic_py.html">mythril/laser/ethereum/transaction/symbolic.py</a></td>
+                <td>69</td>
+                <td>8</td>
+                <td>0</td>
+                <td>20</td>
+                <td>0</td>
+                <td class="right" data-ratio="75 89">84%</td>
+            </tr>
+            <tr class="file">
+                <td class="name left"><a href="mythril_laser_ethereum_transaction_transaction_models_py.html">mythril/laser/ethereum/transaction/transaction_models.py</a></td>
+                <td>85</td>
+                <td>12</td>
+                <td>0</td>
+                <td>5</td>
+                <td>0</td>
+                <td class="right" data-ratio="75 90">83%</td>
+            </tr>
+            <tr class="file">
+                <td class="name left"><a href="mythril_laser_ethereum_util_py.html">mythril/laser/ethereum/util.py</a></td>
+                <td>70</td>
+                <td>17</td>
+                <td>0</td>
+                <td>34</td>
+                <td>5</td>
+                <td class="right" data-ratio="76 104">73%</td>
+            </tr>
+            <tr class="file">
+                <td class="name left"><a href="mythril_laser_plugin_builder_py.html">mythril/laser/plugin/builder.py</a></td>
+                <td>10</td>
+                <td>1</td>
+                <td>0</td>
+                <td>0</td>
+                <td>0</td>
+                <td class="right" data-ratio="9 10">90%</td>
+            </tr>
+            <tr class="file">
+                <td class="name left"><a href="mythril_laser_plugin_interface_py.html">mythril/laser/plugin/interface.py</a></td>
+                <td>4</td>
+                <td>1</td>
+                <td>0</td>
+                <td>0</td>
+                <td>0</td>
+                <td class="right" data-ratio="3 4">75%</td>
+            </tr>
+            <tr class="file">
+                <td class="name left"><a href="mythril_laser_plugin_loader_py.html">mythril/laser/plugin/loader.py</a></td>
+                <td>31</td>
+                <td>13</td>
+                <td>0</td>
+                <td>10</td>
+                <td>0</td>
+                <td class="right" data-ratio="20 41">49%</td>
+            </tr>
+            <tr class="file">
+                <td class="name left"><a href="mythril_laser_plugin_plugins_benchmark_py.html">mythril/laser/plugin/plugins/benchmark.py</a></td>
+                <td>51</td>
+                <td>35</td>
+                <td>0</td>
+                <td>4</td>
+                <td>0</td>
+                <td class="right" data-ratio="16 55">29%</td>
+            </tr>
+            <tr class="file">
+                <td class="name left"><a href="mythril_laser_plugin_plugins_coverage_coverage_plugin_py.html">mythril/laser/plugin/plugins/coverage/coverage_plugin.py</a></td>
+                <td>49</td>
+                <td>34</td>
+                <td>0</td>
+                <td>8</td>
+                <td>0</td>
+                <td class="right" data-ratio="15 57">26%</td>
+            </tr>
+            <tr class="file">
+                <td class="name left"><a href="mythril_laser_plugin_plugins_coverage_coverage_strategy_py.html">mythril/laser/plugin/plugins/coverage/coverage_strategy.py</a></td>
+                <td>18</td>
+                <td>18</td>
+                <td>0</td>
+                <td>4</td>
+                <td>0</td>
+                <td class="right" data-ratio="0 22">0%</td>
+            </tr>
+            <tr class="file">
+                <td class="name left"><a href="mythril_laser_plugin_plugins_dependency_pruner_py.html">mythril/laser/plugin/plugins/dependency_pruner.py</a></td>
+                <td>161</td>
+                <td>136</td>
+                <td>0</td>
+                <td>50</td>
+                <td>0</td>
+                <td class="right" data-ratio="25 211">12%</td>
+            </tr>
+            <tr class="file">
+                <td class="name left"><a href="mythril_laser_plugin_plugins_mutation_pruner_py.html">mythril/laser/plugin/plugins/mutation_pruner.py</a></td>
+                <td>40</td>
+                <td>25</td>
+                <td>0</td>
+                <td>6</td>
+                <td>0</td>
+                <td class="right" data-ratio="15 46">33%</td>
+            </tr>
+            <tr class="file">
+                <td class="name left"><a href="mythril_laser_plugin_plugins_plugin_annotations_py.html">mythril/laser/plugin/plugins/plugin_annotations.py</a></td>
+                <td>40</td>
+                <td>25</td>
+                <td>0</td>
+                <td>6</td>
+                <td>0</td>
+                <td class="right" data-ratio="15 46">33%</td>
+            </tr>
+            <tr class="file">
+                <td class="name left"><a href="mythril_laser_plugin_signals_py.html">mythril/laser/plugin/signals.py</a></td>
+                <td>6</td>
+                <td>0</td>
+                <td>0</td>
+                <td>0</td>
+                <td>0</td>
+                <td class="right" data-ratio="6 6">100%</td>
+            </tr>
+            <tr class="file">
+                <td class="name left"><a href="mythril_laser_smt_array_py.html">mythril/laser/smt/array.py</a></td>
+                <td>24</td>
+                <td>1</td>
+                <td>0</td>
+                <td>4</td>
+                <td>1</td>
+                <td class="right" data-ratio="26 28">93%</td>
+            </tr>
+            <tr class="file">
+                <td class="name left"><a href="mythril_laser_smt_bitvec_py.html">mythril/laser/smt/bitvec.py</a></td>
+                <td>102</td>
+                <td>13</td>
+                <td>0</td>
+                <td>30</td>
+                <td>7</td>
+                <td class="right" data-ratio="108 132">82%</td>
+            </tr>
+            <tr class="file">
+                <td class="name left"><a href="mythril_laser_smt_bitvec_helper_py.html">mythril/laser/smt/bitvec_helper.py</a></td>
+                <td>79</td>
+                <td>18</td>
+                <td>0</td>
+                <td>28</td>
+                <td>5</td>
+                <td class="right" data-ratio="76 107">71%</td>
+            </tr>
+            <tr class="file">
+                <td class="name left"><a href="mythril_laser_smt_bool_py.html">mythril/laser/smt/bool.py</a></td>
+                <td>55</td>
+                <td>9</td>
+                <td>0</td>
+                <td>22</td>
+                <td>3</td>
+                <td class="right" data-ratio="63 77">82%</td>
+            </tr>
+            <tr class="file">
+                <td class="name left"><a href="mythril_laser_smt_expression_py.html">mythril/laser/smt/expression.py</a></td>
+                <td>29</td>
+                <td>3</td>
+                <td>0</td>
+                <td>4</td>
+                <td>0</td>
+                <td class="right" data-ratio="28 33">85%</td>
+            </tr>
+            <tr class="file">
+                <td class="name left"><a href="mythril_laser_smt_function_py.html">mythril/laser/smt/function.py</a></td>
+                <td>10</td>
+                <td>0</td>
+                <td>0</td>
+                <td>0</td>
+                <td>0</td>
+                <td class="right" data-ratio="10 10">100%</td>
+            </tr>
+            <tr class="file">
+                <td class="name left"><a href="mythril_laser_smt_model_py.html">mythril/laser/smt/model.py</a></td>
+                <td>29</td>
+                <td>6</td>
+                <td>0</td>
+                <td>12</td>
+                <td>4</td>
+                <td class="right" data-ratio="29 41">71%</td>
+            </tr>
+            <tr class="file">
+                <td class="name left"><a href="mythril_laser_smt_solver_independence_solver_py.html">mythril/laser/smt/solver/independence_solver.py</a></td>
+                <td>80</td>
+                <td>6</td>
+                <td>0</td>
+                <td>22</td>
+                <td>0</td>
+                <td class="right" data-ratio="94 102">92%</td>
+            </tr>
+            <tr class="file">
+                <td class="name left"><a href="mythril_laser_smt_solver_solver_py.html">mythril/laser/smt/solver/solver.py</a></td>
+                <td>42</td>
+                <td>3</td>
+                <td>0</td>
+                <td>2</td>
+                <td>0</td>
+                <td class="right" data-ratio="41 44">93%</td>
+            </tr>
+            <tr class="file">
+                <td class="name left"><a href="mythril_laser_smt_solver_solver_statistics_py.html">mythril/laser/smt/solver/solver_statistics.py</a></td>
+                <td>22</td>
+                <td>0</td>
+                <td>0</td>
+                <td>2</td>
+                <td>0</td>
+                <td class="right" data-ratio="24 24">100%</td>
+            </tr>
+            <tr class="file">
+                <td class="name left"><a href="mythril_mythril_mythril_analyzer_py.html">mythril/mythril/mythril_analyzer.py</a></td>
+                <td>75</td>
+                <td>13</td>
+                <td>0</td>
+                <td>14</td>
+                <td>0</td>
+                <td class="right" data-ratio="68 89">76%</td>
+            </tr>
+            <tr class="file">
+                <td class="name left"><a href="mythril_mythril_mythril_config_py.html">mythril/mythril/mythril_config.py</a></td>
+                <td>127</td>
+                <td>18</td>
+                <td>0</td>
+                <td>34</td>
+                <td>12</td>
+                <td class="right" data-ratio="129 161">80%</td>
+            </tr>
+            <tr class="file">
+                <td class="name left"><a href="mythril_mythril_mythril_disassembler_py.html">mythril/mythril/mythril_disassembler.py</a></td>
+                <td>152</td>
+                <td>99</td>
+                <td>0</td>
+                <td>68</td>
+                <td>7</td>
+                <td class="right" data-ratio="62 220">28%</td>
+            </tr>
+            <tr class="file">
+                <td class="name left"><a href="mythril_mythril_mythril_leveldb_py.html">mythril/mythril/mythril_leveldb.py</a></td>
+                <td>16</td>
+                <td>3</td>
+                <td>0</td>
+                <td>2</td>
+                <td>0</td>
+                <td class="right" data-ratio="15 18">83%</td>
+            </tr>
+            <tr class="file">
+                <td class="name left"><a href="mythril_plugin_discovery_py.html">mythril/plugin/discovery.py</a></td>
+                <td>25</td>
+                <td>8</td>
+                <td>0</td>
+                <td>12</td>
+                <td>2</td>
+                <td class="right" data-ratio="23 37">62%</td>
+            </tr>
+            <tr class="file">
+                <td class="name left"><a href="mythril_plugin_interface_py.html">mythril/plugin/interface.py</a></td>
+                <td>18</td>
+                <td>0</td>
+                <td>0</td>
+                <td>0</td>
+                <td>0</td>
+                <td class="right" data-ratio="18 18">100%</td>
+            </tr>
+            <tr class="file">
+                <td class="name left"><a href="mythril_plugin_loader_py.html">mythril/plugin/loader.py</a></td>
+                <td>39</td>
+                <td>9</td>
+                <td>0</td>
+                <td>6</td>
+                <td>2</td>
+                <td class="right" data-ratio="34 45">76%</td>
+            </tr>
+            <tr class="file">
+                <td class="name left"><a href="mythril_solidity_soliditycontract_py.html">mythril/solidity/soliditycontract.py</a></td>
+                <td>110</td>
+                <td>90</td>
+                <td>0</td>
+                <td>36</td>
+                <td>0</td>
+                <td class="right" data-ratio="20 146">14%</td>
+            </tr>
+            <tr class="file">
+                <td class="name left"><a href="mythril_support_loader_py.html">mythril/support/loader.py</a></td>
+                <td>45</td>
+                <td>24</td>
+                <td>0</td>
+                <td>18</td>
+                <td>2</td>
+                <td class="right" data-ratio="23 63">37%</td>
+            </tr>
+            <tr class="file">
+                <td class="name left"><a href="mythril_support_model_py.html">mythril/support/model.py</a></td>
+                <td>33</td>
+                <td>4</td>
+                <td>0</td>
+                <td>20</td>
+                <td>5</td>
+                <td class="right" data-ratio="44 53">83%</td>
+            </tr>
+            <tr class="file">
+                <td class="name left"><a href="mythril_support_opcodes_py.html">mythril/support/opcodes.py</a></td>
+                <td>12</td>
+                <td>0</td>
+                <td>0</td>
+                <td>6</td>
+                <td>0</td>
+                <td class="right" data-ratio="18 18">100%</td>
+            </tr>
+            <tr class="file">
+                <td class="name left"><a href="mythril_support_signatures_py.html">mythril/support/signatures.py</a></td>
+                <td>112</td>
+                <td>34</td>
+                <td>0</td>
+                <td>28</td>
+                <td>5</td>
+                <td class="right" data-ratio="89 140">64%</td>
+            </tr>
+            <tr class="file">
+                <td class="name left"><a href="mythril_support_source_support_py.html">mythril/support/source_support.py</a></td>
+                <td>34</td>
+                <td>12</td>
+                <td>0</td>
+                <td>16</td>
+                <td>5</td>
+                <td class="right" data-ratio="29 50">58%</td>
+            </tr>
+            <tr class="file">
+                <td class="name left"><a href="mythril_support_start_time_py.html">mythril/support/start_time.py</a></td>
+                <td>5</td>
+                <td>0</td>
+                <td>0</td>
+                <td>0</td>
+                <td>0</td>
+                <td class="right" data-ratio="5 5">100%</td>
+            </tr>
+            <tr class="file">
+                <td class="name left"><a href="mythril_support_support_args_py.html">mythril/support/support_args.py</a></td>
+                <td>7</td>
+                <td>0</td>
+                <td>0</td>
+                <td>0</td>
+                <td>0</td>
+                <td class="right" data-ratio="7 7">100%</td>
+            </tr>
+            <tr class="file">
+                <td class="name left"><a href="mythril_support_support_utils_py.html">mythril/support/support_utils.py</a></td>
+                <td>19</td>
+                <td>0</td>
+                <td>0</td>
+                <td>2</td>
+                <td>0</td>
+                <td class="right" data-ratio="21 21">100%</td>
+            </tr>
+        </tbody>
+    </table>
+    <p id="no_rows">
+        No items found using the specified filter.
+    </p>
+</div>
+<div id="footer">
+    <div class="content">
+        <p>
+            <a class="nav" href="https://coverage.readthedocs.io">coverage.py v5.1</a>,
+            created at 2020-05-22 00:34
+        </p>
+    </div>
+</div>
+</body>
+</html>

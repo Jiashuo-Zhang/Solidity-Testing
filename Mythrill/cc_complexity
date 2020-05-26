@@ -1,0 +1,135 @@
+mythril/mythx/__init__.py
+    F 22:0 analyze - C
+mythril/analysis/call_helpers.py
+    F 10:0 get_call_from_state - B
+mythril/analysis/solver.py
+    F 119:0 _replace_with_actual_sha - C
+mythril/analysis/traceexplore.py
+    F 52:0 get_serializable_statespace - C
+mythril/analysis/callgraph.py
+    F 128:0 extract_nodes - B
+mythril/analysis/symbolic.py
+    C 36:0 SymExecWrapper - E
+    M 43:4 SymExecWrapper.__init__ - E
+mythril/analysis/report.py
+    M 155:4 Issue.resolve_function_names - B
+mythril/analysis/module/util.py
+    F 13:0 get_detection_module_hooks - B
+mythril/analysis/module/loader.py
+    M 49:4 ModuleLoader.get_detection_modules - B
+mythril/analysis/module/modules/user_assertions.py
+    M 48:4 UserAssertions._analyze_state - B
+mythril/analysis/module/modules/state_change_external_calls.py
+    M 149:4 StateChangeAfterCall._analyze_state - C
+    M 42:4 StateChangeCallsAnnotation.get_issue - B
+    C 103:0 StateChangeAfterCall - B
+mythril/analysis/module/modules/integer.py
+    M 162:4 IntegerArithmetics._handle_exp - B
+    M 262:4 IntegerArithmetics._handle_transaction_end - B
+mythril/analysis/module/modules/dependence_on_predictable_vars.py
+    M 63:4 PredictableVariables._analyze_state - C
+    C 36:0 PredictableVariables - B
+mythril/analysis/module/modules/unchecked_retval.py
+    M 62:4 UncheckedRetval._analyze_state - B
+    C 31:0 UncheckedRetval - B
+mythril/solidity/soliditycontract.py
+    M 197:4 SolidityContract._get_solc_mappings - C
+    M 78:4 SolidityContract.__init__ - B
+    C 75:0 SolidityContract - B
+mythril/mythril/mythril_disassembler.py
+    M 246:4 MythrilDisassembler.get_state_variable_from_storage - C
+    M 45:4 MythrilDisassembler._init_solc_binary - C
+    M 163:4 MythrilDisassembler.load_from_solidity - B
+    C 23:0 MythrilDisassembler - B
+    M 131:4 MythrilDisassembler.load_from_address - B
+mythril/mythril/mythril_config.py
+    M 63:4 MythrilConfig._init_config - B
+    M 183:4 MythrilConfig.set_api_rpc - B
+mythril/mythril/mythril_analyzer.py
+    M 129:4 MythrilAnalyzer.fire_lasers - B
+mythril/laser/plugin/plugins/dependency_pruner.py
+    M 142:4 DependencyPruner.wanna_execute - C
+mythril/laser/ethereum/natives.py
+    F 164:0 ec_pair - B
+    F 37:0 ecrecover - B
+    F 106:0 mod_exp - B
+mythril/laser/ethereum/util.py
+    F 91:0 get_concrete_int - B
+mythril/laser/ethereum/instructions.py
+    M 1538:4 Instruction.jumpi_ - C
+    M 1906:4 Instruction.call_ - C
+    M 799:4 Instruction._calldata_copy_helper - B
+    M 1056:4 Instruction.codecopy_ - B
+    M 1668:4 Instruction._create_transaction_helper - B
+    M 216:4 Instruction.evaluate - B
+    M 1162:4 Instruction._code_copy_helper - B
+    M 2340:4 Instruction.post_handler - B
+    M 997:4 Instruction.sha3_ - B
+    M 1286:4 Instruction.returndatacopy_ - B
+    M 2057:4 Instruction.callcode_post - B
+    M 2194:4 Instruction.delegatecall_post - B
+mythril/laser/ethereum/call.py
+    F 206:0 native_call - B
+    F 34:0 get_call_parameters - B
+    F 83:0 get_callee_address - B
+mythril/laser/ethereum/svm.py
+    M 217:4 LaserEVM.exec - C
+    M 294:4 LaserEVM.execute_state - C
+    M 455:4 LaserEVM.manage_cfg - C
+    M 114:4 LaserEVM.sym_exec - B
+    M 483:4 LaserEVM._new_node_state - B
+    M 185:4 LaserEVM._execute_transactions - B
+    C 40:0 LaserEVM - B
+    M 559:4 LaserEVM.register_laser_hooks - B
+mythril/laser/ethereum/transaction/transaction_models.py
+    M 58:4 BaseTransaction.__init__ - B
+    M 239:4 ContractCreationTransaction.end - B
+mythril/laser/ethereum/state/memory.py
+    M 163:4 Memory.__setitem__ - C
+    M 125:4 Memory.__getitem__ - B
+    M 84:4 Memory.write_word_at - B
+    M 56:4 Memory.get_word_at - B
+mythril/laser/ethereum/state/calldata.py
+    M 56:4 BaseCalldata.__getitem__ - C
+mythril/laser/ethereum/state/world_state.py
+    M 76:4 WorldState.accounts_exist_or_load - B
+mythril/laser/ethereum/state/machine_state.py
+    M 159:4 MachineState.mem_extend - B
+mythril/laser/ethereum/state/account.py
+    M 37:4 Storage.__getitem__ - B
+mythril/laser/ethereum/strategy/extensions/bounded_loops.py
+    M 104:4 BoundedLoopsStrategy.get_strategic_global_state - B
+mythril/support/source_support.py
+    M 20:4 Source.get_source_from_contracts_list - C
+    C 5:0 Source - B
+mythril/support/model.py
+    F 15:0 get_model - C
+mythril/support/signatures.py
+    M 187:4 SignatureDB.get - B
+mythril/support/loader.py
+    M 58:4 DynLoader.dynld - B
+mythril/disassembler/asm.py
+    F 93:0 disassemble - B
+mythril/ethereum/util.py
+    F 118:0 solc_exists - B
+mythril/ethereum/evmcontract.py
+    M 85:4 EVMContract.matches_expression - B
+mythril/ethereum/interface/leveldb/accountindexing.py
+    M 111:4 AccountIndexer.updateIfNeeded - C
+    M 89:4 AccountIndexer._process - B
+    C 69:0 AccountIndexer - B
+mythril/ethereum/interface/rpc/client.py
+    M 46:4 EthJsonRpc._call - B
+mythril/interfaces/epic.py
+    M 63:4 LolCat.ansi - C
+    F 193:0 detect_mode - B
+    F 209:0 run - B
+mythril/interfaces/cli.py
+    F 640:0 execute_command - D
+    F 782:0 parse_args_and_execute - C
+    F 602:0 load_code - C
+    F 511:0 validate_args - B
+    F 552:0 set_config - B
+
+90 blocks (classes, functions, methods) analyzed.
+Average complexity: B (9.822222222222223)
