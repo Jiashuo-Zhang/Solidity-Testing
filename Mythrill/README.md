@@ -2,7 +2,7 @@
 
 https://github.com/ConsenSys/mythril
 
-##Coverage:
+## Coverage:
 
 see ./coverage_report/index.html
 
