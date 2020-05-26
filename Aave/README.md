@@ -2,7 +2,7 @@
 
 https://github.com/aave/aave-protocol
 
-##Coverage:
+## Coverage:
 
 **see ./coverage/index.html**
 
