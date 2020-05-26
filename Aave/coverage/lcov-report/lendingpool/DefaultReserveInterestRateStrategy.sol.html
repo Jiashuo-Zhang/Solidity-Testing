@@ -1,0 +1,443 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <title>Code coverage report for lendingpool/DefaultReserveInterestRateStrategy.sol</title>
+    <meta charset="utf-8" />
+    <link rel="stylesheet" href="../prettify.css" />
+    <link rel="stylesheet" href="../base.css" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <style type='text/css'>
+        .coverage-summary .sorter {
+            background-image: url(../sort-arrow-sprite.png);
+        }
+    </style>
+</head>
+<body>
+<div class='wrapper'>
+  <div class='pad1'>
+    <h1>
+      <a href="../index.html">all files</a> / <a href="index.html">lendingpool/</a> DefaultReserveInterestRateStrategy.sol
+    </h1>
+    <div class='clearfix'>
+      <div class='fl pad1y space-right2'>
+        <span class="strong">86.96% </span>
+        <span class="quiet">Statements</span>
+        <span class='fraction'>20/23</span>
+      </div>
+      <div class='fl pad1y space-right2'>
+        <span class="strong">100% </span>
+        <span class="quiet">Branches</span>
+        <span class='fraction'>4/4</span>
+      </div>
+      <div class='fl pad1y space-right2'>
+        <span class="strong">57.14% </span>
+        <span class="quiet">Functions</span>
+        <span class='fraction'>4/7</span>
+      </div>
+      <div class='fl pad1y space-right2'>
+        <span class="strong">86.36% </span>
+        <span class="quiet">Lines</span>
+        <span class='fraction'>19/22</span>
+      </div>
+    </div>
+  </div>
+  <div class='status-line high'></div>
+<pre><table class="coverage">
+<tr><td class="line-count quiet">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41
+42
+43
+44
+45
+46
+47
+48
+49
+50
+51
+52
+53
+54
+55
+56
+57
+58
+59
+60
+61
+62
+63
+64
+65
+66
+67
+68
+69
+70
+71
+72
+73
+74
+75
+76
+77
+78
+79
+80
+81
+82
+83
+84
+85
+86
+87
+88
+89
+90
+91
+92
+93
+94
+95
+96
+97
+98
+99
+100
+101
+102
+103
+104
+105
+106
+107
+108
+109
+110
+111
+112
+113
+114
+115
+116
+117
+118
+119
+120
+121
+122
+123
+124
+125
+126
+127</td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">32×</span>
+<span class="cline-any cline-yes">32×</span>
+<span class="cline-any cline-yes">32×</span>
+<span class="cline-any cline-yes">32×</span>
+<span class="cline-any cline-yes">32×</span>
+<span class="cline-any cline-yes">32×</span>
+<span class="cline-any cline-yes">32×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">260×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">97×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">97×</span>
+<span class="cline-any cline-yes">5×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">97×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">97×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">97×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">97×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">24×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">24×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">24×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">24×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">pragma solidity ^0.5.0;
+&nbsp;
+import "../interfaces/IReserveInterestRateStrategy.sol";
+import "../libraries/WadRayMath.sol";
+import "../configuration/LendingPoolAddressesProvider.sol";
+import "./LendingPoolCore.sol";
+import "../interfaces/ILendingRateOracle.sol";
+&nbsp;
+&nbsp;
+import "openzeppelin-solidity/contracts/math/SafeMath.sol";
+&nbsp;
+&nbsp;
+&nbsp;
+/**
+@title DefaultReserveInterestRateStrategy contract
+@notice implements the calculation of the interest rates based on the reserve parameters.
+*/
+&nbsp;
+contract DefaultReserveInterestRateStrategy is IReserveInterestRateStrategy {
+&nbsp;
+    using WadRayMath for uint256;
+    using SafeMath for uint256;
+&nbsp;
+    uint256 constant STABLE_RATE_INCREASE_THRESHOLD = (1e27)/4; // 0.25 ray, 25% of the utilization rate
+&nbsp;
+    LendingPoolCore public core;
+    ILendingRateOracle public lendingRateOracle;
+&nbsp;
+    uint256 public baseVariableBorrowRate;
+    uint256 public variableBorrowRateScaling;
+    uint256 public stableBorrowRateScaling;
+    uint256 public borrowToLiquidityRateDelta;
+    address public reserve;
+&nbsp;
+    constructor(
+        address _reserve,
+        LendingPoolAddressesProvider _provider,
+        uint256 _baseVariableBorrowRate,
+        uint256 _variableBorrowRateScaling,
+        uint256 _stableBorrowRateScaling,
+        uint256 _borrowToLiquidityRateDelta) public {
+&nbsp;
+        core = LendingPoolCore(_provider.getLendingPoolCore());
+        lendingRateOracle = ILendingRateOracle(_provider.getLendingRateOracle());
+        baseVariableBorrowRate = _baseVariableBorrowRate;
+        variableBorrowRateScaling = _variableBorrowRateScaling;
+        stableBorrowRateScaling = _stableBorrowRateScaling;
+        borrowToLiquidityRateDelta = _borrowToLiquidityRateDelta;
+        reserve = _reserve;
+    }
+&nbsp;
+    /**
+    @dev accessors
+     */
+&nbsp;
+    function getBaseVariableBorrowRate() external view returns(uint256) {
+        return baseVariableBorrowRate;
+    }
+&nbsp;
+<span class="fstat-no" title="function not covered" >    function getVariableBorrowRateScaling() external view returns(uint256</span>) {
+<span class="cstat-no" title="statement not covered" >        return variableBorrowRateScaling;</span>
+    }
+&nbsp;
+<span class="fstat-no" title="function not covered" >    function getStableBorrowRateScaling() external view returns(uint256</span>) {
+<span class="cstat-no" title="statement not covered" >        return stableBorrowRateScaling;</span>
+    }
+&nbsp;
+<span class="fstat-no" title="function not covered" >    function getBorrowToLiquidityRateDelta() external view returns(uint256</span>) {
+<span class="cstat-no" title="statement not covered" >        return borrowToLiquidityRateDelta;</span>
+    }
+&nbsp;
+&nbsp;
+&nbsp;
+    /**
+    @dev returns the interest rates, in rays
+     */
+    function calculateInterestRates(
+        address _reserve,
+        uint256 _utilizationRate,
+        uint256 _totalBorrowsStable,
+        uint256 _totalBorrowsVariable,
+        uint256 _averageStableBorrowRate
+        ) external view returns (uint256 currentLiquidityRate, uint256 currentStableBorrowRate, uint256 currentVariableBorrowRate) {
+&nbsp;
+        currentStableBorrowRate = lendingRateOracle.getMarketBorrowRate(_reserve);
+&nbsp;
+        if(_utilizationRate &gt; STABLE_RATE_INCREASE_THRESHOLD){
+            currentStableBorrowRate = currentStableBorrowRate.add(stableBorrowRateScaling.rayMul(_utilizationRate.sub(STABLE_RATE_INCREASE_THRESHOLD)));
+        }
+&nbsp;
+        currentVariableBorrowRate = _utilizationRate.rayMul(variableBorrowRateScaling).add(
+             baseVariableBorrowRate
+        );
+&nbsp;
+        currentLiquidityRate = getOverallBorrowRateInternal(
+            _totalBorrowsStable,
+            _totalBorrowsVariable,
+            currentVariableBorrowRate,
+            _averageStableBorrowRate).rayMul(_utilizationRate);
+&nbsp;
+    }
+&nbsp;
+    /**
+    @dev the weighted average between the stable interest part and the variable interest part
+     */
+    function getOverallBorrowRateInternal(
+        uint256 _totalBorrowsStable,
+        uint256 _totalBorrowsVariable,
+        uint256 _currentVariableBorrowRate,
+        uint256 _currentAverageStableBorrowRate) internal pure returns (uint256) {
+&nbsp;
+        uint256 totalBorrows = _totalBorrowsStable.add(_totalBorrowsVariable);
+&nbsp;
+        if (totalBorrows == 0) return 0;
+&nbsp;
+        uint256 weightedVariableRate = _totalBorrowsVariable.wadToRay().rayMul(
+            _currentVariableBorrowRate
+        );
+&nbsp;
+        uint256 weightedStableRate = _totalBorrowsStable.wadToRay().rayMul(_currentAverageStableBorrowRate);
+&nbsp;
+        uint256 overallBorrowRate = weightedVariableRate.add(weightedStableRate).rayDiv(totalBorrows.wadToRay());
+&nbsp;
+        return overallBorrowRate;
+    }
+}
+&nbsp;</pre></td></tr>
+</table></pre>
+<div class='push'></div><!-- for sticky footer -->
+</div><!-- /wrapper -->
+<div class='footer quiet pad2 space-top1 center small'>
+  Code coverage
+  generated by <a href="http://istanbul-js.org/" target="_blank">istanbul</a> at Fri Nov 22 2019 00:43:01 GMT+0000 (Coordinated Universal Time)
+</div>
+</div>
+<script src="../prettify.js"></script>
+<script>
+window.onload = function () {
+        if (typeof prettyPrint === 'function') {
+            prettyPrint();
+        }
+};
+</script>
+<script src="../sorter.js"></script>
+</body>
+</html>

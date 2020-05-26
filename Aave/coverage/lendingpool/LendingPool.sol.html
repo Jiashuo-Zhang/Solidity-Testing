@@ -1,0 +1,2648 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <title>Code coverage report for lendingpool/LendingPool.sol</title>
+    <meta charset="utf-8" />
+    <link rel="stylesheet" href="../prettify.css" />
+    <link rel="stylesheet" href="../base.css" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <style type='text/css'>
+        .coverage-summary .sorter {
+            background-image: url(../sort-arrow-sprite.png);
+        }
+    </style>
+</head>
+<body>
+<div class='wrapper'>
+  <div class='pad1'>
+    <h1>
+      <a href="../index.html">all files</a> / <a href="index.html">lendingpool/</a> LendingPool.sol
+    </h1>
+    <div class='clearfix'>
+      <div class='fl pad1y space-right2'>
+        <span class="strong">97.13% </span>
+        <span class="quiet">Statements</span>
+        <span class='fraction'>169/174</span>
+      </div>
+      <div class='fl pad1y space-right2'>
+        <span class="strong">84.21% </span>
+        <span class="quiet">Branches</span>
+        <span class='fraction'>64/76</span>
+      </div>
+      <div class='fl pad1y space-right2'>
+        <span class="strong">90% </span>
+        <span class="quiet">Functions</span>
+        <span class='fraction'>18/20</span>
+      </div>
+      <div class='fl pad1y space-right2'>
+        <span class="strong">97.18% </span>
+        <span class="quiet">Lines</span>
+        <span class='fraction'>172/177</span>
+      </div>
+    </div>
+  </div>
+  <div class='status-line high'></div>
+<pre><table class="coverage">
+<tr><td class="line-count quiet">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41
+42
+43
+44
+45
+46
+47
+48
+49
+50
+51
+52
+53
+54
+55
+56
+57
+58
+59
+60
+61
+62
+63
+64
+65
+66
+67
+68
+69
+70
+71
+72
+73
+74
+75
+76
+77
+78
+79
+80
+81
+82
+83
+84
+85
+86
+87
+88
+89
+90
+91
+92
+93
+94
+95
+96
+97
+98
+99
+100
+101
+102
+103
+104
+105
+106
+107
+108
+109
+110
+111
+112
+113
+114
+115
+116
+117
+118
+119
+120
+121
+122
+123
+124
+125
+126
+127
+128
+129
+130
+131
+132
+133
+134
+135
+136
+137
+138
+139
+140
+141
+142
+143
+144
+145
+146
+147
+148
+149
+150
+151
+152
+153
+154
+155
+156
+157
+158
+159
+160
+161
+162
+163
+164
+165
+166
+167
+168
+169
+170
+171
+172
+173
+174
+175
+176
+177
+178
+179
+180
+181
+182
+183
+184
+185
+186
+187
+188
+189
+190
+191
+192
+193
+194
+195
+196
+197
+198
+199
+200
+201
+202
+203
+204
+205
+206
+207
+208
+209
+210
+211
+212
+213
+214
+215
+216
+217
+218
+219
+220
+221
+222
+223
+224
+225
+226
+227
+228
+229
+230
+231
+232
+233
+234
+235
+236
+237
+238
+239
+240
+241
+242
+243
+244
+245
+246
+247
+248
+249
+250
+251
+252
+253
+254
+255
+256
+257
+258
+259
+260
+261
+262
+263
+264
+265
+266
+267
+268
+269
+270
+271
+272
+273
+274
+275
+276
+277
+278
+279
+280
+281
+282
+283
+284
+285
+286
+287
+288
+289
+290
+291
+292
+293
+294
+295
+296
+297
+298
+299
+300
+301
+302
+303
+304
+305
+306
+307
+308
+309
+310
+311
+312
+313
+314
+315
+316
+317
+318
+319
+320
+321
+322
+323
+324
+325
+326
+327
+328
+329
+330
+331
+332
+333
+334
+335
+336
+337
+338
+339
+340
+341
+342
+343
+344
+345
+346
+347
+348
+349
+350
+351
+352
+353
+354
+355
+356
+357
+358
+359
+360
+361
+362
+363
+364
+365
+366
+367
+368
+369
+370
+371
+372
+373
+374
+375
+376
+377
+378
+379
+380
+381
+382
+383
+384
+385
+386
+387
+388
+389
+390
+391
+392
+393
+394
+395
+396
+397
+398
+399
+400
+401
+402
+403
+404
+405
+406
+407
+408
+409
+410
+411
+412
+413
+414
+415
+416
+417
+418
+419
+420
+421
+422
+423
+424
+425
+426
+427
+428
+429
+430
+431
+432
+433
+434
+435
+436
+437
+438
+439
+440
+441
+442
+443
+444
+445
+446
+447
+448
+449
+450
+451
+452
+453
+454
+455
+456
+457
+458
+459
+460
+461
+462
+463
+464
+465
+466
+467
+468
+469
+470
+471
+472
+473
+474
+475
+476
+477
+478
+479
+480
+481
+482
+483
+484
+485
+486
+487
+488
+489
+490
+491
+492
+493
+494
+495
+496
+497
+498
+499
+500
+501
+502
+503
+504
+505
+506
+507
+508
+509
+510
+511
+512
+513
+514
+515
+516
+517
+518
+519
+520
+521
+522
+523
+524
+525
+526
+527
+528
+529
+530
+531
+532
+533
+534
+535
+536
+537
+538
+539
+540
+541
+542
+543
+544
+545
+546
+547
+548
+549
+550
+551
+552
+553
+554
+555
+556
+557
+558
+559
+560
+561
+562
+563
+564
+565
+566
+567
+568
+569
+570
+571
+572
+573
+574
+575
+576
+577
+578
+579
+580
+581
+582
+583
+584
+585
+586
+587
+588
+589
+590
+591
+592
+593
+594
+595
+596
+597
+598
+599
+600
+601
+602
+603
+604
+605
+606
+607
+608
+609
+610
+611
+612
+613
+614
+615
+616
+617
+618
+619
+620
+621
+622
+623
+624
+625
+626
+627
+628
+629
+630
+631
+632
+633
+634
+635
+636
+637
+638
+639
+640
+641
+642
+643
+644
+645
+646
+647
+648
+649
+650
+651
+652
+653
+654
+655
+656
+657
+658
+659
+660
+661
+662
+663
+664
+665
+666
+667
+668
+669
+670
+671
+672
+673
+674
+675
+676
+677
+678
+679
+680
+681
+682
+683
+684
+685
+686
+687
+688
+689
+690
+691
+692
+693
+694
+695
+696
+697
+698
+699
+700
+701
+702
+703
+704
+705
+706
+707
+708
+709
+710
+711
+712
+713
+714
+715
+716
+717
+718
+719
+720
+721
+722
+723
+724
+725
+726
+727
+728
+729
+730
+731
+732
+733
+734
+735
+736
+737
+738
+739
+740
+741
+742
+743
+744
+745
+746
+747
+748
+749
+750
+751
+752
+753
+754
+755
+756
+757
+758
+759
+760
+761
+762
+763
+764
+765
+766
+767
+768
+769
+770
+771
+772
+773
+774
+775
+776
+777
+778
+779
+780
+781
+782
+783
+784
+785
+786
+787
+788
+789
+790
+791
+792
+793
+794
+795
+796
+797
+798
+799
+800
+801
+802
+803
+804
+805
+806
+807
+808
+809
+810
+811
+812
+813
+814
+815
+816
+817
+818
+819
+820
+821
+822
+823
+824
+825
+826
+827
+828
+829
+830
+831
+832
+833
+834
+835
+836
+837
+838
+839
+840
+841
+842
+843
+844
+845
+846
+847
+848
+849
+850
+851
+852
+853
+854
+855
+856
+857
+858
+859
+860
+861
+862</td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">18×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">16×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">173×</span>
+<span class="cline-any cline-yes">157×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">120×</span>
+<span class="cline-any cline-yes">112×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">4×</span>
+<span class="cline-any cline-yes">4×</span>
+<span class="cline-any cline-yes">4×</span>
+<span class="cline-any cline-yes">4×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">49×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">49×</span>
+<span class="cline-any cline-yes">49×</span>
+<span class="cline-any cline-yes">49×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">49×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">49×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">43×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">49×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">49×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">45×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">16×</span>
+<span class="cline-any cline-yes">16×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">16×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">16×</span>
+<span class="cline-any cline-yes">16×</span>
+<span class="cline-any cline-yes">16×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">16×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">16×</span>
+<span class="cline-any cline-yes">13×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">16×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">16×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">30×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">30×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">30×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">30×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">30×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">30×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">30×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">24×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">24×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">24×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">24×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">24×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">24×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">18×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">8×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">6×</span>
+<span class="cline-any cline-yes">6×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">6×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">14×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">14×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">12×</span>
+<span class="cline-any cline-yes">12×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">12×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">12×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">12×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">12×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">12×</span>
+<span class="cline-any cline-yes">4×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">8×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">12×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">12×</span>
+<span class="cline-any cline-yes">12×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">12×</span>
+<span class="cline-any cline-yes">12×</span>
+<span class="cline-any cline-yes">12×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">12×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">12×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">11×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">11×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">11×</span>
+<span class="cline-any cline-yes">11×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">11×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">11×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">9×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">9×</span>
+<span class="cline-any cline-yes">2×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">9×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">7×</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">7×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">7×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">7×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">7×</span>
+<span class="cline-any cline-yes">7×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">7×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">7×</span>
+<span class="cline-any cline-yes">7×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">7×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">7×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">6×</span>
+<span class="cline-any cline-yes">6×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">7×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">7×</span>
+<span class="cline-any cline-yes">7×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">7×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">7×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">5×</span>
+<span class="cline-any cline-yes">5×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">5×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">3×</span>
+<span class="cline-any cline-yes">3×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">3×</span>
+<span class="cline-any cline-yes">3×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">3×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">2×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">2×</span>
+<span class="cline-any cline-yes">2×</span>
+<span class="cline-any cline-yes">2×</span>
+<span class="cline-any cline-yes">2×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">2×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">3×</span>
+<span class="cline-any cline-yes">3×</span>
+<span class="cline-any cline-yes">3×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">3×</span>
+<span class="cline-any cline-yes">3×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">3×</span>
+<span class="cline-any cline-yes">2×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">3×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">9×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">9×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">7×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">5×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">5×</span>
+<span class="cline-any cline-yes">5×</span>
+<span class="cline-any cline-yes">5×</span>
+<span class="cline-any cline-yes">5×</span>
+<span class="cline-any cline-yes">5×</span>
+<span class="cline-any cline-yes">5×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">5×</span>
+<span class="cline-any cline-yes">5×</span>
+<span class="cline-any cline-yes">5×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">5×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">4×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">5×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">5×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">5×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">3×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">3×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">2×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">8×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">8×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">8×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">8×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">8×</span>
+<span class="cline-any cline-yes">6×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">6×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">6×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">6×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">6×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">6×</span>
+<span class="cline-any cline-yes">4×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">419×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">12×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">179×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">173×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">120×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">pragma solidity ^0.5.0;
+&nbsp;
+import "openzeppelin-solidity/contracts/math/SafeMath.sol";
+import "openzeppelin-solidity/contracts/utils/ReentrancyGuard.sol";
+import "openzeppelin-solidity/contracts/utils/Address.sol";
+&nbsp;
+import "../configuration/LendingPoolAddressesProvider.sol";
+import "../configuration/LendingPoolParametersProvider.sol";
+import "../configuration/NetworkMetadataProvider.sol";
+import "../tokenization/AToken.sol";
+import "../libraries/CoreLibrary.sol";
+import "../libraries/WadRayMath.sol";
+import "../interfaces/IFeeProvider.sol";
+import "./LendingPoolCore.sol";
+import "./LendingPoolDataProvider.sol";
+import "./LendingPoolLiquidationManager.sol";
+&nbsp;
+&nbsp;
+&nbsp;
+/*************************************************************************************
+@title LendingPool contract
+@author Aave
+@notice Implements the actions of the LendingPool, and exposes accessory methods to access the core information
+ *************************************************************************************/
+&nbsp;
+&nbsp;
+contract LendingPool is ReentrancyGuard {
+    using SafeMath for uint256;
+    using WadRayMath for uint256;
+    using Address for address payable;
+&nbsp;
+    LendingPoolAddressesProvider public addressesProvider;
+    LendingPoolCore public core;
+    LendingPoolDataProvider public dataProvider;
+    LendingPoolParametersProvider public parametersProvider;
+&nbsp;
+    /**
+    @dev events
+    */
+    event Deposit(
+        address indexed _reserve,
+        address indexed _user,
+        uint256 _amount,
+        uint16 indexed _referral,
+        uint256 timestamp
+    );
+&nbsp;
+    event RedeemUnderlying(
+        address indexed _reserve,
+        address indexed _user,
+        uint256 _amount,
+        uint256 timestamp
+    );
+&nbsp;
+    event Borrow(
+        address indexed _reserve,
+        address indexed _user,
+        uint256 _amount,
+        uint256 _borrowRateMode,
+        uint256 _originationFee,
+        uint256 _accruedBorrowInterest,
+        uint16 indexed _referral,
+        uint256 timestamp
+    );
+&nbsp;
+    event Repay(
+        address indexed _reserve,
+        address indexed _user,
+        address indexed _repayer,
+        uint256 _amount,
+        uint256 _accruedBorrowInterest,
+        uint256 timestamp
+    );
+&nbsp;
+    event Swap(
+        address indexed _reserve,
+        address indexed _user,
+        uint256 _newRateMode,
+        uint256 _newRate,
+        uint256 _borrowBalanceIncrease,
+        uint256 timestamp
+    );
+&nbsp;
+    event ReserveUsedAsCollateralEnabled(address indexed _reserve, address indexed _user);
+&nbsp;
+    event ReserveUsedAsCollateralDisabled(address indexed _reserve, address indexed _user);
+&nbsp;
+    event RebalanceStableBorrowRate(
+        address indexed _reserve,
+        address indexed _user,
+        uint256 _newStableRate,
+        uint256 _borrowBalanceIncrease,
+        uint256 _timestamp
+    );
+&nbsp;
+    /**
+    @dev these events are not emitted directly by the LendingPool
+    but they are declared here as the LendingPoolLiquidationManager
+    and LendingPoolFlashLoanProvider are executed using a delegateCall().
+    This allows to have the events in the generated ABI for LendingPool.
+    */
+&nbsp;
+    event FlashLoan(
+        address indexed _target,
+        address indexed _reserve,
+        uint256 _amount,
+        uint256 _fee,
+        uint256 timestamp
+    );
+&nbsp;
+    event LiquidationCall(
+        address indexed _collateral,
+        address indexed _reserve,
+        address indexed _user,
+        uint256 _purchaseAmount,
+        uint256 _liquidatedCollateralAmount,
+        uint256 _accruedBorrowInterest,
+        address _liquidator,
+        uint256 timestamp
+    );
+&nbsp;
+    /**
+    @dev modifiers
+     */
+&nbsp;
+    modifier onlyOverlyingAToken(address _reserve) {
+        require(
+            msg.sender == core.getReserveATokenAddress(_reserve),
+            "The caller of this function can only be the aToken contract of this reserve"
+        );
+        _;
+    }
+&nbsp;
+    modifier onlyActiveReserve(address _reserve) {
+        requireReserveActiveInternal(_reserve);
+        _;
+    }
+&nbsp;
+    modifier onlyAmountGreaterThanZero(uint256 _amount) {
+        requireAmountGreaterThanZeroInternal(_amount);
+        _;
+    }
+&nbsp;
+    uint256 public constant UINT_MAX_VALUE = uint256(-1);
+&nbsp;
+    constructor(LendingPoolAddressesProvider _addressesProvider) public {
+&nbsp;
+        addressesProvider = _addressesProvider;
+        core = LendingPoolCore(addressesProvider.getLendingPoolCore());
+        dataProvider = LendingPoolDataProvider(addressesProvider.getLendingPoolDataProvider());
+        parametersProvider = LendingPoolParametersProvider(addressesProvider.getLendingPoolParametersProvider());
+    }
+&nbsp;
+    /**
+    * @notice deposits The underlying asset into the reserve. A corresponding amount of the overlying asset (aTokens)
+    * is minted.
+    */
+    function deposit(
+        address _reserve,
+        uint256 _amount,
+        uint16 _referralCode)
+        external payable nonReentrant onlyActiveReserve(_reserve) onlyAmountGreaterThanZero(_amount) {
+&nbsp;
+        //compounding liquidity and borrow interests
+        core.updateReserveCumulativeIndexes(_reserve);
+&nbsp;
+        //updating reserve data
+        core.increaseReserveTotalLiquidity(_reserve, _amount);
+        core.updateReserveInterestRates(_reserve);
+        core.setReserveLastUpdate(_reserve);
+&nbsp;
+        AToken aToken = AToken(core.getReserveATokenAddress(_reserve));
+&nbsp;
+        if(aToken.balanceOf(msg.sender) == 0){
+            //if this is the first deposit of the user, we configure the deposit as enabled to be used as collateral
+            core.setUserUseReserveAsCollateral(_reserve, msg.sender, true);
+        }
+&nbsp;
+        //minting AToken to user 1:1 with the specific exchange rate
+        aToken.mintOnDeposit(msg.sender, _amount);
+&nbsp;
+        //transfer to the core contract
+&nbsp;
+        core.transferToReserve.value(msg.value)(_reserve, msg.sender, _amount);
+&nbsp;
+        //solium-disable-next-line
+        emit Deposit(_reserve, msg.sender, _amount, _referralCode, block.timestamp);
+&nbsp;
+    }
+&nbsp;
+    /**
+    * @notice Allows to redeem a specific amount of underlying asset.
+    * @dev only aToken contracts can call this function
+    */
+    
+    function redeemUnderlying(
+        address _reserve,
+        address payable _user,
+        uint256 _amount)
+        external nonReentrant onlyOverlyingAToken(_reserve) onlyActiveReserve(_reserve) onlyAmountGreaterThanZero(_amount) {
+&nbsp;
+        uint256 currentAvailableLiquidity = core.getReserveAvailableLiquidity(_reserve);
+        <span class="missing-if-branch" title="else path not taken" >E</span>require(currentAvailableLiquidity &gt;= _amount, "There is not enough liquidity available to redeem");
+&nbsp;
+        //compound liquidity and variable borrow interests
+        core.updateReserveCumulativeIndexes(_reserve);
+&nbsp;
+        /**
+        @dev update reserve data
+         */
+&nbsp;
+        core.decreaseReserveTotalLiquidity(_reserve, _amount);
+        core.updateReserveInterestRates(_reserve);
+        core.setReserveLastUpdate(_reserve);
+&nbsp;
+        //if the AToken balance of the user is 0, the useReserveAsCollateral flag is reset
+        AToken aToken = AToken(core.getReserveATokenAddress(_reserve));
+&nbsp;
+        if(aToken.balanceOf(_user) == 0){
+            core.setUserUseReserveAsCollateral(_reserve, _user,false);
+        }
+&nbsp;
+        core.transferToUser(_reserve, _user, _amount);
+&nbsp;
+        //solium-disable-next-line
+        emit RedeemUnderlying(_reserve, _user, _amount, block.timestamp);
+&nbsp;
+    }
+&nbsp;
+    /**
+    * @dev data structures for local computations in the borrow() method.
+    */
+&nbsp;
+    struct BorrowLocalVars {
+        uint256 currentLtv;
+        uint256 currentLiquidationThreshold;
+        uint256 borrowFee;
+        uint256 requestedBorrowAmountETH;
+        uint256 amountOfCollateralNeededETH;
+        uint256 principalBorrowBalance;
+        uint256 compoundedBorrowBalance;
+        uint256 compoundedAmount;
+        uint256 userCollateralBalanceETH;
+        uint256 userBorrowBalanceETH;
+        uint256 healthFactor;
+        uint256 balanceIncrease;
+        uint256 currentReserveStableRate;
+        uint256 availableLiquidity;
+        uint256 reserveDecimals;
+    }
+&nbsp;
+    /**
+    * @notice executes a borrow on the reserve of the specific amount with the interestRateMode specified.
+    */
+&nbsp;
+    function borrow(
+        address _reserve,
+        uint256 _amount,
+        uint256 _interestRateMode,
+        uint16 _referralCode)
+        external nonReentrant onlyActiveReserve(_reserve) onlyAmountGreaterThanZero(_amount) {
+&nbsp;
+        // Usage of a memory struct of vars to avoid "Stack too deep" errors due to local variables
+        BorrowLocalVars memory vars;
+&nbsp;
+        //check that the reserve is enabled for borrowing
+        <span class="missing-if-branch" title="else path not taken" >E</span>require(core.isReserveBorrowingEnabled(_reserve), "Reserve is not enabled for borrowing");
+        //validate interest rate mode
+        <span class="missing-if-branch" title="else path not taken" >E</span>require(uint256(CoreLibrary.InterestRateMode.VARIABLE) &gt;= _interestRateMode, "Invalid interest rate mode selected");
+&nbsp;
+        //check that the amount is available in the reserve
+        vars.availableLiquidity = core.getReserveAvailableLiquidity(_reserve);
+&nbsp;
+        <span class="missing-if-branch" title="else path not taken" >E</span>require(
+            vars.availableLiquidity &gt;= _amount,
+            "There is not enough liquidity available in the reserve"
+        );
+&nbsp;
+        (,
+        vars.userCollateralBalanceETH,
+        vars.userBorrowBalanceETH,
+        vars.currentLtv,
+        vars.currentLiquidationThreshold,
+        vars.healthFactor) = dataProvider.calculateUserGlobalData(msg.sender);
+&nbsp;
+        require(vars.userCollateralBalanceETH &gt; 0, "The collateral balance is 0");
+&nbsp;
+        <span class="missing-if-branch" title="else path not taken" >E</span>require(
+            vars.healthFactor &gt; dataProvider.getHealthFactorLiquidationThreshold(),
+            "The borrower can already be liquidated so he cannot borrow more"
+        );
+&nbsp;
+&nbsp;
+        vars.reserveDecimals = core.getReserveDecimals(_reserve);
+&nbsp;
+        IPriceOracle oracle = IPriceOracle(addressesProvider.getPriceOracle());
+&nbsp;
+        vars.requestedBorrowAmountETH = oracle.getAssetPrice(_reserve)
+            .mul(_amount.add(vars.borrowFee))
+            .div(10 ** vars.reserveDecimals); //price is in ether
+&nbsp;
+        //add the current already borrowed amount to the amount requested to calculate the total collateral needed.
+        vars.amountOfCollateralNeededETH = vars.userBorrowBalanceETH.add(vars.requestedBorrowAmountETH).mul(100).div(
+            vars.currentLtv
+        ); //LTV is calculated in percentage
+&nbsp;
+        require(
+            vars.amountOfCollateralNeededETH &lt;= vars.userCollateralBalanceETH,
+            "There is not enough collateral to cover a new borrow"
+        );
+&nbsp;
+&nbsp;
+        /**
+        @dev Following conditions need to be met if the user is borrowing at a stable rate:
+            1. Reserve must be enabled for stable rate borrowing
+            2. Users cannot borrow from the reserve if their collateral is (mostly) the same currency
+               they are borrowing, to prevent abuses.
+            3. Users will be able to borrow only a relatively small, configurable amount of the total
+               liquidity
+         */
+&nbsp;
+        if(_interestRateMode == uint256(CoreLibrary.InterestRateMode.STABLE)) {
+&nbsp;
+            //check if the borrow mode is stable and if stable rate borrowing is enabled on this reserve
+            require(
+                dataProvider.isUserAllowedToBorrowAtStable(_reserve, msg.sender,_amount),
+                "User cannot borrow the selected amount with a stable rate"
+            );
+&nbsp;
+            /**
+            @dev calculate the max available loan size in stable rate mode as a percentage of the
+                 available liquidity
+            */
+            uint256 maxLoanPercent = parametersProvider.getMaxStableRateBorrowSizePercent();
+            uint256 maxLoanSizeStable = vars.availableLiquidity.mul(maxLoanPercent).div(100);
+&nbsp;
+            require(_amount &lt;= maxLoanSizeStable, "User is trying to borrow too much liquidity at a stable rate");
+        }
+&nbsp;
+        //calculating fees
+        vars.borrowFee = IFeeProvider(addressesProvider.getFeeProvider()).calculateLoanOriginationFee(
+            msg.sender,
+            _amount
+        );
+&nbsp;
+        require(vars.borrowFee &gt; 0, "The amount to borrow is too small");
+&nbsp;
+        //all conditions passed - borrow is accepted
+&nbsp;
+        //step 1: update liquidity index and variable borrow index to allow proper calculation of the compounded interests
+        core.updateReserveCumulativeIndexes(_reserve);
+        core.updateUserLastVariableBorrowCumulativeIndex(_reserve, msg.sender);
+&nbsp;
+        //step 2: calculating new borrow principal for the user, which is previous principal + compounded interest + new borrow
+        (vars.principalBorrowBalance,
+        vars.compoundedBorrowBalance,
+        vars.compoundedAmount) = core.getUserBorrowBalances(_reserve, msg.sender);
+&nbsp;
+        vars.balanceIncrease = vars.compoundedAmount.add(_amount);
+&nbsp;
+        /**
+            step 3: Updating total borrows
+            @dev increasing reserve total borrows to account for the new borrow balance of the user
+            @dev NOTE: Depending on the previous borrow mode, the borrows might need to be switched from variable to stable or viceversa
+        */
+&nbsp;
+        vars.currentReserveStableRate = core.getReserveCurrentStableBorrowRate(_reserve);
+&nbsp;
+        core.updateReserveTotalBorrowsByRateMode(
+            _reserve,
+            msg.sender,
+            vars.principalBorrowBalance,
+            vars.balanceIncrease,
+            CoreLibrary.InterestRateMode(_interestRateMode),
+            vars.currentReserveStableRate
+        );
+&nbsp;
+        //step 4: update user borrow interest rate
+&nbsp;
+        if (_interestRateMode == uint256(CoreLibrary.InterestRateMode.STABLE)) {
+            core.updateUserStableBorrowRate(_reserve, msg.sender);
+        } else {
+            //variable
+            core.resetUserStableBorrowRate(_reserve, msg.sender);
+        }
+&nbsp;
+        //step 5: add the compounded amount to the total liquidity of the pool
+        core.increaseReserveTotalLiquidity(_reserve, vars.compoundedAmount);
+&nbsp;
+        core.updateReserveInterestRates(_reserve);
+        core.setReserveLastUpdate(_reserve);
+&nbsp;
+        //step 6: updating remaining user data
+        core.increaseUserPrincipalBorrowBalance(_reserve, msg.sender, vars.balanceIncrease);
+        core.increaseUserOriginationFee(_reserve, msg.sender, vars.borrowFee);
+        core.setUserLastUpdate(_reserve, msg.sender);
+&nbsp;
+        //if we reached this point, we can transfer
+        core.transferToUser(_reserve, msg.sender, _amount);
+&nbsp;
+        //solium-disable-next-line
+        emit Borrow(_reserve, msg.sender, _amount, vars.balanceIncrease, _interestRateMode, vars.borrowFee, _referralCode, block.timestamp);
+    }
+&nbsp;
+    /**
+    * @notice repays a borrow on the specific reserve, for the specified amount (or for the whole amount, if uint256(-1) is specified).
+      @dev the target user is defined by _onBehalfOf. If there is no repayment on behalf of another account,
+      _onBehalfOf must be equal to msg.sender.
+      @param _reserve the address of the reserve on which the user borrowed
+      @param _amount the amount to repay, or uint256(-1) if the user wants to repay everything
+      @param _onBehalfOf the address for which msg.sender is repaying.
+    */
+&nbsp;
+    struct RepayLocalVars {
+        uint256 principalBorrowBalance;
+        uint256 compoundedBorrowBalance;
+        uint256 borrowBalanceIncrease;
+        bool isETH;
+        uint256 paybackAmount;
+        uint256 paybackAmountMinusFees;
+        uint256 currentStableRate;
+        uint256 originationFee;
+    }
+&nbsp;
+    function repay(
+        address _reserve,
+        uint256 _amount,
+        address payable _onBehalfOf)
+        external
+        payable
+        nonReentrant
+        onlyActiveReserve(_reserve) onlyAmountGreaterThanZero(_amount) {
+&nbsp;
+        // Usage of a memory struct of vars to avoid "Stack too deep" errors due to local variables
+        RepayLocalVars memory vars;
+&nbsp;
+        (vars.principalBorrowBalance,
+        vars.compoundedBorrowBalance,
+        vars.borrowBalanceIncrease) = core.getUserBorrowBalances(_reserve, _onBehalfOf);
+&nbsp;
+        vars.originationFee = core.getUserOriginationFee(_reserve, _onBehalfOf);
+        vars.isETH = NetworkMetadataProvider(addressesProvider.getNetworkMetadataProvider()).getEthereumAddress() == _reserve;
+&nbsp;
+        <span class="missing-if-branch" title="else path not taken" >E</span>require(vars.compoundedBorrowBalance &gt; 0, "The user does not have any borrow pending");
+&nbsp;
+        require(
+            _amount != UINT_MAX_VALUE || msg.sender == _onBehalfOf,
+            "To repay on behalf of an user an explicit amount to repay is needed."
+        );
+&nbsp;
+        //default to max amount
+        vars.paybackAmount = vars.compoundedBorrowBalance.add(vars.originationFee);
+&nbsp;
+        if (_amount != UINT_MAX_VALUE &amp;&amp; _amount &lt; vars.paybackAmount) {
+            vars.paybackAmount = _amount;
+        }
+&nbsp;
+        require(!vars.isETH || msg.value &gt;= vars.paybackAmount, "Invalid msg.value sent for the repayment");
+&nbsp;
+&nbsp;
+        //if the amount is smaller than the origination fee, just transfer the amount to the fee destination address
+        <span class="missing-if-branch" title="if path not taken" >I</span>if (vars.paybackAmount &lt;= vars.originationFee) {
+<span class="cstat-no" title="statement not covered" >            core.decreaseUserOriginationFee(_reserve, _onBehalfOf, vars.paybackAmount)</span>;
+<span class="cstat-no" title="statement not covered" >            core.transferToFeeCollectionAddress.value(vars.isETH ? vars.paybackAmount : 0)</span>(
+                _reserve,
+                _onBehalfOf,
+                vars.paybackAmount,
+                IFeeProvider(addressesProvider.getFeeProvider()).getFeesCollectionAddress()
+            );
+<span class="cstat-no" title="statement not covered" >            return;</span>
+        }
+&nbsp;
+        vars.paybackAmountMinusFees = vars.paybackAmount.sub(vars.originationFee);
+&nbsp;
+        //transfer the fee amount to the fee wallet
+        core.decreaseUserOriginationFee(_reserve, _onBehalfOf, vars.originationFee);
+&nbsp;
+&nbsp;
+        core.transferToFeeCollectionAddress.value(vars.isETH ? vars.originationFee : 0)(
+            _reserve,
+            _onBehalfOf,
+            vars.originationFee,
+            IFeeProvider(addressesProvider.getFeeProvider()).getFeesCollectionAddress()
+        );
+&nbsp;
+        //update the liquidity and borrow index to cumulate the interest until this point
+        core.updateReserveCumulativeIndexes(_reserve);
+        core.updateUserLastVariableBorrowCumulativeIndex(_reserve, _onBehalfOf);
+&nbsp;
+        //update the reserve liquidity
+        core.increaseReserveTotalLiquidity(_reserve, vars.borrowBalanceIncrease);
+&nbsp;
+        //update the user principal borrow balance, adding the cumulated interest and then subtracting the payback amount
+        core.increaseUserPrincipalBorrowBalance(_reserve, _onBehalfOf, vars.borrowBalanceIncrease);
+        core.decreaseUserPrincipalBorrowBalance(_reserve, _onBehalfOf, vars.paybackAmountMinusFees);
+&nbsp;
+        //compound the cumulated interest to the borrow balance and then subtracting the payback amount
+        CoreLibrary.InterestRateMode borrowRateMode = core.getUserCurrentBorrowRateMode(_reserve, _onBehalfOf);
+&nbsp;
+        if (borrowRateMode == CoreLibrary.InterestRateMode.STABLE) {
+            vars.currentStableRate = core.getUserCurrentStableBorrowRate(_reserve, _onBehalfOf);
+            core.increaseReserveTotalBorrowsStableAndUpdateAverageRate(_reserve, vars.borrowBalanceIncrease, vars.currentStableRate);
+            core.decreaseReserveTotalBorrowsStableAndUpdateAverageRate(_reserve, vars.paybackAmountMinusFees, vars.currentStableRate);
+            //if the balance decrease is equal to the previous principal (user is repaying the whole loan)
+            //and the rate mode is stable, we reset the interest rate mode of the user
+            <span class="missing-if-branch" title="else path not taken" >E</span>if(vars.paybackAmountMinusFees == vars.compoundedBorrowBalance) {
+                core.resetUserStableBorrowRate(_reserve, _onBehalfOf);
+            }
+        } else {
+            core.increaseReserveTotalBorrowsVariable(_reserve, vars.borrowBalanceIncrease);
+            core.decreaseReserveTotalBorrowsVariable(_reserve, vars.paybackAmountMinusFees);
+        }
+&nbsp;
+        core.updateReserveInterestRates(_reserve);
+&nbsp;
+        core.setReserveLastUpdate(_reserve);
+        core.setUserLastUpdate(_reserve, _onBehalfOf);
+&nbsp;
+        //sending the total msg.value if the transfer is ETH.
+        //the transferToReserve() function will take care of sending the
+        //excess ETH back to the caller
+        core.transferToReserve.value(vars.isETH ? msg.value.sub(vars.originationFee) : 0)(_reserve, msg.sender, vars.paybackAmountMinusFees);
+&nbsp;
+        //solium-disable-next-line
+        emit Repay(_reserve, _onBehalfOf, msg.sender,  vars.paybackAmount, vars.borrowBalanceIncrease, block.timestamp);
+    }
+&nbsp;
+    /**
+    * @notice allows the user to swap the current borrow rate mode, from stable to variable and viceversa.
+    */
+&nbsp;
+    function swapBorrowRateMode(address _reserve) external nonReentrant onlyActiveReserve(_reserve) {
+&nbsp;
+        CoreLibrary.InterestRateMode currentRateMode = core.getUserCurrentBorrowRateMode(_reserve, msg.sender);
+        (uint256 principalBorrowBalance,
+        uint256 compoundedBorrowBalance,
+        uint256 balanceIncrease) = core.getUserBorrowBalances(_reserve, msg.sender);
+&nbsp;
+        require(compoundedBorrowBalance &gt; 0, "User does not have a borrow in progress on this reserve");
+&nbsp;
+        //data to be emitted in the swap event
+        CoreLibrary.InterestRateMode newRateMode = CoreLibrary.InterestRateMode.NONE;
+        uint256 newBorrowRate = 0;
+&nbsp;
+        //compounding reserve indexes
+        core.updateReserveCumulativeIndexes(_reserve);
+        core.updateUserLastVariableBorrowCumulativeIndex(_reserve, msg.sender);
+&nbsp;
+        if(currentRateMode == CoreLibrary.InterestRateMode.STABLE){
+&nbsp;
+            uint256 userStableRate = core.getUserCurrentStableBorrowRate(_reserve, msg.sender);
+&nbsp;
+            //switch to variable
+            core.decreaseReserveTotalBorrowsStableAndUpdateAverageRate(_reserve, principalBorrowBalance, userStableRate); //decreasing stable from old principal balance
+            core.increaseReserveTotalBorrowsVariable(_reserve, compoundedBorrowBalance); //increase variable borrows
+            core.resetUserStableBorrowRate(_reserve, msg.sender);
+            newRateMode = CoreLibrary.InterestRateMode.VARIABLE;
+        }
+        else {
+            //switch to stable
+&nbsp;
+            /**
+            @dev before switching we need to ensure that
+                 1. stable borrow rate is enabled on the reserve
+                 2. user is not trying to abuse the reserve by depositing
+                    more collateral than he is borrowing, artificially lowering
+                    the interest rate, borrowing at variable, and switching to stable
+             */
+            <span class="missing-if-branch" title="else path not taken" >E</span>require(
+                dataProvider.isUserAllowedToBorrowAtStable(_reserve, msg.sender, compoundedBorrowBalance),
+                "User cannot borrow the selected amount at stable"
+            );
+&nbsp;
+            //all clear - user can switch
+            uint256 currentStableRate = core.getReserveCurrentStableBorrowRate(_reserve);
+            core.decreaseReserveTotalBorrowsVariable(_reserve, principalBorrowBalance);
+            core.increaseReserveTotalBorrowsStableAndUpdateAverageRate(_reserve, compoundedBorrowBalance, currentStableRate);
+            core.updateUserStableBorrowRate(_reserve,msg.sender);
+&nbsp;
+            newRateMode = CoreLibrary.InterestRateMode.STABLE;
+        }
+&nbsp;
+        core.increaseReserveTotalLiquidity(_reserve, balanceIncrease);
+        core.updateReserveInterestRates(_reserve);
+        core.setReserveLastUpdate(_reserve);
+&nbsp;
+        //compounding cumulated interest
+        core.increaseUserPrincipalBorrowBalance(_reserve, msg.sender, balanceIncrease);
+        core.setUserLastUpdate(_reserve, msg.sender);
+&nbsp;
+        if(newRateMode == CoreLibrary.InterestRateMode.STABLE) {
+            newBorrowRate = core.getUserCurrentStableBorrowRate(_reserve, msg.sender);
+        }
+        else{
+            newBorrowRate = core.getReserveCurrentVariableBorrowRate(_reserve);
+        }
+&nbsp;
+        emit Swap(
+            _reserve,
+            msg.sender,
+            uint256(newRateMode),
+            newBorrowRate,
+            balanceIncrease,
+            //solium-disable-next-line
+            block.timestamp
+        );
+    }
+&nbsp;
+&nbsp;
+      /**
+    @notice rebalances the stable interest rate of a user if current liquidity rate &gt; user stable rate.
+    @dev this is regulated by Aave to ensure that the protocol is not abused, and the user is paying a fair
+         rate. Anyone can call this function though.
+     */
+&nbsp;
+    function rebalanceStableBorrowRate(address _reserve, address _user) external nonReentrant onlyActiveReserve(_reserve) {
+&nbsp;
+        (,
+        uint256 compoundedBalance,
+        uint256 balanceIncrease) = core.getUserBorrowBalances(_reserve, _user);
+&nbsp;
+        //step 1: user must be borrowing on _reserve at a stable rate
+        require(
+            compoundedBalance &gt; 0,
+            "User does not have any borrow for this reserve");
+&nbsp;
+        require(
+            core.getUserCurrentBorrowRateMode(_reserve,_user) == CoreLibrary.InterestRateMode.STABLE,
+            "The user borrow is variable and cannot be rebalanced"
+            );
+&nbsp;
+        //step 2: compound the balances, updating indices
+        core.updateReserveCumulativeIndexes(_reserve);
+&nbsp;
+        uint256 userCurrentStableRate = core.getUserCurrentStableBorrowRate(_reserve,_user);
+        core.increaseReserveTotalBorrowsStableAndUpdateAverageRate(_reserve, balanceIncrease, userCurrentStableRate);
+        core.increaseUserPrincipalBorrowBalance(_reserve, _user, balanceIncrease);
+        core.increaseReserveTotalLiquidity(_reserve, balanceIncrease);
+        core.updateReserveInterestRates(_reserve);
+        core.setReserveLastUpdate(_reserve);
+&nbsp;
+        uint256 liquidityRate = core.getReserveCurrentLiquidityRate(_reserve);
+        uint256 reserveCurrentStableRate = core.getReserveCurrentStableBorrowRate(_reserve);
+        uint256 rebalanceDownRateThreshold = reserveCurrentStableRate.rayMul(
+            WadRayMath
+            .ray()
+            .add(
+                parametersProvider.getRebalanceDownRateDelta()
+            ));
+&nbsp;
+        //step 3: we have two possible situations to rebalance:
+&nbsp;
+        //1. user stable borrow rate is below the current liquidity rate. The loan needs to be rebalanced,
+        //as this situation can be abused (user putting back the borrowed liquidity in the same reserve to earn on it)
+         //2. user stable rate is above the market avg borrow rate of a certain delta, and utilization rate is low.
+        //In this case, the user is paying an interest that is too high, and needs to be rescaled down.
+        if(userCurrentStableRate &lt; liquidityRate ||
+        userCurrentStableRate &gt; rebalanceDownRateThreshold
+        ) {
+            //rebalance stable rate
+            core.updateUserStableBorrowRate(_reserve,_user);
+            core.setUserLastUpdate(_reserve, _user);
+            emit RebalanceStableBorrowRate(
+                _reserve,
+                _user,
+                core.getReserveCurrentStableBorrowRate(_reserve),
+                balanceIncrease,
+                //solium-disable-next-line
+                block.timestamp
+            );
+&nbsp;
+            return;
+&nbsp;
+        }
+&nbsp;
+        revert("Interest rate rebalance conditions were not met");
+    }
+&nbsp;
+    /**
+    * @notice  allows user to enable or disable a specific deposit as collateral
+    */
+&nbsp;
+    function setUserUseReserveAsCollateral(address _reserve, bool _useAsCollateral) external nonReentrant onlyActiveReserve(_reserve) {
+&nbsp;
+        uint256 underlyingBalance = dataProvider.getUserUnderlyingAssetBalance(_reserve,msg.sender);
+&nbsp;
+        <span class="missing-if-branch" title="else path not taken" >E</span>require(underlyingBalance &gt; 0, "User does not have any liquidity deposited");
+&nbsp;
+        require(
+            dataProvider.balanceDecreaseAllowed(_reserve, msg.sender, underlyingBalance),
+            "User deposit is already being used as collateral"
+        );
+&nbsp;
+        core.setUserUseReserveAsCollateral(_reserve, msg.sender, _useAsCollateral);
+&nbsp;
+        if(_useAsCollateral){
+            emit ReserveUsedAsCollateralEnabled(_reserve, msg.sender);
+        }
+        else{
+            emit ReserveUsedAsCollateralDisabled(_reserve, msg.sender);
+        }
+    }
+&nbsp;
+   /**
+    * @notice implements loan liquidation
+    * @dev _receiveAToken allows the liquidators to receive the aTokens, instead of the underlying asset.
+    */
+    function liquidationCall(address _collateral, address _reserve, address _user, uint256 _purchaseAmount, bool _receiveAToken)
+       external
+        payable
+        nonReentrant
+        onlyActiveReserve(_reserve)
+        onlyActiveReserve(_collateral)
+    {
+        address liquidationManager = addressesProvider.getLendingPoolLiquidationManager();
+&nbsp;
+        //solium-disable-next-line
+        (bool success, bytes memory result) = liquidationManager.delegatecall(
+                 abi.encodeWithSignature("liquidationCall(address,address,address,uint256,bool)",
+                 _collateral,
+                 _reserve,
+                 _user,
+                 _purchaseAmount,
+                 _receiveAToken
+            ));
+        <span class="missing-if-branch" title="else path not taken" >E</span>require(success, "Liquidation call failed");
+&nbsp;
+        (uint256 returnCode, string memory returnMessage) = abi.decode(result, (uint256, string));
+&nbsp;
+        if(returnCode != 0) { //error found
+            revert(string(abi.encodePacked("Liquidation failed: ", returnMessage)));
+        }
+    }
+&nbsp;
+    function flashLoan(
+        address _receiver,
+        address _reserve,
+        uint256 _amount)
+        external
+        nonReentrant onlyActiveReserve(_reserve) onlyAmountGreaterThanZero(_amount) {
+&nbsp;
+&nbsp;
+        address flashLoanProvider = addressesProvider.getLendingPoolFlashLoanProvider();
+&nbsp;
+        //solium-disable-next-line
+        (bool success, bytes memory result) = flashLoanProvider.delegatecall(
+                 abi.encodeWithSignature("flashLoan(address,address,uint256)",
+                 _receiver,
+                 _reserve,
+                 _amount
+            ));
+&nbsp;
+        <span class="missing-if-branch" title="else path not taken" >E</span>require(success, "Flashloan execution failed");
+&nbsp;
+        (uint256 returnCode, string memory returnMessage) = abi.decode(result, (uint256, string));
+&nbsp;
+        if(returnCode != 0) { //error found
+            revert(string(abi.encodePacked("Flashloan execution failed failed: ", returnMessage)));
+        }
+    }
+&nbsp;
+    /***************
+    @dev accessory methods to fetch data from the core contract
+     */
+&nbsp;
+<span class="fstat-no" title="function not covered" >    function getReserveConfigurationData(address _reserve)</span>
+        external
+        view
+        returns (
+            uint256 ltv,
+            uint256 liquidationThreshold,
+            uint256 liquidationDiscount,
+            address interestRateStrategyAddress,
+            bool usageAsCollateralEnabled,
+            bool borrowingEnabled,
+            bool stableBorrowRateEnabled,
+            bool isActive)
+    {
+<span class="cstat-no" title="statement not covered" >        return dataProvider.getReserveConfigurationData(_reserve);</span>
+    }
+&nbsp;
+&nbsp;
+    function getReserveData(address _reserve)
+        external
+        view
+        returns (
+            uint256 totalLiquidity,
+            uint256 availableLiquidity,
+            uint256 totalBorrowsStable,
+            uint256 totalBorrowsVariable,
+            uint256 liquidityRate,
+            uint256 variableBorrowRate,
+            uint256 stableBorrowRate,
+            uint256 averageStableBorrowRate,
+            uint256 utilizationRate,
+            uint256 liquidityIndex,
+            uint256 variableBorrowIndex,
+            address aTokenAddress,
+            uint40 lastUpdateTimestamp
+        )
+    {
+        return dataProvider.getReserveData(_reserve);
+    }
+&nbsp;
+    function getUserAccountData(address _user)
+        external
+        view
+        returns (
+            uint256 totalLiquidityETH,
+            uint256 totalCollateralETH,
+            uint256 totalBorrowsETH,
+            uint256 availableBorrowsETH,
+            uint256 currentLiquidationThreshold,
+            uint256 ltv,
+            uint256 healthFactor
+        )
+    {
+        return dataProvider.getUserAccountData(_user);
+    }
+&nbsp;
+    function getUserReserveData(address _reserve, address _user)
+        external
+        view
+        returns (
+            uint256 currentATokenBalance,
+            uint256 currentUnderlyingBalance,
+            uint256 currentBorrowBalance,
+            uint256 principalBorrowBalance,
+            uint256 borrowRateMode,
+            uint256 borrowRate,
+            uint256 liquidityRate,
+            uint256 originationFee,
+            uint256 variableBorrowIndex,
+            uint256 lastUpdateTimestamp,
+            bool usageAsCollateralEnabled
+        )
+    {
+        return dataProvider.getUserReserveData(_reserve, _user);
+    }
+&nbsp;
+<span class="fstat-no" title="function not covered" >    function getReserves() external view returns(address[] memor</span>y){
+<span class="cstat-no" title="statement not covered" >        return core.getReserves();</span>
+    }
+&nbsp;
+    /**
+    @dev internal function to save on code size for the onlyActiveReserve modifier
+     */
+    function requireReserveActiveInternal(address _reserve) internal view {
+        require(
+            core.getReserveIsActive(_reserve),
+            "Action requires an active reserve"
+        );
+    }
+&nbsp;
+    function requireAmountGreaterThanZeroInternal(uint256 _amount) internal pure {
+        require(
+            _amount &gt; 0,
+            "Invalid amount"
+        );
+    }
+}
+&nbsp;</pre></td></tr>
+</table></pre>
+<div class='push'></div><!-- for sticky footer -->
+</div><!-- /wrapper -->
+<div class='footer quiet pad2 space-top1 center small'>
+  Code coverage
+  generated by <a href="http://istanbul-js.org/" target="_blank">istanbul</a> at Fri Nov 22 2019 00:43:01 GMT+0000 (Coordinated Universal Time)
+</div>
+</div>
+<script src="../prettify.js"></script>
+<script>
+window.onload = function () {
+        if (typeof prettyPrint === 'function') {
+            prettyPrint();
+        }
+};
+</script>
+<script src="../sorter.js"></script>
+</body>
+</html>
