@@ -1,0 +1,356 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <title>Code coverage report for contracts/utility/ContractRegistryClient.sol</title>
+    <meta charset="utf-8" />
+    <link rel="stylesheet" href="../../prettify.css" />
+    <link rel="stylesheet" href="../../base.css" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <style type='text/css'>
+        .coverage-summary .sorter {
+            background-image: url(../../sort-arrow-sprite.png);
+        }
+    </style>
+</head>
+<body>
+<div class='wrapper'>
+  <div class='pad1'>
+    <h1>
+      <a href="../../index.html">all files</a> / <a href="index.html">contracts/utility/</a> ContractRegistryClient.sol
+    </h1>
+    <div class='clearfix'>
+      <div class='fl pad1y space-right2'>
+        <span class="strong">100% </span>
+        <span class="quiet">Statements</span>
+        <span class='fraction'>12/12</span>
+      </div>
+      <div class='fl pad1y space-right2'>
+        <span class="strong">100% </span>
+        <span class="quiet">Branches</span>
+        <span class='fraction'>8/8</span>
+      </div>
+      <div class='fl pad1y space-right2'>
+        <span class="strong">100% </span>
+        <span class="quiet">Functions</span>
+        <span class='fraction'>6/6</span>
+      </div>
+      <div class='fl pad1y space-right2'>
+        <span class="strong">100% </span>
+        <span class="quiet">Lines</span>
+        <span class='fraction'>13/13</span>
+      </div>
+    </div>
+  </div>
+  <div class='status-line high'></div>
+<pre><table class="coverage">
+<tr><td class="line-count quiet">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41
+42
+43
+44
+45
+46
+47
+48
+49
+50
+51
+52
+53
+54
+55
+56
+57
+58
+59
+60
+61
+62
+63
+64
+65
+66
+67
+68
+69
+70
+71
+72
+73
+74
+75
+76
+77
+78
+79
+80
+81
+82
+83
+84
+85
+86
+87
+88
+89
+90
+91
+92
+93
+94
+95
+96
+97
+98</td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">910×</span>
+<span class="cline-any cline-yes">902×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">497×</span>
+<span class="cline-any cline-yes">497×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">7×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">6×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">6×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">4×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">3×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">3×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">5375×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">pragma solidity 0.4.26;
+import './Owned.sol';
+import './Utils.sol';
+import './interfaces/IContractRegistry.sol';
+&nbsp;
+/**
+  * @dev Base contract for ContractRegistry clients
+*/
+contract ContractRegistryClient is Owned, Utils {
+    bytes32 internal constant CONTRACT_FEATURES = "ContractFeatures";
+    bytes32 internal constant CONTRACT_REGISTRY = "ContractRegistry";
+    bytes32 internal constant BANCOR_NETWORK = "BancorNetwork";
+    bytes32 internal constant BANCOR_FORMULA = "BancorFormula";
+    bytes32 internal constant BANCOR_CONVERTER_FACTORY = "BancorConverterFactory";
+    bytes32 internal constant BANCOR_CONVERTER_UPGRADER = "BancorConverterUpgrader";
+    bytes32 internal constant BANCOR_CONVERTER_REGISTRY = "BancorConverterRegistry";
+    bytes32 internal constant BANCOR_CONVERTER_REGISTRY_DATA = "BancorConverterRegistryData";
+    bytes32 internal constant BNT_TOKEN = "BNTToken";
+    bytes32 internal constant BANCOR_X = "BancorX";
+    bytes32 internal constant BANCOR_X_UPGRADER = "BancorXUpgrader";
+&nbsp;
+    IContractRegistry public registry;      // address of the current contract-registry
+    IContractRegistry public prevRegistry;  // address of the previous contract-registry
+    bool public onlyOwnerCanUpdateRegistry; // only an owner can update the contract-registry
+&nbsp;
+    /**
+      * @dev verifies that the caller is mapped to the given contract name
+      * 
+      * @param _contractName    contract name
+    */
+    modifier only(bytes32 _contractName) {
+        require(msg.sender == addressOf(_contractName));
+        _;
+    }
+&nbsp;
+    /**
+      * @dev initializes a new ContractRegistryClient instance
+      * 
+      * @param  _registry   address of a contract-registry contract
+    */
+    constructor(IContractRegistry _registry) internal validAddress(_registry) {
+        registry = IContractRegistry(_registry);
+        prevRegistry = IContractRegistry(_registry);
+    }
+&nbsp;
+    /**
+      * @dev updates to the new contract-registry
+     */
+    function updateRegistry() public {
+        // verify that this function is permitted
+        require(msg.sender == owner || !onlyOwnerCanUpdateRegistry);
+&nbsp;
+        // get the new contract-registry
+        address newRegistry = addressOf(CONTRACT_REGISTRY);
+&nbsp;
+        // verify that the new contract-registry is different and not zero
+        require(newRegistry != address(registry) &amp;&amp; newRegistry != address(0));
+&nbsp;
+        // verify that the new contract-registry is pointing to a non-zero contract-registry
+        require(IContractRegistry(newRegistry).addressOf(CONTRACT_REGISTRY) != address(0));
+&nbsp;
+        // save a backup of the current contract-registry before replacing it
+        prevRegistry = registry;
+&nbsp;
+        // replace the current contract-registry with the new contract-registry
+        registry = IContractRegistry(newRegistry);
+    }
+&nbsp;
+    /**
+      * @dev restores the previous contract-registry
+    */
+    function restoreRegistry() public ownerOnly {
+        // restore the previous contract-registry
+        registry = prevRegistry;
+    }
+&nbsp;
+    /**
+      * @dev restricts the permission to update the contract-registry
+      * 
+      * @param _onlyOwnerCanUpdateRegistry  indicates whether or not permission is restricted to owner only
+    */
+    function restrictRegistryUpdate(bool _onlyOwnerCanUpdateRegistry) ownerOnly public {
+        // change the permission to update the contract-registry
+        onlyOwnerCanUpdateRegistry = _onlyOwnerCanUpdateRegistry;
+    }
+&nbsp;
+    /**
+      * @dev returns the address associated with the given contract name
+      * 
+      * @param _contractName    contract name
+      * 
+      * @return contract address
+    */
+    function addressOf(bytes32 _contractName) internal view returns (address) {
+        return registry.addressOf(_contractName);
+    }
+}
+&nbsp;</pre></td></tr>
+</table></pre>
+<div class='push'></div><!-- for sticky footer -->
+</div><!-- /wrapper -->
+<div class='footer quiet pad2 space-top1 center small'>
+  Code coverage
+  generated by <a href="http://istanbul-js.org/" target="_blank">istanbul</a> at Tue May 26 2020 20:10:22 GMT+0800 (GMT+08:00)
+</div>
+</div>
+<script src="../../prettify.js"></script>
+<script>
+window.onload = function () {
+        if (typeof prettyPrint === 'function') {
+            prettyPrint();
+        }
+};
+</script>
+<script src="../../sorter.js"></script>
+</body>
+</html>

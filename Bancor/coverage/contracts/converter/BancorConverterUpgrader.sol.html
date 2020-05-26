@@ -1,0 +1,779 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <title>Code coverage report for contracts/converter/BancorConverterUpgrader.sol</title>
+    <meta charset="utf-8" />
+    <link rel="stylesheet" href="../../prettify.css" />
+    <link rel="stylesheet" href="../../base.css" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <style type='text/css'>
+        .coverage-summary .sorter {
+            background-image: url(../../sort-arrow-sprite.png);
+        }
+    </style>
+</head>
+<body>
+<div class='wrapper'>
+  <div class='pad1'>
+    <h1>
+      <a href="../../index.html">all files</a> / <a href="index.html">contracts/converter/</a> BancorConverterUpgrader.sol
+    </h1>
+    <div class='clearfix'>
+      <div class='fl pad1y space-right2'>
+        <span class="strong">96.08% </span>
+        <span class="quiet">Statements</span>
+        <span class='fraction'>49/51</span>
+      </div>
+      <div class='fl pad1y space-right2'>
+        <span class="strong">75% </span>
+        <span class="quiet">Branches</span>
+        <span class='fraction'>6/8</span>
+      </div>
+      <div class='fl pad1y space-right2'>
+        <span class="strong">57.14% </span>
+        <span class="quiet">Functions</span>
+        <span class='fraction'>8/14</span>
+      </div>
+      <div class='fl pad1y space-right2'>
+        <span class="strong">96.15% </span>
+        <span class="quiet">Lines</span>
+        <span class='fraction'>50/52</span>
+      </div>
+    </div>
+  </div>
+  <div class='status-line high'></div>
+<pre><table class="coverage">
+<tr><td class="line-count quiet">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41
+42
+43
+44
+45
+46
+47
+48
+49
+50
+51
+52
+53
+54
+55
+56
+57
+58
+59
+60
+61
+62
+63
+64
+65
+66
+67
+68
+69
+70
+71
+72
+73
+74
+75
+76
+77
+78
+79
+80
+81
+82
+83
+84
+85
+86
+87
+88
+89
+90
+91
+92
+93
+94
+95
+96
+97
+98
+99
+100
+101
+102
+103
+104
+105
+106
+107
+108
+109
+110
+111
+112
+113
+114
+115
+116
+117
+118
+119
+120
+121
+122
+123
+124
+125
+126
+127
+128
+129
+130
+131
+132
+133
+134
+135
+136
+137
+138
+139
+140
+141
+142
+143
+144
+145
+146
+147
+148
+149
+150
+151
+152
+153
+154
+155
+156
+157
+158
+159
+160
+161
+162
+163
+164
+165
+166
+167
+168
+169
+170
+171
+172
+173
+174
+175
+176
+177
+178
+179
+180
+181
+182
+183
+184
+185
+186
+187
+188
+189
+190
+191
+192
+193
+194
+195
+196
+197
+198
+199
+200
+201
+202
+203
+204
+205
+206
+207
+208
+209
+210
+211
+212
+213
+214
+215
+216
+217
+218
+219
+220
+221
+222
+223
+224
+225
+226
+227
+228
+229
+230
+231
+232
+233
+234
+235
+236
+237
+238
+239</td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">8×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">31×</span>
+<span class="cline-any cline-yes">31×</span>
+<span class="cline-any cline-yes">31×</span>
+<span class="cline-any cline-yes">31×</span>
+<span class="cline-any cline-yes">30×</span>
+<span class="cline-any cline-yes">28×</span>
+<span class="cline-any cline-yes">28×</span>
+<span class="cline-any cline-yes">28×</span>
+<span class="cline-any cline-yes">28×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">28×</span>
+<span class="cline-any cline-yes">26×</span>
+<span class="cline-any cline-yes">26×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">28×</span>
+<span class="cline-any cline-yes">28×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">28×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">31×</span>
+<span class="cline-any cline-yes">30×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">30×</span>
+<span class="cline-any cline-yes">30×</span>
+<span class="cline-any cline-yes">30×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">30×</span>
+<span class="cline-any cline-yes">30×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">28×</span>
+<span class="cline-any cline-yes">28×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">28×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">28×</span>
+<span class="cline-any cline-yes">28×</span>
+<span class="cline-any cline-yes">28×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">28×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">28×</span>
+<span class="cline-any cline-yes">28×</span>
+<span class="cline-any cline-yes">28×</span>
+<span class="cline-any cline-yes">28×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">28×</span>
+<span class="cline-any cline-yes">54×</span>
+<span class="cline-any cline-yes">54×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">54×</span>
+<span class="cline-any cline-yes">54×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">54×</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">28×</span>
+<span class="cline-any cline-yes">28×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">28×</span>
+<span class="cline-any cline-yes">28×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">28×</span>
+<span class="cline-any cline-yes">54×</span>
+<span class="cline-any cline-yes">54×</span>
+<span class="cline-any cline-yes">54×</span>
+<span class="cline-any cline-yes">54×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">pragma solidity 0.4.26;
+import './interfaces/IBancorConverter.sol';
+import './interfaces/IBancorConverterUpgrader.sol';
+import './interfaces/IBancorConverterFactory.sol';
+import '../utility/ContractRegistryClient.sol';
+import '../utility/interfaces/IContractFeatures.sol';
+import '../utility/interfaces/IWhitelist.sol';
+import '../FeatureIds.sol';
+&nbsp;
+/*
+    Bancor converter dedicated interface
+*/
+contract IBancorConverterExtended is IBancorConverter, IOwned {
+<span class="fstat-no" title="function not covered" >    function token() public view returns (ISmartToken</span>) {this;}
+<span class="fstat-no" title="function not covered" >    function maxConversionFee() public view returns (uint32</span>) {this;}
+<span class="fstat-no" title="function not covered" >    function conversionFee() public view returns (uint32</span>) {this;}
+    function connectorTokenCount() public view returns (uint16);
+    function reserveTokenCount() public view returns (uint16);
+<span class="fstat-no" title="function not covered" >    function connectorTokens(uint256 _index) public view returns (IERC20Token</span>) {_index; this;}
+<span class="fstat-no" title="function not covered" >    function reserveTokens(uint256 _index) public view returns (IERC20Token</span>) {_index; this;}
+    function setConversionWhitelist(IWhitelist _whitelist) public;
+    function transferTokenOwnership(address _newOwner) public;
+    function withdrawTokens(IERC20Token _token, address _to, uint256 _amount) public;
+    function acceptTokenOwnership() public;
+    function setConversionFee(uint32 _conversionFee) public;
+    function addConnector(IERC20Token _token, uint32 _weight, bool _enableVirtualBalance) public;
+    function updateConnector(IERC20Token _connectorToken, uint32 _weight, bool _enableVirtualBalance, uint256 _virtualBalance) public;
+}
+&nbsp;
+/**
+  * @dev Bancor Converter Upgrader
+  * 
+  * The Bancor converter upgrader contract allows upgrading an older Bancor converter contract (0.4 and up)
+  * to the latest version.
+  * To begin the upgrade process, simply execute the 'upgrade' function.
+  * At the end of the process, the ownership of the newly upgraded converter will be transferred
+  * back to the original owner and the original owner will need to execute the 'acceptOwnership' function.
+  * 
+  * The address of the new converter is available in the ConverterUpgrade event.
+  * 
+  * Note that for older converters that don't yet have the 'upgrade' function, ownership should first
+  * be transferred manually to the ConverterUpgrader contract using the 'transferOwnership' function
+  * and then the upgrader 'upgrade' function should be executed directly.
+*/
+contract BancorConverterUpgrader is IBancorConverterUpgrader, ContractRegistryClient, FeatureIds {
+    string public version = '0.3';
+&nbsp;
+    /**
+      * @dev triggered when the contract accept a converter ownership
+      * 
+      * @param _converter   converter address
+      * @param _owner       new owner - local upgrader address
+    */
+    event ConverterOwned(address indexed _converter, address indexed _owner);
+&nbsp;
+    /**
+      * @dev triggered when the upgrading process is done
+      * 
+      * @param _oldConverter    old converter address
+      * @param _newConverter    new converter address
+    */
+    event ConverterUpgrade(address indexed _oldConverter, address indexed _newConverter);
+&nbsp;
+    /**
+      * @dev initializes a new BancorConverterUpgrader instance
+      * 
+      * @param _registry    address of a contract registry contract
+    */
+    constructor(IContractRegistry _registry) ContractRegistryClient(_registry) public {
+    }
+&nbsp;
+    /**
+      * @dev upgrades an old converter to the latest version
+      * will throw if ownership wasn't transferred to the upgrader before calling this function.
+      * ownership of the new converter will be transferred back to the original owner.
+      * fires the ConverterUpgrade event upon success.
+      * can only be called by a converter
+      * 
+      * @param _version old converter version
+    */
+<span class="fstat-no" title="function not covered" >    function upgrade(bytes32 _version) publi</span>c {
+<span class="cstat-no" title="statement not covered" >        upgradeOld(IBancorConverter(msg.sender), _version)</span>;
+    }
+&nbsp;
+    /**
+      * @dev upgrades an old converter to the latest version
+      * will throw if ownership wasn't transferred to the upgrader before calling this function.
+      * ownership of the new converter will be transferred back to the original owner.
+      * fires the ConverterUpgrade event upon success.
+      * can only be called by a converter
+      * 
+      * @param _version old converter version
+    */
+    function upgrade(uint16 _version) public {
+        upgradeOld(IBancorConverter(msg.sender), bytes32(_version));
+    }
+&nbsp;
+    /**
+      * @dev upgrades an old converter to the latest version
+      * will throw if ownership wasn't transferred to the upgrader before calling this function.
+      * ownership of the new converter will be transferred back to the original owner.
+      * fires the ConverterUpgrade event upon success.
+      * 
+      * @param _converter   old converter contract address
+      * @param _version     old converter version
+    */
+    function upgradeOld(IBancorConverter _converter, bytes32 _version) public {
+        _version;
+        IBancorConverterExtended converter = IBancorConverterExtended(_converter);
+        address prevOwner = converter.owner();
+        acceptConverterOwnership(converter);
+        IBancorConverterExtended newConverter = createConverter(converter);
+        copyConnectors(converter, newConverter);
+        copyConversionFee(converter, newConverter);
+        transferConnectorsBalances(converter, newConverter);                
+        ISmartToken token = converter.token();
+&nbsp;
+        if (token.owner() == address(converter)) {
+            converter.transferTokenOwnership(newConverter);
+            newConverter.acceptTokenOwnership();
+        }
+&nbsp;
+        converter.transferOwnership(prevOwner);
+        newConverter.transferOwnership(prevOwner);
+&nbsp;
+        emit ConverterUpgrade(address(converter), address(newConverter));
+    }
+&nbsp;
+    /**
+      * @dev the first step when upgrading a converter is to transfer the ownership to the local contract.
+      * the upgrader contract then needs to accept the ownership transfer before initiating
+      * the upgrade process.
+      * fires the ConverterOwned event upon success
+      * 
+      * @param _oldConverter       converter to accept ownership of
+    */
+    function acceptConverterOwnership(IBancorConverterExtended _oldConverter) private {
+        _oldConverter.acceptOwnership();
+        emit ConverterOwned(_oldConverter, this);
+    }
+&nbsp;
+    /**
+      * @dev creates a new converter with same basic data as the original old converter
+      * the newly created converter will have no connectors at this step.
+      * 
+      * @param _oldConverter    old converter contract address
+      * 
+      * @return the new converter  new converter contract address
+    */
+    function createConverter(IBancorConverterExtended _oldConverter) private returns(IBancorConverterExtended) {
+        IWhitelist whitelist;
+        ISmartToken token = _oldConverter.token();
+        uint32 maxConversionFee = _oldConverter.maxConversionFee();
+&nbsp;
+        IBancorConverterFactory converterFactory = IBancorConverterFactory(addressOf(BANCOR_CONVERTER_FACTORY));
+        address converterAddress = converterFactory.createConverter(
+            token,
+            registry,
+            maxConversionFee,
+            IERC20Token(address(0)),
+            0
+        );
+&nbsp;
+        IBancorConverterExtended converter = IBancorConverterExtended(converterAddress);
+        converter.acceptOwnership();
+&nbsp;
+        // get the contract features address from the registry
+        IContractFeatures features = IContractFeatures(addressOf(CONTRACT_FEATURES));
+&nbsp;
+        <span class="missing-if-branch" title="else path not taken" >E</span>if (features.isSupported(_oldConverter, FeatureIds.CONVERTER_CONVERSION_WHITELIST)) {
+            whitelist = _oldConverter.conversionWhitelist();
+            if (whitelist != address(0))
+                converter.setConversionWhitelist(whitelist);
+        }
+&nbsp;
+        return converter;
+    }
+&nbsp;
+    /**
+      * @dev copies the connectors from the old converter to the new one.
+      * note that this will not work for an unlimited number of connectors due to block gas limit constraints.
+      * 
+      * @param _oldConverter    old converter contract address
+      * @param _newConverter    new converter contract address
+    */
+    function copyConnectors(IBancorConverterExtended _oldConverter, IBancorConverterExtended _newConverter)
+        private
+    {
+        uint256 virtualBalance;
+        uint32 weight;
+        bool isVirtualBalanceEnabled;
+        uint16 connectorTokenCount = _oldConverter.connectorTokenCount();
+&nbsp;
+        for (uint16 i = 0; i &lt; connectorTokenCount; i++) {
+            address connectorAddress = _oldConverter.connectorTokens(i);
+            (virtualBalance, weight, isVirtualBalanceEnabled, , ) = _oldConverter.connectors(connectorAddress);
+&nbsp;
+            IERC20Token connectorToken = IERC20Token(connectorAddress);
+            _newConverter.addConnector(connectorToken, weight, isVirtualBalanceEnabled);
+&nbsp;
+            <span class="missing-if-branch" title="if path not taken" >I</span>if (isVirtualBalanceEnabled)
+<span class="cstat-no" title="statement not covered" >                _newConverter.updateConnector(connectorToken, weight, isVirtualBalanceEnabled, virtualBalance)</span>;
+        }
+    }
+&nbsp;
+    /**
+      * @dev copies the conversion fee from the old converter to the new one
+      * 
+      * @param _oldConverter    old converter contract address
+      * @param _newConverter    new converter contract address
+    */
+    function copyConversionFee(IBancorConverterExtended _oldConverter, IBancorConverterExtended _newConverter) private {
+        uint32 conversionFee = _oldConverter.conversionFee();
+        _newConverter.setConversionFee(conversionFee);
+    }
+&nbsp;
+    /**
+      * @dev transfers the balance of each connector in the old converter to the new one.
+      * note that the function assumes that the new converter already has the exact same number of
+      * also, this will not work for an unlimited number of connectors due to block gas limit constraints.
+      * 
+      * @param _oldConverter    old converter contract address
+      * @param _newConverter    new converter contract address
+    */
+    function transferConnectorsBalances(IBancorConverterExtended _oldConverter, IBancorConverterExtended _newConverter)
+        private
+    {
+        uint256 connectorBalance;
+        uint16 connectorTokenCount = _oldConverter.connectorTokenCount();
+&nbsp;
+        for (uint16 i = 0; i &lt; connectorTokenCount; i++) {
+            address connectorAddress = _oldConverter.connectorTokens(i);
+            IERC20Token connector = IERC20Token(connectorAddress);
+            connectorBalance = connector.balanceOf(_oldConverter);
+            _oldConverter.withdrawTokens(connector, address(_newConverter), connectorBalance);
+        }
+    }
+}
+&nbsp;</pre></td></tr>
+</table></pre>
+<div class='push'></div><!-- for sticky footer -->
+</div><!-- /wrapper -->
+<div class='footer quiet pad2 space-top1 center small'>
+  Code coverage
+  generated by <a href="http://istanbul-js.org/" target="_blank">istanbul</a> at Tue May 26 2020 20:10:22 GMT+0800 (GMT+08:00)
+</div>
+</div>
+<script src="../../prettify.js"></script>
+<script>
+window.onload = function () {
+        if (typeof prettyPrint === 'function') {
+            prettyPrint();
+        }
+};
+</script>
+<script src="../../sorter.js"></script>
+</body>
+</html>

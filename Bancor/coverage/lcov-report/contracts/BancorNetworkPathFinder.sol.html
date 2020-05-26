@@ -1,0 +1,560 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <title>Code coverage report for contracts/BancorNetworkPathFinder.sol</title>
+    <meta charset="utf-8" />
+    <link rel="stylesheet" href="../prettify.css" />
+    <link rel="stylesheet" href="../base.css" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <style type='text/css'>
+        .coverage-summary .sorter {
+            background-image: url(../sort-arrow-sprite.png);
+        }
+    </style>
+</head>
+<body>
+<div class='wrapper'>
+  <div class='pad1'>
+    <h1>
+      <a href="../index.html">all files</a> / <a href="index.html">contracts/</a> BancorNetworkPathFinder.sol
+    </h1>
+    <div class='clearfix'>
+      <div class='fl pad1y space-right2'>
+        <span class="strong">100% </span>
+        <span class="quiet">Statements</span>
+        <span class='fraction'>51/51</span>
+      </div>
+      <div class='fl pad1y space-right2'>
+        <span class="strong">91.67% </span>
+        <span class="quiet">Branches</span>
+        <span class='fraction'>11/12</span>
+      </div>
+      <div class='fl pad1y space-right2'>
+        <span class="strong">100% </span>
+        <span class="quiet">Functions</span>
+        <span class='fraction'>8/8</span>
+      </div>
+      <div class='fl pad1y space-right2'>
+        <span class="strong">100% </span>
+        <span class="quiet">Lines</span>
+        <span class='fraction'>53/53</span>
+      </div>
+    </div>
+  </div>
+  <div class='status-line high'></div>
+<pre><table class="coverage">
+<tr><td class="line-count quiet">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41
+42
+43
+44
+45
+46
+47
+48
+49
+50
+51
+52
+53
+54
+55
+56
+57
+58
+59
+60
+61
+62
+63
+64
+65
+66
+67
+68
+69
+70
+71
+72
+73
+74
+75
+76
+77
+78
+79
+80
+81
+82
+83
+84
+85
+86
+87
+88
+89
+90
+91
+92
+93
+94
+95
+96
+97
+98
+99
+100
+101
+102
+103
+104
+105
+106
+107
+108
+109
+110
+111
+112
+113
+114
+115
+116
+117
+118
+119
+120
+121
+122
+123
+124
+125
+126
+127
+128
+129
+130
+131
+132
+133
+134
+135
+136
+137
+138
+139
+140
+141
+142
+143
+144
+145
+146
+147
+148
+149
+150
+151
+152
+153
+154
+155
+156
+157
+158
+159
+160
+161
+162
+163
+164
+165
+166</td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">227×</span>
+<span class="cline-any cline-yes">227×</span>
+<span class="cline-any cline-yes">227×</span>
+<span class="cline-any cline-yes">227×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1506×</span>
+<span class="cline-any cline-yes">362×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1144×</span>
+<span class="cline-any cline-yes">1144×</span>
+<span class="cline-any cline-yes">692×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">452×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1144×</span>
+<span class="cline-any cline-yes">1052×</span>
+<span class="cline-any cline-yes">1052×</span>
+<span class="cline-any cline-yes">1052×</span>
+<span class="cline-any cline-yes">1412×</span>
+<span class="cline-any cline-yes">1412×</span>
+<span class="cline-any cline-yes">1052×</span>
+<span class="cline-any cline-yes">1052×</span>
+<span class="cline-any cline-yes">1052×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">92×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">227×</span>
+<span class="cline-any cline-yes">144×</span>
+<span class="cline-any cline-yes">144×</span>
+<span class="cline-any cline-yes">144×</span>
+<span class="cline-any cline-yes">534×</span>
+<span class="cline-any cline-yes">534×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">144×</span>
+<span class="cline-any cline-yes">144×</span>
+<span class="cline-any cline-yes">594×</span>
+<span class="cline-any cline-yes">144×</span>
+<span class="cline-any cline-yes">450×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">144×</span>
+<span class="cline-any cline-yes">144×</span>
+<span class="cline-any cline-yes">780×</span>
+<span class="cline-any cline-yes">1464×</span>
+<span class="cline-any cline-yes">132×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">780×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">144×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">83×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1054×</span>
+<span class="cline-any cline-yes">1054×</span>
+<span class="cline-any cline-yes">1054×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1052×</span>
+<span class="cline-any cline-yes">1052×</span>
+<span class="cline-any cline-yes">1052×</span>
+<span class="cline-any cline-yes">1052×</span>
+<span class="cline-any cline-yes">3992×</span>
+<span class="cline-any cline-yes">1052×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">144×</span>
+<span class="cline-any cline-yes">144×</span>
+<span class="cline-any cline-yes">780×</span>
+<span class="cline-any cline-yes">144×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">pragma solidity 0.4.26;
+import './utility/ContractRegistryClient.sol';
+import './converter/interfaces/IBancorConverterRegistry.sol';
+import './converter/interfaces/IBancorConverter.sol';
+import './token/interfaces/ISmartToken.sol';
+&nbsp;
+/**
+  * @dev The BancorNetworkPathFinder contract allows generating a conversion path between any token pair in the Bancor Network.
+  * The path can then be used in various functions in the BancorNetwork contract.
+  *
+  * See the BancorNetwork contract for conversion path format.
+*/
+contract BancorNetworkPathFinder is ContractRegistryClient {
+    address public anchorToken;
+&nbsp;
+    /**
+      * @dev initializes a new BancorNetworkPathFinder instance
+      * 
+      * @param _registry address of a contract registry contract
+    */
+    constructor(IContractRegistry _registry) ContractRegistryClient(_registry) public {
+    }
+&nbsp;
+    /**
+      * @dev updates the anchor token
+      * 
+      * @param _anchorToken address of the anchor token
+    */
+    function setAnchorToken(address _anchorToken) public ownerOnly {
+        anchorToken = _anchorToken;
+    }
+&nbsp;
+    /**
+      * @dev generates and returns the conversion path between a given token pair in the Bancor Network
+      * 
+      * @param _sourceToken address of the source token
+      * @param _targetToken address of the target token
+      * 
+      * @return path from the source token to the target token
+    */
+    function generatePath(address _sourceToken, address _targetToken) public view returns (address[] memory) {
+        IBancorConverterRegistry converterRegistry = IBancorConverterRegistry(addressOf(BANCOR_CONVERTER_REGISTRY));
+        address[] memory sourcePath = getPath(_sourceToken, converterRegistry);
+        address[] memory targetPath = getPath(_targetToken, converterRegistry);
+        return getShortestPath(sourcePath, targetPath);
+    }
+&nbsp;
+    /**
+      * @dev generates and returns the conversion path between a given token and the anchor token
+      * 
+      * @param _token               address of the token
+      * @param _converterRegistry   address of the converter registry
+      * 
+      * @return path from the input token to the anchor token
+    */
+    function getPath(address _token, IBancorConverterRegistry _converterRegistry) private view returns (address[] memory) {
+        if (_token == anchorToken)
+            return getInitialArray(_token);
+&nbsp;
+        address[] memory smartTokens;
+        if (_converterRegistry.isSmartToken(_token))
+            smartTokens = getInitialArray(_token);
+        else
+            smartTokens = _converterRegistry.getConvertibleTokenSmartTokens(_token);
+&nbsp;
+        for (uint256 n = 0; n &lt; smartTokens.length; n++) {
+            IBancorConverter converter = IBancorConverter(ISmartToken(smartTokens[n]).owner());
+            uint256 connectorTokenCount = converter.connectorTokenCount();
+            for (uint256 i = 0; i &lt; connectorTokenCount; i++) {
+                address connectorToken = converter.connectorTokens(i);
+                if (connectorToken != _token) {
+                    address[] memory path = getPath(connectorToken, _converterRegistry);
+                    <span class="missing-if-branch" title="else path not taken" >E</span>if (path.length &gt; 0)
+                        return getExtendedArray(_token, smartTokens[n], path);
+                }
+            }
+        }
+&nbsp;
+        return new address[](0);
+    }
+&nbsp;
+    /**
+      * @dev merges two paths with a common suffix into one
+      * 
+      * @param _sourcePath address of the source path
+      * @param _targetPath address of the target path
+      * 
+      * @return merged path
+    */
+    function getShortestPath(address[] memory _sourcePath, address[] memory _targetPath) private pure returns (address[] memory) {
+        if (_sourcePath.length &gt; 0 &amp;&amp; _targetPath.length &gt; 0) {
+            uint256 i = _sourcePath.length;
+            uint256 j = _targetPath.length;
+            while (i &gt; 0 &amp;&amp; j &gt; 0 &amp;&amp; _sourcePath[i - 1] == _targetPath[j - 1]) {
+                i--;
+                j--;
+            }
+&nbsp;
+            address[] memory path = new address[](i + j + 1);
+            for (uint256 m = 0; m &lt;= i; m++)
+                path[m] = _sourcePath[m];
+            for (uint256 n = j; n &gt; 0; n--)
+                path[path.length - n] = _targetPath[n - 1];
+&nbsp;
+            uint256 length = 0;
+            for (uint256 p = 0; p &lt; path.length; p += 1) {
+                for (uint256 q = p + 2; q &lt; path.length - p % 2; q += 2) {
+                    if (path[p] == path[q])
+                        p = q;
+                }
+                path[length++] = path[p];
+            }
+&nbsp;
+            return getPartialArray(path, length);
+        }
+&nbsp;
+        return new address[](0);
+    }
+&nbsp;
+    /**
+      * @dev creates a new array containing a single item
+      * 
+      * @param _item item
+      * 
+      * @return initial array
+    */
+    function getInitialArray(address _item) private pure returns (address[] memory) {
+        address[] memory array = new address[](1);
+        array[0] = _item;
+        return array;
+    }
+&nbsp;
+    /**
+      * @dev prepends two items to the beginning of an array
+      * 
+      * @param _item0 first item
+      * @param _item1 second item
+      * @param _array initial array
+      * 
+      * @return extended array
+    */
+    function getExtendedArray(address _item0, address _item1, address[] memory _array) private pure returns (address[] memory) {
+        address[] memory array = new address[](2 + _array.length);
+        array[0] = _item0;
+        array[1] = _item1;
+        for (uint256 i = 0; i &lt; _array.length; i++)
+            array[2 + i] = _array[i];
+        return array;
+    }
+&nbsp;
+    /**
+      * @dev extracts the prefix of a given array
+      * 
+      * @param _array given array
+      * @param _length prefix length
+      * 
+      * @return partial array
+    */
+    function getPartialArray(address[] memory _array, uint256 _length) private pure returns (address[] memory) {
+        address[] memory array = new address[](_length);
+        for (uint256 i = 0; i &lt; _length; i++)
+            array[i] = _array[i];
+        return array;
+    }
+}
+&nbsp;</pre></td></tr>
+</table></pre>
+<div class='push'></div><!-- for sticky footer -->
+</div><!-- /wrapper -->
+<div class='footer quiet pad2 space-top1 center small'>
+  Code coverage
+  generated by <a href="http://istanbul-js.org/" target="_blank">istanbul</a> at Tue May 26 2020 20:10:22 GMT+0800 (GMT+08:00)
+</div>
+</div>
+<script src="../prettify.js"></script>
+<script>
+window.onload = function () {
+        if (typeof prettyPrint === 'function') {
+            prettyPrint();
+        }
+};
+</script>
+<script src="../sorter.js"></script>
+</body>
+</html>

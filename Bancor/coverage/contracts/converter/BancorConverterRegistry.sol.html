@@ -1,0 +1,1514 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <title>Code coverage report for contracts/converter/BancorConverterRegistry.sol</title>
+    <meta charset="utf-8" />
+    <link rel="stylesheet" href="../../prettify.css" />
+    <link rel="stylesheet" href="../../base.css" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <style type='text/css'>
+        .coverage-summary .sorter {
+            background-image: url(../../sort-arrow-sprite.png);
+        }
+    </style>
+</head>
+<body>
+<div class='wrapper'>
+  <div class='pad1'>
+    <h1>
+      <a href="../../index.html">all files</a> / <a href="index.html">contracts/converter/</a> BancorConverterRegistry.sol
+    </h1>
+    <div class='clearfix'>
+      <div class='fl pad1y space-right2'>
+        <span class="strong">81.91% </span>
+        <span class="quiet">Statements</span>
+        <span class='fraction'>77/94</span>
+      </div>
+      <div class='fl pad1y space-right2'>
+        <span class="strong">81.82% </span>
+        <span class="quiet">Branches</span>
+        <span class='fraction'>18/22</span>
+      </div>
+      <div class='fl pad1y space-right2'>
+        <span class="strong">56.25% </span>
+        <span class="quiet">Functions</span>
+        <span class='fraction'>18/32</span>
+      </div>
+      <div class='fl pad1y space-right2'>
+        <span class="strong">82.11% </span>
+        <span class="quiet">Lines</span>
+        <span class='fraction'>78/95</span>
+      </div>
+    </div>
+  </div>
+  <div class='status-line high'></div>
+<pre><table class="coverage">
+<tr><td class="line-count quiet">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41
+42
+43
+44
+45
+46
+47
+48
+49
+50
+51
+52
+53
+54
+55
+56
+57
+58
+59
+60
+61
+62
+63
+64
+65
+66
+67
+68
+69
+70
+71
+72
+73
+74
+75
+76
+77
+78
+79
+80
+81
+82
+83
+84
+85
+86
+87
+88
+89
+90
+91
+92
+93
+94
+95
+96
+97
+98
+99
+100
+101
+102
+103
+104
+105
+106
+107
+108
+109
+110
+111
+112
+113
+114
+115
+116
+117
+118
+119
+120
+121
+122
+123
+124
+125
+126
+127
+128
+129
+130
+131
+132
+133
+134
+135
+136
+137
+138
+139
+140
+141
+142
+143
+144
+145
+146
+147
+148
+149
+150
+151
+152
+153
+154
+155
+156
+157
+158
+159
+160
+161
+162
+163
+164
+165
+166
+167
+168
+169
+170
+171
+172
+173
+174
+175
+176
+177
+178
+179
+180
+181
+182
+183
+184
+185
+186
+187
+188
+189
+190
+191
+192
+193
+194
+195
+196
+197
+198
+199
+200
+201
+202
+203
+204
+205
+206
+207
+208
+209
+210
+211
+212
+213
+214
+215
+216
+217
+218
+219
+220
+221
+222
+223
+224
+225
+226
+227
+228
+229
+230
+231
+232
+233
+234
+235
+236
+237
+238
+239
+240
+241
+242
+243
+244
+245
+246
+247
+248
+249
+250
+251
+252
+253
+254
+255
+256
+257
+258
+259
+260
+261
+262
+263
+264
+265
+266
+267
+268
+269
+270
+271
+272
+273
+274
+275
+276
+277
+278
+279
+280
+281
+282
+283
+284
+285
+286
+287
+288
+289
+290
+291
+292
+293
+294
+295
+296
+297
+298
+299
+300
+301
+302
+303
+304
+305
+306
+307
+308
+309
+310
+311
+312
+313
+314
+315
+316
+317
+318
+319
+320
+321
+322
+323
+324
+325
+326
+327
+328
+329
+330
+331
+332
+333
+334
+335
+336
+337
+338
+339
+340
+341
+342
+343
+344
+345
+346
+347
+348
+349
+350
+351
+352
+353
+354
+355
+356
+357
+358
+359
+360
+361
+362
+363
+364
+365
+366
+367
+368
+369
+370
+371
+372
+373
+374
+375
+376
+377
+378
+379
+380
+381
+382
+383
+384
+385
+386
+387
+388
+389
+390
+391
+392
+393
+394
+395
+396
+397
+398
+399
+400
+401
+402
+403
+404
+405
+406
+407
+408
+409
+410
+411
+412
+413
+414
+415
+416
+417
+418
+419
+420
+421
+422
+423
+424
+425
+426
+427
+428
+429
+430
+431
+432
+433
+434
+435
+436
+437
+438
+439
+440
+441
+442
+443
+444
+445
+446
+447
+448
+449
+450
+451
+452
+453
+454
+455
+456
+457
+458
+459
+460
+461
+462
+463
+464
+465
+466
+467
+468
+469
+470
+471
+472
+473
+474
+475
+476
+477
+478
+479
+480
+481
+482
+483
+484</td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">21×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">15×</span>
+<span class="cline-any cline-yes">15×</span>
+<span class="cline-any cline-yes">15×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">15×</span>
+<span class="cline-any cline-yes">14×</span>
+<span class="cline-any cline-yes">12×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">2×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">14×</span>
+<span class="cline-any cline-yes">26×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">14×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">14×</span>
+<span class="cline-any cline-yes">14×</span>
+<span class="cline-any cline-yes">14×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">14×</span>
+<span class="cline-any cline-yes">7×</span>
+<span class="cline-any cline-yes">6×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">7×</span>
+<span class="cline-any cline-yes">13×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">2288×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">904×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">3×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">21×</span>
+<span class="cline-any cline-yes">21×</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">21×</span>
+<span class="cline-any cline-yes">21×</span>
+<span class="cline-any cline-yes">39×</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">21×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">71×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">66×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">66×</span>
+<span class="cline-any cline-yes">30×</span>
+<span class="cline-any cline-yes">30×</span>
+<span class="cline-any cline-yes">30×</span>
+<span class="cline-any cline-yes">18×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">53×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">21×</span>
+<span class="cline-any cline-yes">21×</span>
+<span class="cline-any cline-yes">21×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">21×</span>
+<span class="cline-any cline-yes">39×</span>
+<span class="cline-any cline-yes">39×</span>
+<span class="cline-any cline-yes">39×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">21×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">15×</span>
+<span class="cline-any cline-yes">14×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">14×</span>
+<span class="cline-any cline-yes">7×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">12×</span>
+<span class="cline-any cline-yes">12×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">6×</span>
+<span class="cline-any cline-yes">6×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">28×</span>
+<span class="cline-any cline-yes">28×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">14×</span>
+<span class="cline-any cline-yes">14×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">66×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">66×</span>
+<span class="cline-any cline-yes">66×</span>
+<span class="cline-any cline-yes">66×</span>
+<span class="cline-any cline-yes">66×</span>
+<span class="cline-any cline-yes">66×</span>
+<span class="cline-any cline-yes">10×</span>
+<span class="cline-any cline-yes">10×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">66×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">30×</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">30×</span>
+<span class="cline-any cline-yes">48×</span>
+<span class="cline-any cline-yes">12×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">18×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">87×</span>
+<span class="cline-any cline-yes">87×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">87×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">87×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">pragma solidity 0.4.26;
+import '../utility/ContractRegistryClient.sol';
+import './interfaces/IBancorConverterRegistry.sol';
+import './interfaces/IBancorConverterRegistryData.sol';
+import '../token/interfaces/ISmartToken.sol';
+import '../token/interfaces/ISmartTokenController.sol';
+&nbsp;
+/**
+  * @dev The BancorConverterRegistry maintains a list of all active converters in the Bancor Network.
+  *
+  * Since converters can be upgraded and thus their address can change, the registry actually keeps smart tokens internally and not the converters themselves.
+  * The active converter for each smart token can be easily accessed by querying the smart token owner.
+  *
+  * The registry exposes 3 differnet lists that can be accessed and iterated, based on the use-case of the caller:
+  * - Smart tokens - can be used to get all the latest / historical data in the network
+  * - Liquidity pools - can be used to get all liquidity pools for funding, liquidation etc.
+  * - Convertible tokens - can be used to get all tokens that can be converted in the network (excluding pool
+  *   tokens), and for each one - all smart tokens that hold it in their reserves
+  *
+  *
+  * The contract fires events whenever one of the primitives is added to or removed from the registry
+  *
+  * The contract is upgradable.
+*/
+contract BancorConverterRegistry is IBancorConverterRegistry, ContractRegistryClient {
+    /**
+      * @dev triggered when a smart token is added to the registry
+      * 
+      * @param _smartToken smart token
+    */
+    event SmartTokenAdded(address indexed _smartToken);
+&nbsp;
+    /**
+      * @dev triggered when a smart token is removed from the registry
+      * 
+      * @param _smartToken smart token
+    */
+    event SmartTokenRemoved(address indexed _smartToken);
+&nbsp;
+    /**
+      * @dev triggered when a liquidity pool is added to the registry
+      * 
+      * @param _liquidityPool liquidity pool
+    */
+    event LiquidityPoolAdded(address indexed _liquidityPool);
+&nbsp;
+    /**
+      * @dev triggered when a liquidity pool is removed from the registry
+      * 
+      * @param _liquidityPool liquidity pool
+    */
+    event LiquidityPoolRemoved(address indexed _liquidityPool);
+&nbsp;
+    /**
+      * @dev triggered when a convertible token is added to the registry
+      * 
+      * @param _convertibleToken convertible token
+      * @param _smartToken associated smart token
+    */
+    event ConvertibleTokenAdded(address indexed _convertibleToken, address indexed _smartToken);
+&nbsp;
+    /**
+      * @dev triggered when a convertible token is removed from the registry
+      * 
+      * @param _convertibleToken convertible token
+      * @param _smartToken associated smart token
+    */
+    event ConvertibleTokenRemoved(address indexed _convertibleToken, address indexed _smartToken);
+&nbsp;
+    /**
+      * @dev initializes a new BancorConverterRegistry instance
+      * 
+      * @param _registry address of a contract registry contract
+    */
+    constructor(IContractRegistry _registry) ContractRegistryClient(_registry) public {
+    }
+&nbsp;
+    /**
+      * @dev adds a converter to the registry
+      * anyone can add a converter to the registry, as long as the converter is active and valid
+      * note that a liquidity pool converter can be added only if no converter with the same reserve-configuration is already registered
+      * 
+      * @param _converter converter
+    */
+    function addConverter(IBancorConverter _converter) external {
+        // validate input
+        require(isConverterValid(_converter) &amp;&amp; !isSimilarLiquidityPoolRegistered(_converter));
+&nbsp;
+        IBancorConverterRegistryData converterRegistryData = IBancorConverterRegistryData(addressOf(BANCOR_CONVERTER_REGISTRY_DATA));
+        ISmartToken token = ISmartTokenController(_converter).token();
+        uint reserveTokenCount = _converter.connectorTokenCount();
+&nbsp;
+        // add the smart token
+        addSmartToken(converterRegistryData, token);
+        if (reserveTokenCount &gt; 1)
+            addLiquidityPool(converterRegistryData, token);
+        else
+            addConvertibleToken(converterRegistryData, token, token);
+&nbsp;
+        // add all reserve tokens
+        for (uint i = 0; i &lt; reserveTokenCount; i++)
+            addConvertibleToken(converterRegistryData, _converter.connectorTokens(i), token);
+    }
+&nbsp;
+    /**
+      * @dev removes a converter from the registry
+      * anyone can remove invalid or inactive converters from the registry
+      * note that the owner can also remove valid converters
+      * 
+      * @param _converter converter
+    */
+    function removeConverter(IBancorConverter _converter) external {
+      // validate input
+        <span class="missing-if-branch" title="else path not taken" >E</span>require(msg.sender == owner || !isConverterValid(_converter));
+&nbsp;
+        IBancorConverterRegistryData converterRegistryData = IBancorConverterRegistryData(addressOf(BANCOR_CONVERTER_REGISTRY_DATA));
+        ISmartToken token = ISmartTokenController(_converter).token();
+        uint reserveTokenCount = _converter.connectorTokenCount();
+&nbsp;
+        // remove the smart token
+        removeSmartToken(converterRegistryData, token);
+        if (reserveTokenCount &gt; 1)
+            removeLiquidityPool(converterRegistryData, token);
+        else
+            removeConvertibleToken(converterRegistryData, token, token);
+&nbsp;
+        // remove all reserve tokens
+        for (uint i = 0; i &lt; reserveTokenCount; i++)
+            removeConvertibleToken(converterRegistryData, _converter.connectorTokens(i), token);
+    }
+&nbsp;
+    /**
+      * @dev returns the number of smart tokens in the registry
+      * 
+      * @return number of smart tokens
+    */
+<span class="fstat-no" title="function not covered" >    function getSmartTokenCount() external view returns (uint</span>) {
+<span class="cstat-no" title="statement not covered" >        return IBancorConverterRegistryData(addressOf(BANCOR_CONVERTER_REGISTRY_DATA)).getSmartTokenCount();</span>
+    }
+&nbsp;
+    /**
+      * @dev returns the list of smart tokens in the registry
+      * 
+      * @return list of smart tokens
+    */
+<span class="fstat-no" title="function not covered" >    function getSmartTokens() external view returns (address[]</span>) {
+<span class="cstat-no" title="statement not covered" >        return IBancorConverterRegistryData(addressOf(BANCOR_CONVERTER_REGISTRY_DATA)).getSmartTokens();</span>
+    }
+&nbsp;
+    /**
+      * @dev returns the smart token at a given index
+      * 
+      * @param _index index
+      * @return smart token at the given index
+    */
+<span class="fstat-no" title="function not covered" >    function getSmartToken(uint _index) external view returns (address</span>) {
+<span class="cstat-no" title="statement not covered" >        return IBancorConverterRegistryData(addressOf(BANCOR_CONVERTER_REGISTRY_DATA)).getSmartToken(_index);</span>
+    }
+&nbsp;
+    /**
+      * @dev checks whether or not a given value is a smart token
+      * 
+      * @param _value value
+      * @return true if the given value is a smart token, false if not
+    */
+    function isSmartToken(address _value) external view returns (bool) {
+        return IBancorConverterRegistryData(addressOf(BANCOR_CONVERTER_REGISTRY_DATA)).isSmartToken(_value);
+    }
+&nbsp;
+    /**
+      * @dev returns the number of liquidity pools in the registry
+      * 
+      * @return number of liquidity pools
+    */
+<span class="fstat-no" title="function not covered" >    function getLiquidityPoolCount() external view returns (uint</span>) {
+<span class="cstat-no" title="statement not covered" >        return IBancorConverterRegistryData(addressOf(BANCOR_CONVERTER_REGISTRY_DATA)).getLiquidityPoolCount();</span>
+    }
+&nbsp;
+    /**
+      * @dev returns the list of liquidity pools in the registry
+      * 
+      * @return list of liquidity pools
+    */
+<span class="fstat-no" title="function not covered" >    function getLiquidityPools() external view returns (address[]</span>) {
+<span class="cstat-no" title="statement not covered" >        return IBancorConverterRegistryData(addressOf(BANCOR_CONVERTER_REGISTRY_DATA)).getLiquidityPools();</span>
+    }
+&nbsp;
+    /**
+      * @dev returns the liquidity pool at a given index
+      * 
+      * @param _index index
+      * @return liquidity pool at the given index
+    */
+<span class="fstat-no" title="function not covered" >    function getLiquidityPool(uint _index) external view returns (address</span>) {
+<span class="cstat-no" title="statement not covered" >        return IBancorConverterRegistryData(addressOf(BANCOR_CONVERTER_REGISTRY_DATA)).getLiquidityPool(_index);</span>
+    }
+&nbsp;
+    /**
+      * @dev checks whether or not a given value is a liquidity pool
+      * 
+      * @param _value value
+      * @return true if the given value is a liquidity pool, false if not
+    */
+<span class="fstat-no" title="function not covered" >    function isLiquidityPool(address _value) external view returns (bool</span>) {
+<span class="cstat-no" title="statement not covered" >        return IBancorConverterRegistryData(addressOf(BANCOR_CONVERTER_REGISTRY_DATA)).isLiquidityPool(_value);</span>
+    }
+&nbsp;
+    /**
+      * @dev returns the number of convertible tokens in the registry
+      * 
+      * @return number of convertible tokens
+    */
+<span class="fstat-no" title="function not covered" >    function getConvertibleTokenCount() external view returns (uint</span>) {
+<span class="cstat-no" title="statement not covered" >        return IBancorConverterRegistryData(addressOf(BANCOR_CONVERTER_REGISTRY_DATA)).getConvertibleTokenCount();</span>
+    }
+&nbsp;
+    /**
+      * @dev returns the list of convertible tokens in the registry
+      * 
+      * @return list of convertible tokens
+    */
+<span class="fstat-no" title="function not covered" >    function getConvertibleTokens() external view returns (address[]</span>) {
+<span class="cstat-no" title="statement not covered" >        return IBancorConverterRegistryData(addressOf(BANCOR_CONVERTER_REGISTRY_DATA)).getConvertibleTokens();</span>
+    }
+&nbsp;
+    /**
+      * @dev returns the convertible token at a given index
+      * 
+      * @param _index index
+      * @return convertible token at the given index
+    */
+<span class="fstat-no" title="function not covered" >    function getConvertibleToken(uint _index) external view returns (address</span>) {
+<span class="cstat-no" title="statement not covered" >        return IBancorConverterRegistryData(addressOf(BANCOR_CONVERTER_REGISTRY_DATA)).getConvertibleToken(_index);</span>
+    }
+&nbsp;
+    /**
+      * @dev checks whether or not a given value is a convertible token
+      * 
+      * @param _value value
+      * @return true if the given value is a convertible token, false if not
+    */
+<span class="fstat-no" title="function not covered" >    function isConvertibleToken(address _value) external view returns (bool</span>) {
+<span class="cstat-no" title="statement not covered" >        return IBancorConverterRegistryData(addressOf(BANCOR_CONVERTER_REGISTRY_DATA)).isConvertibleToken(_value);</span>
+    }
+&nbsp;
+    /**
+      * @dev returns the number of smart tokens associated with a given convertible token
+      * 
+      * @param _convertibleToken convertible token
+      * @return number of smart tokens associated with the given convertible token
+    */
+<span class="fstat-no" title="function not covered" >    function getConvertibleTokenSmartTokenCount(address _convertibleToken) external view returns (uint</span>) {
+<span class="cstat-no" title="statement not covered" >        return IBancorConverterRegistryData(addressOf(BANCOR_CONVERTER_REGISTRY_DATA)).getConvertibleTokenSmartTokenCount(_convertibleToken);</span>
+    }
+&nbsp;
+    /**
+      * @dev returns the list of smart tokens associated with a given convertible token
+      * 
+      * @param _convertibleToken convertible token
+      * @return list of smart tokens associated with the given convertible token
+    */
+    function getConvertibleTokenSmartTokens(address _convertibleToken) external view returns (address[]) {
+        return IBancorConverterRegistryData(addressOf(BANCOR_CONVERTER_REGISTRY_DATA)).getConvertibleTokenSmartTokens(_convertibleToken);
+    }
+&nbsp;
+    /**
+      * @dev returns the smart token associated with a given convertible token at a given index
+      * 
+      * @param _index index
+      * @return smart token associated with the given convertible token at the given index
+    */
+<span class="fstat-no" title="function not covered" >    function getConvertibleTokenSmartToken(address _convertibleToken, uint _index) external view returns (address</span>) {
+<span class="cstat-no" title="statement not covered" >        return IBancorConverterRegistryData(addressOf(BANCOR_CONVERTER_REGISTRY_DATA)).getConvertibleTokenSmartToken(_convertibleToken, _index);</span>
+    }
+&nbsp;
+    /**
+      * @dev checks whether or not a given value is a smart token of a given convertible token
+      * 
+      * @param _convertibleToken convertible token
+      * @param _value value
+      * @return true if the given value is a smart token of the given convertible token, false if not
+    */
+<span class="fstat-no" title="function not covered" >    function isConvertibleTokenSmartToken(address _convertibleToken, address _value) external view returns (bool</span>) {
+<span class="cstat-no" title="statement not covered" >        return IBancorConverterRegistryData(addressOf(BANCOR_CONVERTER_REGISTRY_DATA)).isConvertibleTokenSmartToken(_convertibleToken, _value);</span>
+    }
+&nbsp;
+    /**
+      * @dev returns a list of converters for a given list of smart tokens
+      * this is a utility function that can be used to reduce the number of calls to the contract
+      * 
+      * @param _smartTokens list of smart tokens
+      * @return list of converters
+    */
+    function getConvertersBySmartTokens(address[] _smartTokens) external view returns (address[]) {
+        address[] memory converters = new address[](_smartTokens.length);
+&nbsp;
+        for (uint i = 0; i &lt; _smartTokens.length; i++)
+            converters[i] = ISmartToken(_smartTokens[i]).owner();
+&nbsp;
+        return converters;
+    }
+&nbsp;
+    /**
+      * @dev checks whether or not a given converter is valid
+      * 
+      * @param _converter converter
+      * @return true if the given converter is valid, false if not
+    */
+    function isConverterValid(IBancorConverter _converter) public view returns (bool) {
+        // verify the the smart token has a supply and that the converter is active
+        ISmartToken token = ISmartTokenController(_converter).token();
+        <span class="missing-if-branch" title="if path not taken" >I</span>if (token.totalSupply() == 0 || token.owner() != address(_converter))
+<span class="cstat-no" title="statement not covered" >            return false;</span>
+&nbsp;
+        // verify that the converter holds balance in each of its reserves
+        uint reserveTokenCount = _converter.connectorTokenCount();
+        for (uint i = 0; i &lt; reserveTokenCount; i++) {
+            <span class="missing-if-branch" title="if path not taken" >I</span>if (_converter.connectorTokens(i).balanceOf(_converter) == 0)
+<span class="cstat-no" title="statement not covered" >                return false;</span>
+        }
+&nbsp;
+        return true;
+    }
+&nbsp;
+    /**
+      * @dev searches for a liquidity pool with specific reserve tokens/ratios
+      * 
+      * @param _reserveTokens   reserve tokens
+      * @param _reserveRatios   reserve ratios
+      * @return the liquidity pool, or zero if no such liquidity pool exists
+    */
+    function getLiquidityPoolByReserveConfig(address[] memory _reserveTokens, uint[] memory _reserveRatios) public view returns (ISmartToken) {
+        // verify that the input parameters represent a valid liquidity pool
+        if (_reserveTokens.length == _reserveRatios.length &amp;&amp; _reserveTokens.length &gt; 1) {
+            // get the smart tokens of the least frequent token (optimization)
+            address[] memory convertibleTokenSmartTokens = getLeastFrequentTokenSmartTokens(_reserveTokens);
+            // search for a converter with an identical reserve-configuration
+            for (uint i = 0; i &lt; convertibleTokenSmartTokens.length; i++) {
+                ISmartToken smartToken = ISmartToken(convertibleTokenSmartTokens[i]);
+                IBancorConverter converter = IBancorConverter(smartToken.owner());
+                if (isConverterReserveConfigEqual(converter, _reserveTokens, _reserveRatios))
+                    return smartToken;
+            }
+        }
+&nbsp;
+        return ISmartToken(0);
+    }
+&nbsp;
+    /**
+      * @dev checks if a liquidity pool with given reserve tokens/ratios is already registered
+      * 
+      * @param _converter converter with specific reserve tokens/ratios
+      * @return if a liquidity pool with the same reserve tokens/ratios is already registered
+    */
+    function isSimilarLiquidityPoolRegistered(IBancorConverter _converter) internal view returns (bool) {
+        uint reserveTokenCount = _converter.connectorTokenCount();
+        address[] memory reserveTokens = new address[](reserveTokenCount);
+        uint[] memory reserveRatios = new uint[](reserveTokenCount);
+&nbsp;
+        // get the reserve-configuration of the converter
+        for (uint i = 0; i &lt; reserveTokenCount; i++) {
+            IERC20Token reserveToken = _converter.connectorTokens(i);
+            reserveTokens[i] = reserveToken;
+            reserveRatios[i] = getReserveRatio(_converter, reserveToken);
+        }
+&nbsp;
+        // return if a liquidity pool with the same reserve tokens/ratios is already registered
+        return getLiquidityPoolByReserveConfig(reserveTokens, reserveRatios) != ISmartToken(0);
+    }
+&nbsp;
+    /**
+      * @dev adds a smart token to the registry
+      * 
+      * @param _smartToken smart token
+    */
+    function addSmartToken(IBancorConverterRegistryData _converterRegistryData, address _smartToken) internal {
+        _converterRegistryData.addSmartToken(_smartToken);
+        emit SmartTokenAdded(_smartToken);
+    }
+&nbsp;
+    /**
+      * @dev removes a smart token from the registry
+      * 
+      * @param _smartToken smart token
+    */
+    function removeSmartToken(IBancorConverterRegistryData _converterRegistryData, address _smartToken) internal {
+        _converterRegistryData.removeSmartToken(_smartToken);
+        emit SmartTokenRemoved(_smartToken);
+    }
+&nbsp;
+    /**
+      * @dev adds a liquidity pool to the registry
+      * 
+      * @param _liquidityPool liquidity pool
+    */
+    function addLiquidityPool(IBancorConverterRegistryData _converterRegistryData, address _liquidityPool) internal {
+        _converterRegistryData.addLiquidityPool(_liquidityPool);
+        emit LiquidityPoolAdded(_liquidityPool);
+    }
+&nbsp;
+    /**
+      * @dev removes a liquidity pool from the registry
+      * 
+      * @param _liquidityPool liquidity pool
+    */
+    function removeLiquidityPool(IBancorConverterRegistryData _converterRegistryData, address _liquidityPool) internal {
+        _converterRegistryData.removeLiquidityPool(_liquidityPool);
+        emit LiquidityPoolRemoved(_liquidityPool);
+    }
+&nbsp;
+    /**
+      * @dev adds a convertible token to the registry
+      * 
+      * @param _convertibleToken convertible token
+      * @param _smartToken associated smart token
+    */
+    function addConvertibleToken(IBancorConverterRegistryData _converterRegistryData, address _convertibleToken, address _smartToken) internal {
+        _converterRegistryData.addConvertibleToken(_convertibleToken, _smartToken);
+        emit ConvertibleTokenAdded(_convertibleToken, _smartToken);
+    }
+&nbsp;
+    /**
+      * @dev removes a convertible token from the registry
+      * 
+      * @param _convertibleToken convertible token
+      * @param _smartToken associated smart token
+    */
+    function removeConvertibleToken(IBancorConverterRegistryData _converterRegistryData, address _convertibleToken, address _smartToken) internal {
+        _converterRegistryData.removeConvertibleToken(_convertibleToken, _smartToken);
+        emit ConvertibleTokenRemoved(_convertibleToken, _smartToken);
+    }
+&nbsp;
+    function getLeastFrequentTokenSmartTokens(address[] memory _tokens) private view returns (address[] memory) {
+        IBancorConverterRegistryData bancorConverterRegistryData = IBancorConverterRegistryData(addressOf(BANCOR_CONVERTER_REGISTRY_DATA));
+&nbsp;
+        // find the token that has the smallest number of smart tokens
+        uint minSmartTokenCount = bancorConverterRegistryData.getConvertibleTokenSmartTokenCount(_tokens[0]);
+        address[] memory smartTokens = bancorConverterRegistryData.getConvertibleTokenSmartTokens(_tokens[0]);
+        for (uint i = 1; i &lt; _tokens.length; i++) {
+            uint convertibleTokenSmartTokenCount = bancorConverterRegistryData.getConvertibleTokenSmartTokenCount(_tokens[i]);
+            if (minSmartTokenCount &gt; convertibleTokenSmartTokenCount) {
+                minSmartTokenCount = convertibleTokenSmartTokenCount;
+                smartTokens = bancorConverterRegistryData.getConvertibleTokenSmartTokens(_tokens[i]);
+            }
+        }
+        return smartTokens;
+    }
+&nbsp;
+    function isConverterReserveConfigEqual(IBancorConverter _converter, address[] memory _reserveTokens, uint[] memory _reserveRatios) private view returns (bool) {
+        <span class="missing-if-branch" title="if path not taken" >I</span>if (_reserveTokens.length != _converter.connectorTokenCount())
+<span class="cstat-no" title="statement not covered" >            return false;</span>
+&nbsp;
+        for (uint i = 0; i &lt; _reserveTokens.length; i++) {
+            if (_reserveRatios[i] != getReserveRatio(_converter, _reserveTokens[i]))
+                return false;
+        }
+&nbsp;
+        return true;
+    }
+&nbsp;
+    bytes4 private constant CONNECTORS_FUNC_SELECTOR = bytes4(uint256(keccak256("connectors(address)") &gt;&gt; (256 - 4 * 8)));
+&nbsp;
+    function getReserveRatio(address _converter, address _reserveToken) private view returns (uint256) {
+        uint256[2] memory ret;
+        bytes memory data = abi.encodeWithSelector(CONNECTORS_FUNC_SELECTOR, _reserveToken);
+&nbsp;
+        assembly {
+            let success := staticcall(
+                gas,           // gas remaining
+                _converter,    // destination address
+                add(data, 32), // input buffer (starts after the first 32 bytes in the `data` array)
+                mload(data),   // input length (loaded from the first 32 bytes in the `data` array)
+                ret,           // output buffer
+                64             // output length
+            )
+            if iszero(success) {
+                revert(0, 0)
+            }
+        }
+&nbsp;
+        return ret[1];
+    }
+}
+&nbsp;</pre></td></tr>
+</table></pre>
+<div class='push'></div><!-- for sticky footer -->
+</div><!-- /wrapper -->
+<div class='footer quiet pad2 space-top1 center small'>
+  Code coverage
+  generated by <a href="http://istanbul-js.org/" target="_blank">istanbul</a> at Tue May 26 2020 20:10:22 GMT+0800 (GMT+08:00)
+</div>
+</div>
+<script src="../../prettify.js"></script>
+<script>
+window.onload = function () {
+        if (typeof prettyPrint === 'function') {
+            prettyPrint();
+        }
+};
+</script>
+<script src="../../sorter.js"></script>
+</body>
+</html>
