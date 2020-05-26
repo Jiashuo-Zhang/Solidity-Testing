@@ -1,0 +1,75 @@
+============================= test session starts ==============================
+platform darwin -- Python 3.6.6, pytest-4.4.0, py-1.8.1, pluggy-0.13.1
+rootdir: /Users/zhangjiashuo/Desktop/DeFi-Testing/market-maker-keeper
+plugins: asyncio-0.10.0, timeout-1.2.1, web3-5.6.0, cov-2.5.1, mock-1.6.3, requests-mock-1.6.0
+collected 97 items
+
+tests/test_airswap_market_maker_keeper.py ................               [ 16%]
+tests/test_band.py ......                                                [ 22%]
+tests/test_etherdelta_market_maker_keeper.py ..........................  [ 49%]
+tests/test_feed.py .                                                     [ 50%]
+tests/test_limit.py .......                                              [ 57%]
+tests/test_oasis_market_maker_cancel.py ...                              [ 60%]
+tests/test_oasis_market_maker_keeper.py ...................              [ 80%]
+tests/test_price_feed.py ............                                    [ 92%]
+tests/test_reloadable_config.py .......                                  [100%]
+
+---------- coverage: platform darwin, python 3.6.6-final-0 -----------
+Name                                                    Stmts   Miss Branch BrPart  Cover
+-----------------------------------------------------------------------------------------
+market_maker_keeper/__init__.py                             0      0      0      0   100%
+market_maker_keeper/airswap_market_maker_keeper.py        252    142     46      5    43%
+market_maker_keeper/band.py                               260     37     72     19    81%
+market_maker_keeper/bibox_market_maker_keeper.py           93     93     22      0     0%
+market_maker_keeper/bitinka_market_maker_keeper.py         96     96     24      0     0%
+market_maker_keeper/bitso_market_maker_keeper.py           97     97     22      0     0%
+market_maker_keeper/bittrex_market_maker_keeper.py         96     96     24      0     0%
+market_maker_keeper/cex_api.py                             63     63     14      0     0%
+market_maker_keeper/coinbase_market_maker_keeper.py       103    103     24      0     0%
+market_maker_keeper/coinbene_market_maker_keeper.py        95     95     24      0     0%
+market_maker_keeper/coinone_market_maker_keeper.py         57     57     12      0     0%
+market_maker_keeper/control_feed.py                         7      5      2      0    22%
+market_maker_keeper/ddex_market_maker_keeper.py           127    127     22      0     0%
+market_maker_keeper/dex_api.py                             71     71     14      0     0%
+market_maker_keeper/dydx_market_maker_keeper.py            98     98     36      0     0%
+market_maker_keeper/ercdex_market_maker_keeper.py          12     12      2      0     0%
+market_maker_keeper/erisx_market_maker_keeper.py          140    140     36      0     0%
+market_maker_keeper/etherdelta_market_maker_keeper.py     194    143     54      1    21%
+market_maker_keeper/ethfinex_market_maker_keeper.py        94     94     18      0     0%
+market_maker_keeper/etoro_market_maker_keeper.py           99     99     22      0     0%
+market_maker_keeper/feed.py                                84     46      4      0    43%
+market_maker_keeper/gas.py                                 20     10      6      0    38%
+market_maker_keeper/gateio_market_maker_keeper.py         106    106     24      0     0%
+market_maker_keeper/gopax_market_maker_keeper.py           99     99     26      0     0%
+market_maker_keeper/hitbtc_market_maker_keeper.py          98     98     24      0     0%
+market_maker_keeper/idex_market_maker_keeper.py           194    194     48      0     0%
+market_maker_keeper/imtoken_pricing_server.py              55     55      4      0     0%
+market_maker_keeper/imtoken_utils.py                      107    107     26      0     0%
+market_maker_keeper/korbit_market_maker_keeper.py          95     95     20      0     0%
+market_maker_keeper/kraken_market_maker_keeper.py         104    104     24      0     0%
+market_maker_keeper/kucoin_market_maker_keeper.py         108    108     26      0     0%
+market_maker_keeper/leverj_market_maker_keeper.py         130    130     42      0     0%
+market_maker_keeper/limit.py                               46      0      8      0   100%
+market_maker_keeper/liquid_market_maker_keeper.py          97     97     24      0     0%
+market_maker_keeper/mpx_market_maker_keeper.py            138    138     20      0     0%
+market_maker_keeper/oasis_market_maker_cancel.py           38     22      8      1    37%
+market_maker_keeper/oasis_market_maker_keeper.py          168    128     26      1    21%
+market_maker_keeper/okcoin_market_maker_keeper.py          93     93     20      0     0%
+market_maker_keeper/okex_market_maker_keeper.py            92     92     20      0     0%
+market_maker_keeper/order_book.py                         219    188     61      0    11%
+market_maker_keeper/order_history_reporter.py              38     26      8      0    26%
+market_maker_keeper/paradex_market_maker_keeper.py        132    132     22      0     0%
+market_maker_keeper/price_feed.py                         203    100     68      0    45%
+market_maker_keeper/reloadable_config.py                   67      3     22      4    92%
+market_maker_keeper/setzer.py                              24     17      4      0    25%
+market_maker_keeper/spread_feed.py                          7      5      2      0    22%
+market_maker_keeper/tethfinex_market_maker_keeper.py      150    150     36      0     0%
+market_maker_keeper/theocean_market_maker_keeper.py       130    130     18      0     0%
+market_maker_keeper/util.py                                 8      4      0      0    50%
+market_maker_keeper/zrx_market_maker_keeper.py            178    178     28      0     0%
+market_maker_keeper/zrxv2_market_maker_keeper.py           26     26      6      0     0%
+-----------------------------------------------------------------------------------------
+TOTAL                                                    5108   4349   1165     31    14%
+
+
+========================== 97 passed in 2.96 seconds ===========================

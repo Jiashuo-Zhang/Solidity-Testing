@@ -1,0 +1,624 @@
+bitso_market_maker_keeper.py
+    LOC: 191
+    LLOC: 106
+    SLOC: 125
+    Comments: 20
+    Single comments: 21
+    Multi: 0
+    Blank: 45
+    - Comment Stats
+        (C % L): 10%
+        (C % S): 16%
+        (C + M % L): 10%
+hitbtc_market_maker_keeper.py
+    LOC: 197
+    LLOC: 110
+    SLOC: 131
+    Comments: 19
+    Single comments: 20
+    Multi: 0
+    Blank: 46
+    - Comment Stats
+        (C % L): 10%
+        (C % S): 15%
+        (C + M % L): 10%
+cex_api.py
+    LOC: 120
+    LLOC: 69
+    SLOC: 72
+    Comments: 21
+    Single comments: 21
+    Multi: 3
+    Blank: 24
+    - Comment Stats
+        (C % L): 18%
+        (C % S): 29%
+        (C + M % L): 20%
+band.py
+    LOC: 431
+    LLOC: 278
+    SLOC: 312
+    Comments: 22
+    Single comments: 28
+    Multi: 0
+    Blank: 91
+    - Comment Stats
+        (C % L): 5%
+        (C % S): 7%
+        (C + M % L): 5%
+oasis_market_maker_keeper.py
+    LOC: 318
+    LLOC: 180
+    SLOC: 224
+    Comments: 26
+    Single comments: 28
+    Multi: 0
+    Blank: 66
+    - Comment Stats
+        (C % L): 8%
+        (C % S): 12%
+        (C + M % L): 8%
+spread_feed.py
+    LOC: 28
+    LLOC: 8
+    SLOC: 8
+    Comments: 16
+    Single comments: 16
+    Multi: 0
+    Blank: 4
+    - Comment Stats
+        (C % L): 57%
+        (C % S): 200%
+        (C + M % L): 57%
+coinbase_market_maker_keeper.py
+    LOC: 204
+    LLOC: 113
+    SLOC: 136
+    Comments: 20
+    Single comments: 21
+    Multi: 0
+    Blank: 47
+    - Comment Stats
+        (C % L): 10%
+        (C % S): 15%
+        (C + M % L): 10%
+etherdelta_market_maker_keeper.py
+    LOC: 378
+    LLOC: 210
+    SLOC: 255
+    Comments: 35
+    Single comments: 35
+    Multi: 0
+    Blank: 88
+    - Comment Stats
+        (C % L): 9%
+        (C % S): 14%
+        (C + M % L): 9%
+gateio_market_maker_keeper.py
+    LOC: 213
+    LLOC: 115
+    SLOC: 142
+    Comments: 21
+    Single comments: 22
+    Multi: 0
+    Blank: 49
+    - Comment Stats
+        (C % L): 10%
+        (C % S): 15%
+        (C + M % L): 10%
+paradex_market_maker_keeper.py
+    LOC: 256
+    LLOC: 142
+    SLOC: 172
+    Comments: 23
+    Single comments: 24
+    Multi: 0
+    Blank: 60
+    - Comment Stats
+        (C % L): 9%
+        (C % S): 13%
+        (C + M % L): 9%
+gas.py
+    LOC: 60
+    LLOC: 23
+    SLOC: 25
+    Comments: 20
+    Single comments: 20
+    Multi: 5
+    Blank: 10
+    - Comment Stats
+        (C % L): 33%
+        (C % S): 80%
+        (C + M % L): 42%
+theocean_market_maker_keeper.py
+    LOC: 254
+    LLOC: 139
+    SLOC: 171
+    Comments: 20
+    Single comments: 21
+    Multi: 0
+    Blank: 62
+    - Comment Stats
+        (C % L): 8%
+        (C % S): 12%
+        (C + M % L): 8%
+bitinka_market_maker_keeper.py
+    LOC: 193
+    LLOC: 106
+    SLOC: 127
+    Comments: 19
+    Single comments: 20
+    Multi: 0
+    Blank: 46
+    - Comment Stats
+        (C % L): 10%
+        (C % S): 15%
+        (C + M % L): 10%
+tethfinex_market_maker_keeper.py
+    LOC: 296
+    LLOC: 163
+    SLOC: 199
+    Comments: 29
+    Single comments: 30
+    Multi: 0
+    Blank: 67
+    - Comment Stats
+        (C % L): 10%
+        (C % S): 15%
+        (C + M % L): 10%
+setzer.py
+    LOC: 75
+    LLOC: 27
+    SLOC: 24
+    Comments: 16
+    Single comments: 16
+    Multi: 18
+    Blank: 17
+    - Comment Stats
+        (C % L): 21%
+        (C % S): 67%
+        (C + M % L): 45%
+ercdex_market_maker_keeper.py
+    LOC: 37
+    LLOC: 14
+    SLOC: 12
+    Comments: 16
+    Single comments: 17
+    Multi: 0
+    Blank: 8
+    - Comment Stats
+        (C % L): 43%
+        (C % S): 133%
+        (C + M % L): 43%
+kraken_market_maker_keeper.py
+    LOC: 209
+    LLOC: 114
+    SLOC: 135
+    Comments: 22
+    Single comments: 23
+    Multi: 0
+    Blank: 51
+    - Comment Stats
+        (C % L): 11%
+        (C % S): 16%
+        (C + M % L): 11%
+util.py
+    LOC: 31
+    LLOC: 8
+    SLOC: 9
+    Comments: 16
+    Single comments: 16
+    Multi: 0
+    Blank: 6
+    - Comment Stats
+        (C % L): 52%
+        (C % S): 178%
+        (C + M % L): 52%
+dydx_market_maker_keeper.py
+    LOC: 195
+    LLOC: 105
+    SLOC: 124
+    Comments: 21
+    Single comments: 21
+    Multi: 5
+    Blank: 45
+    - Comment Stats
+        (C % L): 11%
+        (C % S): 17%
+        (C + M % L): 13%
+oasis_market_maker_cancel.py
+    LOC: 71
+    LLOC: 43
+    SLOC: 40
+    Comments: 16
+    Single comments: 17
+    Multi: 0
+    Blank: 14
+    - Comment Stats
+        (C % L): 23%
+        (C % S): 40%
+        (C + M % L): 23%
+kucoin_market_maker_keeper.py
+    LOC: 215
+    LLOC: 120
+    SLOC: 145
+    Comments: 20
+    Single comments: 21
+    Multi: 0
+    Blank: 49
+    - Comment Stats
+        (C % L): 9%
+        (C % S): 14%
+        (C + M % L): 9%
+price_feed.py
+    LOC: 330
+    LLOC: 211
+    SLOC: 222
+    Comments: 16
+    Single comments: 16
+    Multi: 0
+    Blank: 92
+    - Comment Stats
+        (C % L): 5%
+        (C % S): 7%
+        (C + M % L): 5%
+imtoken_pricing_server.py
+    LOC: 167
+    LLOC: 59
+    SLOC: 102
+    Comments: 35
+    Single comments: 36
+    Multi: 0
+    Blank: 29
+    - Comment Stats
+        (C % L): 21%
+        (C % S): 34%
+        (C + M % L): 21%
+leverj_market_maker_keeper.py
+    LOC: 248
+    LLOC: 145
+    SLOC: 172
+    Comments: 19
+    Single comments: 20
+    Multi: 0
+    Blank: 56
+    - Comment Stats
+        (C % L): 8%
+        (C % S): 11%
+        (C + M % L): 8%
+__init__.py
+    LOC: 0
+    LLOC: 0
+    SLOC: 0
+    Comments: 0
+    Single comments: 0
+    Multi: 0
+    Blank: 0
+    - Comment Stats
+        (C % L): 0%
+        (C % S): 0%
+        (C + M % L): 0%
+dex_api.py
+    LOC: 121
+    LLOC: 79
+    SLOC: 73
+    Comments: 18
+    Single comments: 18
+    Multi: 3
+    Blank: 27
+    - Comment Stats
+        (C % L): 15%
+        (C % S): 25%
+        (C + M % L): 17%
+feed.py
+    LOC: 144
+    LLOC: 85
+    SLOC: 90
+    Comments: 16
+    Single comments: 16
+    Multi: 0
+    Blank: 38
+    - Comment Stats
+        (C % L): 11%
+        (C % S): 18%
+        (C + M % L): 11%
+limit.py
+    LOC: 84
+    LLOC: 53
+    SLOC: 47
+    Comments: 16
+    Single comments: 16
+    Multi: 0
+    Blank: 21
+    - Comment Stats
+        (C % L): 19%
+        (C % S): 34%
+        (C + M % L): 19%
+coinbene_market_maker_keeper.py
+    LOC: 192
+    LLOC: 107
+    SLOC: 127
+    Comments: 19
+    Single comments: 20
+    Multi: 0
+    Blank: 45
+    - Comment Stats
+        (C % L): 10%
+        (C % S): 15%
+        (C + M % L): 10%
+imtoken_utils.py
+    LOC: 211
+    LLOC: 119
+    SLOC: 148
+    Comments: 16
+    Single comments: 16
+    Multi: 0
+    Blank: 47
+    - Comment Stats
+        (C % L): 8%
+        (C % S): 11%
+        (C + M % L): 8%
+zrxv2_market_maker_keeper.py
+    LOC: 66
+    LLOC: 29
+    SLOC: 34
+    Comments: 16
+    Single comments: 17
+    Multi: 0
+    Blank: 15
+    - Comment Stats
+        (C % L): 24%
+        (C % S): 47%
+        (C + M % L): 24%
+control_feed.py
+    LOC: 29
+    LLOC: 9
+    SLOC: 8
+    Comments: 16
+    Single comments: 16
+    Multi: 0
+    Blank: 5
+    - Comment Stats
+        (C % L): 55%
+        (C % S): 200%
+        (C + M % L): 55%
+coinone_market_maker_keeper.py
+    LOC: 137
+    LLOC: 63
+    SLOC: 80
+    Comments: 17
+    Single comments: 17
+    Multi: 3
+    Blank: 37
+    - Comment Stats
+        (C % L): 12%
+        (C % S): 21%
+        (C + M % L): 15%
+korbit_market_maker_keeper.py
+    LOC: 185
+    LLOC: 103
+    SLOC: 123
+    Comments: 19
+    Single comments: 20
+    Multi: 0
+    Blank: 42
+    - Comment Stats
+        (C % L): 10%
+        (C % S): 15%
+        (C + M % L): 10%
+order_book.py
+    LOC: 453
+    LLOC: 238
+    SLOC: 230
+    Comments: 34
+    Single comments: 38
+    Multi: 79
+    Blank: 106
+    - Comment Stats
+        (C % L): 8%
+        (C % S): 15%
+        (C + M % L): 25%
+airswap_market_maker_keeper.py
+    LOC: 491
+    LLOC: 268
+    SLOC: 334
+    Comments: 40
+    Single comments: 42
+    Multi: 0
+    Blank: 115
+    - Comment Stats
+        (C % L): 8%
+        (C % S): 12%
+        (C + M % L): 8%
+mpx_market_maker_keeper.py
+    LOC: 265
+    LLOC: 147
+    SLOC: 180
+    Comments: 21
+    Single comments: 22
+    Multi: 0
+    Blank: 63
+    - Comment Stats
+        (C % L): 8%
+        (C % S): 12%
+        (C + M % L): 8%
+ddex_market_maker_keeper.py
+    LOC: 245
+    LLOC: 137
+    SLOC: 164
+    Comments: 23
+    Single comments: 24
+    Multi: 0
+    Blank: 57
+    - Comment Stats
+        (C % L): 9%
+        (C % S): 14%
+        (C + M % L): 9%
+bibox_market_maker_keeper.py
+    LOC: 186
+    LLOC: 102
+    SLOC: 122
+    Comments: 19
+    Single comments: 20
+    Multi: 0
+    Blank: 44
+    - Comment Stats
+        (C % L): 10%
+        (C % S): 16%
+        (C + M % L): 10%
+reloadable_config.py
+    LOC: 131
+    LLOC: 71
+    SLOC: 70
+    Comments: 22
+    Single comments: 22
+    Multi: 13
+    Blank: 26
+    - Comment Stats
+        (C % L): 17%
+        (C % S): 31%
+        (C + M % L): 27%
+okex_market_maker_keeper.py
+    LOC: 187
+    LLOC: 100
+    SLOC: 122
+    Comments: 19
+    Single comments: 20
+    Multi: 0
+    Blank: 45
+    - Comment Stats
+        (C % L): 10%
+        (C % S): 16%
+        (C + M % L): 10%
+order_history_reporter.py
+    LOC: 89
+    LLOC: 42
+    SLOC: 51
+    Comments: 16
+    Single comments: 16
+    Multi: 0
+    Blank: 22
+    - Comment Stats
+        (C % L): 18%
+        (C % S): 31%
+        (C + M % L): 18%
+liquid_market_maker_keeper.py
+    LOC: 198
+    LLOC: 109
+    SLOC: 129
+    Comments: 21
+    Single comments: 22
+    Multi: 0
+    Blank: 47
+    - Comment Stats
+        (C % L): 11%
+        (C % S): 16%
+        (C + M % L): 11%
+gopax_market_maker_keeper.py
+    LOC: 198
+    LLOC: 107
+    SLOC: 132
+    Comments: 19
+    Single comments: 19
+    Multi: 0
+    Blank: 47
+    - Comment Stats
+        (C % L): 10%
+        (C % S): 14%
+        (C + M % L): 10%
+etoro_market_maker_keeper.py
+    LOC: 195
+    LLOC: 108
+    SLOC: 129
+    Comments: 20
+    Single comments: 21
+    Multi: 0
+    Blank: 45
+    - Comment Stats
+        (C % L): 10%
+        (C % S): 16%
+        (C + M % L): 10%
+idex_market_maker_keeper.py
+    LOC: 358
+    LLOC: 206
+    SLOC: 238
+    Comments: 40
+    Single comments: 41
+    Multi: 0
+    Blank: 79
+    - Comment Stats
+        (C % L): 11%
+        (C % S): 17%
+        (C + M % L): 11%
+bittrex_market_maker_keeper.py
+    LOC: 195
+    LLOC: 106
+    SLOC: 128
+    Comments: 21
+    Single comments: 22
+    Multi: 0
+    Blank: 45
+    - Comment Stats
+        (C % L): 11%
+        (C % S): 16%
+        (C + M % L): 11%
+okcoin_market_maker_keeper.py
+    LOC: 188
+    LLOC: 101
+    SLOC: 123
+    Comments: 19
+    Single comments: 20
+    Multi: 0
+    Blank: 45
+    - Comment Stats
+        (C % L): 10%
+        (C % S): 15%
+        (C + M % L): 10%
+erisx_market_maker_keeper.py
+    LOC: 289
+    LLOC: 154
+    SLOC: 181
+    Comments: 19
+    Single comments: 19
+    Multi: 16
+    Blank: 73
+    - Comment Stats
+        (C % L): 7%
+        (C % S): 10%
+        (C + M % L): 12%
+ethfinex_market_maker_keeper.py
+    LOC: 185
+    LLOC: 103
+    SLOC: 123
+    Comments: 19
+    Single comments: 19
+    Multi: 0
+    Blank: 43
+    - Comment Stats
+        (C % L): 10%
+        (C % S): 15%
+        (C + M % L): 10%
+zrx_market_maker_keeper.py
+    LOC: 342
+    LLOC: 190
+    SLOC: 225
+    Comments: 30
+    Single comments: 31
+    Multi: 0
+    Blank: 86
+    - Comment Stats
+        (C % L): 9%
+        (C % S): 13%
+        (C + M % L): 9%
+** Total **
+    LOC: 10081
+    LLOC: 5544
+    SLOC: 6495
+    Comments: 1063
+    Single comments: 1104
+    Multi: 145
+    Blank: 2337
+    - Comment Stats
+        (C % L): 11%
+        (C % S): 16%
+        (C + M % L): 12%

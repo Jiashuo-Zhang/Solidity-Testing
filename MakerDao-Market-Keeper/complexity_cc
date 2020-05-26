@@ -1,0 +1,61 @@
+band.py
+    M 35:4 Band.__init__ - C (17)
+    M 210:4 Bands.read - C (12)
+    M 346:4 Bands._new_sell_orders - C (12)
+    M 382:4 Bands._new_buy_orders - C (12)
+    M 325:4 Bands.new_orders - B (9)
+    M 183:4 NewOrder.__init__ - B (8)
+    C 207:0 Bands - B (8)
+    M 81:4 Band.excessive_orders - B (7)
+    M 251:4 Bands.__init__ - B (7)
+    M 290:4 Bands._outside_any_band_orders - B (7)
+    C 34:0 Band - B (6)
+    M 302:4 Bands.cancellable_orders - B (6)
+oasis_market_maker_keeper.py
+    M 257:4 OasisMarketMakerKeeper.place_order_function - B (7)
+etherdelta_market_maker_keeper.py
+    M 245:4 EtherDeltaMarketMakerKeeper.synchronize_orders - B (9)
+gateio_market_maker_keeper.py
+    M 151:4 GateIOMarketMakerKeeper.synchronize_orders - B (6)
+tethfinex_market_maker_keeper.py
+    M 200:4 TethfinexMarketMakerKeeper.synchronize_orders - B (10)
+dydx_market_maker_keeper.py
+    M 143:4 DyDxMarketMakerKeeper.synchronize_orders - C (14)
+price_feed.py
+    M 255:4 PriceFeedFactory._create_price_feed - D (23)
+    C 249:0 PriceFeedFactory - C (14)
+    M 162:4 WebSocketPriceFeed.get_price - B (7)
+    C 156:0 WebSocketPriceFeed - B (6)
+    M 197:4 AveragePriceFeed.get_price - B (6)
+leverj_market_maker_keeper.py
+    M 183:4 LeverjMarketMakerKeeper.our_available_balance - B (9)
+imtoken_utils.py
+    M 88:4 PriceHandler._get_price_response - C (15)
+    C 27:0 MarketArgs - B (8)
+    M 29:4 MarketArgs.__init__ - B (7)
+    C 65:0 PriceHandler - B (6)
+order_book.py
+    M 179:4 OrderBookManager.get_order_book - B (10)
+    M 272:4 OrderBookManager.replace_orders - B (8)
+    M 376:4 OrderBookManager._thread_refresh_order_book - B (8)
+    M 298:4 OrderBookManager.cancel_all_orders - B (6)
+airswap_market_maker_keeper.py
+    M 390:4 AirswapBands._new_side_orders - C (15)
+    M 218:4 AirswapMarketMakerKeeper._order_handler - C (14)
+    C 295:0 AirswapBands - C (14)
+    M 297:4 AirswapBands.read - C (14)
+    M 346:4 AirswapBands.new_orders - C (11)
+reloadable_config.py
+    M 79:4 ReloadableConfig.get_config - C (11)
+idex_market_maker_keeper.py
+    M 221:4 IdexMarketMakerKeeper.synchronize_orders - B (10)
+    M 332:4 IdexMarketMakerKeeper.balances_match - B (6)
+erisx_market_maker_keeper.py
+    C 35:0 ErisXOrderBookManager - B (8)
+    M 68:4 ErisXOrderBookManager.cancel_orders - B (8)
+    M 102:4 ErisXOrderBookManager._thread_refresh_order_book - B (8)
+zrx_market_maker_keeper.py
+    M 261:4 ZrxMarketMakerKeeper.synchronize_orders - B (6)
+
+43 blocks (classes, functions, methods) analyzed.
+Average complexity: B (9.651162790697674)
