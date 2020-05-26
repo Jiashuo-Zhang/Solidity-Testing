@@ -2,7 +2,7 @@
 
 https://github.com/dydxprotocol/solo
 
-##Coverage:
+## Coverage:
 
 * Stmt Coverage：100%
 * Branch Coverage：100%
