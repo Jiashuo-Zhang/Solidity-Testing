@@ -2,7 +2,7 @@
 
 https://github.com/KyberNetwork/smart-contracts
 
-##Coverage:
+## Coverage:
 
 * Stmt Coverage：100%
 * Branch Coverage：95.3%
