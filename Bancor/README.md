@@ -12,7 +12,7 @@ https://github.com/bancorprotocol/contracts
 
 ## Complexity
 
-**see ./aave-metrics.html**
+**see ./bancor-metrics.html**
 
 * Loc (sum) :   
   * Loc: 6179
