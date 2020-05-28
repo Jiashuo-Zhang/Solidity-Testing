@@ -10,10 +10,27 @@ https://github.com/KyberNetwork/smart-contracts
 
 ## Complexity
 
-**see ./kyber-metrics.html**
+**./kyber-metrics.html**
 
 * Loc (sum) :   
   * Loc: 7116
   * SLoc: 6043
   * Comments: 651
 * Complexity Score (sum): 3712
+
+## Other-Metrics
+
+* CI: travis CI
+
+* Testing tools: Builder
+
+* Test Coverage: Y
+
+* Code Complexity: N
+
+* Code Audits: https://github.com/KyberNetwork/smart-contracts/tree/master/audits
+
+  * BlockchainLabs
+  * ChainSecurity
+
+  
