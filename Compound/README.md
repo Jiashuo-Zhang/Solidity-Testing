@@ -8,10 +8,21 @@ https://github.com/compound-finance/compound-protocol/
 
 ## Complexity
 
-**see ./compound-metrics.html**
+**./compound-metrics.html**
 
 * Loc (sum) :   
   * Loc: 7641
   * SLoc: 7258
   * Comments: 2768
 * Complexity Score (sum): 2868
+
+## Other Metrics
+
+* CI: circleci
+* Testing tools: Jest
+* Test Coverage: Y
+* Code Complexity: N
+* Code Audits: https://compound.finance/docs/security
+  * Trail of Bits
+  * OpenZeppelin 
+* Formal Verification: Y
