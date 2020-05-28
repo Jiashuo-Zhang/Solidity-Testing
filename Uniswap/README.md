@@ -10,4 +10,5 @@ https://github.com/Uniswap/uniswap-v2-core
 * Code Complexity: N
 * Code Audits: 
   * DApp.org(https://uniswap.org/audit.html)
+* Formal Verification: Y
 
