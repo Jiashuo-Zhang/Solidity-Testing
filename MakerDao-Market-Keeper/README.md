@@ -18,3 +18,11 @@ https://github.com/makerdao/market-maker-keeper
   *  Single comments: 1104
   * Multi: 145
   * Blank: 2337
+
+## Other Metrics
+
+* CI: travis CI
+* Testing tools: pytest
+* Test Coverage: Y
+* Code Complexity: N
+* Code Audits: None
