@@ -20,3 +20,11 @@ see ./coverage_report/index.html
   *  Single comments: 556
   * Multi: 2852
   * Blank: 3211
+
+## Other Metrics
+
+* CI: circleci
+* Testing tools: pytest
+* Test Coverage: Y
+* Code Complexity: N
+* Code Audits: None
