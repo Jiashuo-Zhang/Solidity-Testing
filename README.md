@@ -1,6 +1,6 @@
 # Testing for Ethereum Smart Contract: An Empirical Study 
 
-**张家硕**
+**张家硕 PKU2020春 软件测试导论课程大作业**
 
 ## 研究问题
 
