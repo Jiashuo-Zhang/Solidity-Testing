@@ -1,7 +1,5 @@
 # Testing for Ethereum Smart Contract: An Empirical Study 
 
-**张家硕 PKU2020春 软件测试导论课程大作业**
-
 ## 研究问题
 
 1. 以太坊智能合约测试的发展现状
